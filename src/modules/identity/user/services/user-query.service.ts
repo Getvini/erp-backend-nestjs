@@ -15,16 +15,11 @@ export class UserQueryService {
   ) {}
 
   async getAllUsers(query: QueryUserDto) {
-    const page = Math.max(1, Number(query.page) || 1);
-    const limit = Math.max(1, Math.min(100, Number(query.limit) || 10));
-    const skip = (page - 1) * limit;
-
     const qb = this.userRepo
       .createQueryBuilder("user")
       .leftJoinAndSelect("user.accounts", "account")
-      .orderBy("user.createdAt", "DESC")
-      .skip(skip)
-      .take(limit);
+      .where("user.isLocked = :isLocked", { isLocked: false })
+      .orderBy("user.createdAt", "DESC");
 
     if (query.search && query.search.trim()) {
       const term = `%${query.search.trim()}%`;
@@ -38,19 +33,18 @@ export class UserQueryService {
       qb.andWhere("account.role = :role", { role: query.role });
     }
 
-    const [items, total] = await qb.getManyAndCount();
-
-    return {
-      items,
-      total,
-      page,
-      limit,
-    };
+    const items = await qb.getMany();
+    return items.map((u) => ({
+      ...u,
+      account: u.accounts?.[0] || null,
+      tasks: (u as any).tasks || [],
+      workload: null,
+    }));
   }
 
   async getUserById(id: string) {
     const user = await this.userRepo.findOne({
-      where: { id },
+      where: { id, isLocked: false },
       relations: ["accounts"],
     });
 
@@ -58,6 +52,11 @@ export class UserQueryService {
       throw new NotFoundException(`Không tìm thấy nhân viên với ID: ${id}`);
     }
 
-    return user;
+    return {
+      ...user,
+      account: user.accounts?.[0] || null,
+      tasks: (user as any).tasks || [],
+      workload: null,
+    };
   }
 }

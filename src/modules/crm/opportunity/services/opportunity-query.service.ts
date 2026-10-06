@@ -114,6 +114,7 @@ export class OpportunityQueryService {
       .leftJoinAndSelect("opp.rejections", "rejections")
       .leftJoinAndSelect("rejections.rejectedBy", "rejectedBy")
       .leftJoinAndSelect("opp.createdBy", "createdBy")
+      .leftJoinAndSelect("createdBy.accounts", "accounts")
       .where("opp.id = :id", { id });
 
     if (isRestrictedToCreator) {
@@ -135,6 +136,7 @@ export class OpportunityQueryService {
     opportunity.packages = opportunity.packages || [];
     opportunity.services = opportunity.services || [];
     opportunity.rejections = opportunity.rejections || [];
+    (opportunity as any).contracts = (opportunity as any).contracts || [];
 
     return opportunity;
   }

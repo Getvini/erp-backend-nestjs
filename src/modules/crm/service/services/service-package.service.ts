@@ -19,6 +19,7 @@ export class ServicePackageService {
 
   async getAll(): Promise<ServicePackages[]> {
     return await this.packageRepository.find({
+      where: { isActive: true },
       relations: ["items", "items.service"],
       order: { createdAt: "DESC" },
     });

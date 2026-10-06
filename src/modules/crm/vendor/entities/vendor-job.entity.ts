@@ -20,5 +20,8 @@ export class VendorJobs extends BaseEntity {
   jobId: string;
 
   @Column({ type: "decimal", precision: 15, scale: 3, default: 0 })
-  costPrice: number;
+  price: number;
+
+  @Column({ type: "text", nullable: true })
+  note?: string;
 }

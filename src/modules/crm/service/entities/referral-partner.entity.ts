@@ -3,6 +3,8 @@ import { BaseEntity } from "../../../../core/database/base.entity";
 import { PartnerType } from "../enums/partner-type.enum";
 import { Customers } from "../../customer/entities/customer.entity";
 
+import { Opportunities } from "../../opportunity/entities/opportunity.entity";
+
 @Entity("referral_partners")
 export class ReferralPartners extends BaseEntity {
   @Column()
@@ -29,4 +31,7 @@ export class ReferralPartners extends BaseEntity {
 
   @OneToMany(() => Customers, (customer) => customer.referralPartner)
   customers: Customers[];
+
+  @OneToMany(() => Opportunities, (opp) => opp.referralPartner)
+  opportunities: Opportunities[];
 }

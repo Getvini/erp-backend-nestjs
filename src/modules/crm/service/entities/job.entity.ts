@@ -2,6 +2,7 @@ import { Entity, Column, OneToMany } from "typeorm";
 import { BaseEntity } from "../../../../core/database/base.entity";
 import { JobCategory, PerformerType } from "../enums/job-category.enum";
 import { ServiceJob } from "./service-job.entity";
+import { VendorJobs } from "../../vendor/entities/vendor-job.entity";
 
 @Entity("jobs")
 export class Jobs extends BaseEntity {
@@ -49,4 +50,7 @@ export class Jobs extends BaseEntity {
 
   @OneToMany(() => ServiceJob, (serviceJob) => serviceJob.job)
   serviceJobs: ServiceJob[];
+
+  @OneToMany(() => VendorJobs, (vj) => vj.job)
+  vendorJobs: VendorJobs[];
 }

@@ -1,8 +1,10 @@
-import { Entity, Column, ManyToOne } from "typeorm";
+import { Entity, Column, ManyToOne, OneToMany } from "typeorm";
 import { BaseEntity } from "../../../../core/database/base.entity";
 import { CustomerSource } from "../enums/customer-source.enum";
 import { ReferralPartners } from "../../service/entities/referral-partner.entity";
 import { Users } from "../../../identity/user/entities/user.entity";
+
+import { Opportunities } from "../../opportunity/entities/opportunity.entity";
 
 @Entity("customers")
 export class Customers extends BaseEntity {
@@ -37,4 +39,7 @@ export class Customers extends BaseEntity {
 
   @ManyToOne(() => Users, { nullable: true, onDelete: "SET NULL" })
   createdBy: Users | null;
+
+  @OneToMany(() => Opportunities, (opp) => opp.customer)
+  opportunities: Opportunities[];
 }

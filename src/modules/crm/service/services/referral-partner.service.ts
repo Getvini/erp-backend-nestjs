@@ -15,16 +15,23 @@ export class ReferralPartnerService {
   ) {}
 
   async getAll(): Promise<ReferralPartners[]> {
-    return await this.partnerRepository.find({
+    const list = await this.partnerRepository.find({
+      relations: ["customers", "opportunities"],
       order: { createdAt: "DESC" },
     });
+    for (const p of list) {
+      (p as any).contracts = (p as any).contracts || [];
+    }
+    return list;
   }
 
   async getOne(id: string): Promise<ReferralPartners> {
     const partner = await this.partnerRepository.findOne({
       where: { id },
+      relations: ["customers", "opportunities"],
     });
     if (!partner) throw new NotFoundException("Không tìm thấy đối tác");
+    (partner as any).contracts = (partner as any).contracts || [];
     return partner;
   }
 

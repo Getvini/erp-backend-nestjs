@@ -18,6 +18,8 @@ export class JobService {
       .createQueryBuilder("job")
       .leftJoinAndSelect("job.serviceJobs", "serviceJobs")
       .leftJoinAndSelect("serviceJobs.service", "service")
+      .leftJoinAndSelect("job.vendorJobs", "vendorJobs")
+      .leftJoinAndSelect("vendorJobs.vendor", "vendor")
       .orderBy("job.createdAt", "DESC");
 
     if (query.name && query.name.trim()) {
@@ -31,15 +33,25 @@ export class JobService {
       });
     }
 
-    return await qb.getMany();
+    const items = await qb.getMany();
+    for (const j of items) {
+      (j as any).criteria = (j as any).criteria || [];
+    }
+    return items;
   }
 
   async getOne(id: string): Promise<Jobs> {
     const job = await this.jobRepository.findOne({
       where: { id },
-      relations: ["serviceJobs", "serviceJobs.service"],
+      relations: [
+        "serviceJobs",
+        "serviceJobs.service",
+        "vendorJobs",
+        "vendorJobs.vendor",
+      ],
     });
     if (!job) throw new NotFoundException("Không tìm thấy công việc");
+    (job as any).criteria = (job as any).criteria || [];
     return job;
   }
 

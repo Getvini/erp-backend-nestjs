@@ -58,17 +58,24 @@ export class VendorService {
   async addJob(
     vendorId: string,
     jobId: string,
-    costPrice = 0,
+    price = 0,
+    note?: string,
   ): Promise<VendorJobs> {
-    let vj = await this.vendorJobRepository.findOne({
+    const vj = await this.vendorJobRepository.findOne({
       where: { vendorId, jobId },
     });
     if (vj) {
-      vj.costPrice = costPrice;
-    } else {
-      vj = this.vendorJobRepository.create({ vendorId, jobId, costPrice });
+      vj.price = price;
+      if (note !== undefined) vj.note = note;
+      return await this.vendorJobRepository.save(vj);
     }
-    return await this.vendorJobRepository.save(vj);
+    const newVj = this.vendorJobRepository.create({
+      vendorId,
+      jobId,
+      price,
+      note,
+    });
+    return await this.vendorJobRepository.save(newVj);
   }
 
   async removeJob(

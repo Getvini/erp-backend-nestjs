@@ -77,6 +77,8 @@ export class CustomerQueryService {
       .createQueryBuilder("customer")
       .leftJoinAndSelect("customer.referralPartner", "referralPartner")
       .leftJoinAndSelect("customer.createdBy", "createdBy")
+      .leftJoinAndSelect("createdBy.accounts", "accounts")
+      .leftJoinAndSelect("customer.opportunities", "opportunities")
       .where("customer.id = :id", { id });
 
     if (isRestrictedToCreator) {
@@ -90,6 +92,7 @@ export class CustomerQueryService {
         "Không tìm thấy khách hàng hoặc bạn không có quyền xem",
       );
     }
+    (customer as any).contracts = (customer as any).contracts || [];
     return customer;
   }
 }

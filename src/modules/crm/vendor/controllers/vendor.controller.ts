@@ -7,9 +7,12 @@ import {
   Body,
   Param,
 } from "@nestjs/common";
+import { ApiTags, ApiBearerAuth } from "@nestjs/swagger";
 import { VendorService } from "../services/vendor.service";
 import { CreateVendorDto, UpdateVendorDto } from "../dto/vendor.dto";
 
+@ApiTags("CRM - Vendor")
+@ApiBearerAuth()
 @Controller("vendors")
 export class VendorController {
   constructor(private readonly vendorService: VendorService) {}
@@ -48,9 +51,16 @@ export class VendorController {
   async addJob(
     @Param("id") vendorId: string,
     @Param("jobId") jobId: string,
+    @Body("price") price?: number,
     @Body("costPrice") costPrice?: number,
+    @Body("note") note?: string,
   ) {
-    return await this.vendorService.addJob(vendorId, jobId, costPrice);
+    return await this.vendorService.addJob(
+      vendorId,
+      jobId,
+      price ?? costPrice ?? 0,
+      note,
+    );
   }
 
   @Delete(":id/jobs/:jobId")
