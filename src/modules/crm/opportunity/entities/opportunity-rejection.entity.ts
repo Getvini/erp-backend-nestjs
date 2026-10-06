@@ -1,0 +1,32 @@
+import { Entity, Column, ManyToOne, JoinColumn } from "typeorm";
+import { BaseEntity } from "../../../../core/database/base.entity";
+import { Opportunities } from "./opportunity.entity";
+import { Users } from "../../../identity/user/entities/user.entity";
+
+@Entity("opportunity_rejections")
+export class OpportunityRejections extends BaseEntity {
+  @ManyToOne(() => Opportunities, (opp) => opp.rejections, {
+    onDelete: "CASCADE",
+  })
+  @JoinColumn({ name: "opportunityId" })
+  opportunity: Opportunities;
+
+  @Column({ type: "varchar", length: 26 })
+  opportunityId: string;
+
+  @Column({ type: "text" })
+  reason: string;
+
+  @ManyToOne(() => Users, { nullable: true, onDelete: "SET NULL" })
+  @JoinColumn({ name: "rejectedById" })
+  rejectedBy: Users | null;
+
+  @Column({ type: "varchar", length: 26, nullable: true })
+  rejectedById: string | null;
+
+  @Column({ type: "timestamp" })
+  rejectedAt: Date;
+
+  @Column({ type: "timestamp", nullable: true })
+  resubmittedAt: Date | null;
+}
