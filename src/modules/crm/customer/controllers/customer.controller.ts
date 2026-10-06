@@ -11,12 +11,15 @@ import {
 } from "@nestjs/common";
 import { CustomerQueryService } from "../services/customer-query.service";
 import { CustomerActionService } from "../services/customer-action.service";
+import { ApiTags, ApiBearerAuth } from "@nestjs/swagger";
 import {
   CreateCustomerDto,
   UpdateCustomerDto,
   CustomerQueryDto,
 } from "../dto/customer.dto";
 
+@ApiTags("CRM - Customer")
+@ApiBearerAuth()
 @Controller("customers")
 export class CustomerController {
   constructor(

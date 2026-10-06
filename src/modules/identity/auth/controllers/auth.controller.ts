@@ -14,7 +14,7 @@ import { LoginDto, RefreshTokenDto } from "../dto/auth.dto";
 import { Public } from "../../../../core/decorators/public.decorator";
 import { CurrentUser } from "../../../../core/decorators/current-user.decorator";
 
-@ApiTags("Identity (Auth & Profile)")
+@ApiTags("Identity - Auth")
 @Controller("auth")
 export class AuthController {
   constructor(private readonly authService: AuthService) {}

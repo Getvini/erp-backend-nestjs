@@ -8,11 +8,14 @@ import {
   Param,
 } from "@nestjs/common";
 import { ReferralPartnerService } from "../services/referral-partner.service";
+import { ApiTags, ApiBearerAuth } from "@nestjs/swagger";
 import {
   CreateReferralPartnerDto,
   UpdateReferralPartnerDto,
 } from "../dto/referral-partner.dto";
 
+@ApiTags("CRM - Referral Partner")
+@ApiBearerAuth()
 @Controller("referral-partners")
 export class ReferralPartnerController {
   constructor(

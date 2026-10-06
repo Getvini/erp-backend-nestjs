@@ -8,9 +8,12 @@ import {
   Param,
   Query,
 } from "@nestjs/common";
+import { ApiTags, ApiBearerAuth } from "@nestjs/swagger";
 import { JobService } from "../services/job.service";
 import { CreateJobDto, UpdateJobDto } from "../dto/job.dto";
 
+@ApiTags("CRM - Job")
+@ApiBearerAuth()
 @Controller("jobs")
 export class JobController {
   constructor(private readonly jobService: JobService) {}

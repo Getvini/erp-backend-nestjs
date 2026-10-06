@@ -9,7 +9,7 @@ import { ProfileService } from "../services/profile.service";
 import { UpdateProfileDto, ChangePasswordDto } from "../dto/profile.dto";
 import { CurrentUser } from "../../../../core/decorators/current-user.decorator";
 
-@ApiTags("Identity (Profile / Me)")
+@ApiTags("Identity - User")
 @ApiBearerAuth()
 @Controller("me")
 export class ProfileController {

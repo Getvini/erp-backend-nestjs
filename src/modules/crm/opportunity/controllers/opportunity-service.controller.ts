@@ -7,12 +7,15 @@ import {
   Body,
   Param,
 } from "@nestjs/common";
+import { ApiTags, ApiBearerAuth } from "@nestjs/swagger";
 import { OpportunityServiceService } from "../services/opportunity-service.service";
 import {
   CreateOppServiceDto,
   UpdateOppServiceDto,
 } from "../dto/opportunity-service.dto";
 
+@ApiTags("CRM - Opportunity")
+@ApiBearerAuth()
 @Controller("opportunity-services")
 export class OpportunityServiceController {
   constructor(private readonly oppServiceService: OpportunityServiceService) {}

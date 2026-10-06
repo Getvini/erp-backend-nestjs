@@ -16,7 +16,11 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   // 1. Bảo mật HTTP Headers, Nén dữ liệu & Cookie parser
-  app.use(helmet());
+  app.use(
+    helmet({
+      contentSecurityPolicy: false, // Cho phép Swagger UI load assets & inline scripts
+    }),
+  );
   app.use(compression());
   app.use(cookieParser());
 
@@ -29,9 +33,13 @@ async function bootstrap() {
     credentials: true,
   });
 
-  // 3. Backward-compatible rewrite & Versioning: /api/v1/...
+  // 3. Backward-compatible rewrite & Versioning: /api/v1/... (loại trừ docs / api/docs)
   app.use((req: any, res: any, next: any) => {
-    if (req.url.startsWith("/api/") && !req.url.startsWith("/api/v1/")) {
+    if (
+      req.url.startsWith("/api/") &&
+      !req.url.startsWith("/api/v1/") &&
+      !req.url.startsWith("/api/docs")
+    ) {
       req.url = req.url.replace(/^\/api\//, "/api/v1/");
     }
     next();
@@ -76,6 +84,7 @@ async function bootstrap() {
 
   const document = SwaggerModule.createDocument(app, swaggerConfig);
   SwaggerModule.setup("api/docs", app, document);
+  SwaggerModule.setup("docs", app, document);
 
   // 8. Graceful Shutdown
   app.enableShutdownHooks();

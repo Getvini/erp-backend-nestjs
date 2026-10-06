@@ -21,7 +21,7 @@ import { QueryUserDto, CreateUserDto, UpdateUserDto } from "../dto/user.dto";
 import { Roles } from "../../../../core/decorators/roles.decorator";
 import { UserRole } from "../enums/user-role.enum";
 
-@ApiTags("Identity (Users Management)")
+@ApiTags("Identity - User")
 @ApiBearerAuth()
 @Controller("users")
 export class UserController {

@@ -15,9 +15,12 @@ import {
   UpdateQuotationDto,
   RejectQuotationDto,
 } from "../dto/quotation.dto";
+import { ApiTags, ApiBearerAuth } from "@nestjs/swagger";
 import { Roles } from "../../../../core/decorators/roles.decorator";
 import { UserRole } from "../../../identity/user/enums/user-role.enum";
 
+@ApiTags("CRM - Quotation")
+@ApiBearerAuth()
 @Controller("quotations")
 export class QuotationController {
   constructor(

@@ -18,9 +18,12 @@ import {
   AddCustomerDto,
   RejectOpportunityDto,
 } from "../dto/opportunity.dto";
+import { ApiTags, ApiBearerAuth } from "@nestjs/swagger";
 import { Roles } from "../../../../core/decorators/roles.decorator";
 import { UserRole } from "../../../identity/user/enums/user-role.enum";
 
+@ApiTags("CRM - Opportunity")
+@ApiBearerAuth()
 @Controller("opportunities")
 export class OpportunityController {
   constructor(
