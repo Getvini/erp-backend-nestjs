@@ -17,6 +17,8 @@ import {
   ChangeLeadDto,
   AddTeamMemberDto,
   UpdateMemberRolesDto,
+  UpdateProjectMemberDto,
+  QueryTeamMembersDto,
 } from "@modules/project/project-core/dto/project-team.dto";
 import { CurrentUser } from "@core/decorators/current-user.decorator";
 
@@ -42,10 +44,9 @@ export class ProjectTeamController {
   @ApiOperation({ summary: "Danh sách thành viên đội dự án" })
   async getMembers(
     @Param("id") id: string,
-    @Query("month") month?: number,
-    @Query("year") year?: number,
+    @Query() query: QueryTeamMembersDto,
   ) {
-    return await this.teamService.getMembers(id, month, year);
+    return await this.teamService.getMembers(id, query.month, query.year);
   }
 
   @Post(":id/members")
@@ -88,7 +89,7 @@ export class ProjectTeamController {
   @ApiOperation({ summary: "Cập nhật thông tin thành viên" })
   async updateMember(
     @Param("memberId") memberId: string,
-    @Body() body: any,
+    @Body() body: UpdateProjectMemberDto,
     @CurrentUser() user: any,
   ) {
     return await this.teamService.updateMember(memberId, body, user);

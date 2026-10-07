@@ -18,6 +18,7 @@ import {
   ContractQueryDto,
   RejectProposalDto,
   UploadProposalDto,
+  UploadSignedContractDto,
   UpdateContractServiceNicknameDto,
   AddMilestoneDto,
   UpdateMilestoneDto,
@@ -98,7 +99,7 @@ export class ContractController {
 
   @Post(":id/signed")
   @ApiOperation({ summary: "Upload bản hợp đồng đã ký" })
-  uploadSigned(@Param("id") id: string, @Body() body: any) {
+  uploadSigned(@Param("id") id: string, @Body() body: UploadSignedContractDto) {
     if (!body.file?.url)
       throw Object.assign(new Error("Không tìm thấy file metadata"), {
         statusCode: 400,

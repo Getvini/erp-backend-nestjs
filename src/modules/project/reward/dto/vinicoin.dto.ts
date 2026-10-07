@@ -1,14 +1,19 @@
 import { IsOptional, IsString, IsNumber, IsEnum } from "class-validator";
+import { Type } from "class-transformer";
 import { ApiPropertyOptional, ApiProperty } from "@nestjs/swagger";
 import { VinicoinTransactionType } from "@modules/project/reward/entities/vinicoin-transaction.entity";
 
 export class VinicoinQueryDto {
   @ApiPropertyOptional({ description: "Trang" })
   @IsOptional()
+  @Type(() => Number)
+  @IsNumber()
   page?: number;
 
   @ApiPropertyOptional({ description: "Số lượng mỗi trang" })
   @IsOptional()
+  @Type(() => Number)
+  @IsNumber()
   limit?: number;
 
   @ApiPropertyOptional({

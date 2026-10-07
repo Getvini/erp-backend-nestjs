@@ -1,9 +1,12 @@
-import { IsOptional, IsString } from "class-validator";
+import { IsOptional, IsString, IsNumber } from "class-validator";
+import { Type } from "class-transformer";
 import { ApiPropertyOptional } from "@nestjs/swagger";
 
 export class PaymentDashboardQueryDto {
   @ApiPropertyOptional()
   @IsOptional()
+  @Type(() => Number)
+  @IsNumber()
   year?: number;
 
   @ApiPropertyOptional()
@@ -53,13 +56,19 @@ export class PaymentDashboardQueryDto {
 
   @ApiPropertyOptional()
   @IsOptional()
+  @Type(() => Number)
+  @IsNumber()
   paymentMonth?: number;
 
   @ApiPropertyOptional()
   @IsOptional()
+  @Type(() => Number)
+  @IsNumber()
   page?: number;
 
   @ApiPropertyOptional()
   @IsOptional()
+  @Type(() => Number)
+  @IsNumber()
   limit?: number;
 }

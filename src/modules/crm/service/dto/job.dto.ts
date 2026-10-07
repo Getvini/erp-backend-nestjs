@@ -6,6 +6,7 @@ import {
   IsEnum,
   IsArray,
 } from "class-validator";
+import { ApiPropertyOptional } from "@nestjs/swagger";
 import {
   JobCategory,
   PerformerType,
@@ -126,4 +127,16 @@ export class UpdateJobDto {
   @IsOptional()
   @IsNumber()
   timeToComplete?: number;
+}
+
+export class JobQueryDto {
+  @ApiPropertyOptional({ description: "Tìm kiếm theo tên công việc" })
+  @IsOptional()
+  @IsString()
+  name?: string;
+
+  @ApiPropertyOptional({ description: "Lọc theo danh mục" })
+  @IsOptional()
+  @IsString()
+  category?: string;
 }

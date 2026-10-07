@@ -13,6 +13,8 @@ import { TaskDelegationService } from "@modules/project/task/services/task-deleg
 import {
   CreateSubtaskDto,
   RespondSubtaskPlanDto,
+  RequestTaskStaffingDto,
+  RespondTaskStaffingDto,
 } from "@modules/project/task/dto/task-subtask.dto";
 
 @ApiTags("Project - Task Subtask")
@@ -26,20 +28,20 @@ export class TaskSubtaskController {
   @ApiOperation({ summary: "Yêu cầu bổ sung nhân sự" })
   async requestStaffing(
     @Param("id") id: string,
-    @Body("note") note: string,
+    @Body() body: RequestTaskStaffingDto,
     @Request() req: any,
   ) {
-    return this.delegationService.requestStaffing(id, note, req.user);
+    return this.delegationService.requestStaffing(id, body.note, req.user);
   }
 
   @Patch(":id/respond-staffing")
   @ApiOperation({ summary: "Phản hồi yêu cầu nhân sự" })
   async respondStaffingRequest(
     @Param("id") id: string,
-    @Body("action") action: any,
+    @Body() body: RespondTaskStaffingDto,
     @Request() req: any,
   ) {
-    return this.delegationService.respondStaffingRequest(id, action, req.user);
+    return this.delegationService.respondStaffingRequest(id, body.action, req.user);
   }
 
   @Post(":id/subtasks")

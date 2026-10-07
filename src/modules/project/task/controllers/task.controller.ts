@@ -25,6 +25,11 @@ import {
   BulkStartTasksDto,
   BulkUnassignTasksDto,
   UpdateTaskNicknameDto,
+  UpdateTaskDto,
+  SubmitTaskResultDto,
+  ReassignTaskDto,
+  AssessExtraTaskDto,
+  RequestReworkDto,
 } from "@modules/project/task/dto/task.dto";
 
 @ApiTags("Project - Task")
@@ -98,7 +103,7 @@ export class TaskController {
   @ApiOperation({ summary: "Cập nhật thông tin công việc" })
   async update(
     @Param("id") id: string,
-    @Body() body: any,
+    @Body() body: UpdateTaskDto,
     @Request() req: any,
   ) {
     return this.startService.update(id, body, req.user);
@@ -118,7 +123,7 @@ export class TaskController {
   @ApiOperation({ summary: "Nộp kết quả công việc" })
   async submitResult(
     @Param("id") id: string,
-    @Body() body: any,
+    @Body() body: SubmitTaskResultDto,
     @Request() req: any,
   ) {
     return this.resultService.submitResult(id, body, req.user);
@@ -140,7 +145,7 @@ export class TaskController {
   @ApiOperation({ summary: "Chuyển giao lại người thực hiện" })
   async reassign(
     @Param("id") id: string,
-    @Body() body: any,
+    @Body() body: ReassignTaskDto,
     @Request() req: any,
   ) {
     return this.assignmentService.reassign(id, body, req.user);
@@ -148,7 +153,10 @@ export class TaskController {
 
   @Post(":id/pricing")
   @ApiOperation({ summary: "Định giá công việc phát sinh" })
-  async assessExtraTask(@Param("id") id: string, @Body() body: any) {
+  async assessExtraTask(
+    @Param("id") id: string,
+    @Body() body: AssessExtraTaskDto,
+  ) {
     return this.deletionService.assessExtraTask(id, body);
   }
 
@@ -162,7 +170,7 @@ export class TaskController {
   @ApiOperation({ summary: "Yêu cầu làm lại công việc" })
   async rework(
     @Param("id") id: string,
-    @Body() body: any,
+    @Body() body: RequestReworkDto,
     @Request() req: any,
   ) {
     return this.resultService.requestRework(id, body, req.user);

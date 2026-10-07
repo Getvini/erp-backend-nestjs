@@ -184,7 +184,7 @@ export class TaskAssignmentService {
 
   async reassign(
     id: string,
-    data: { assigneeId: string; performerType: PerformerType; reason: string },
+    data: { assigneeId: string; performerType?: PerformerType; reason: string },
     currentUser?: TaskActor,
   ) {
     const task = await this.taskRepository.findOne({
@@ -209,7 +209,7 @@ export class TaskAssignmentService {
 
     task.assignee = newAssignee;
     task.assigneeId = newAssignee.id;
-    task.performerType = data.performerType;
+    task.performerType = data.performerType || task.performerType || PerformerType.INTERNAL;
     task.reassignNote = data.reason;
     task.status = TaskStatus.NOT_STARTED;
     task.assignerId = currentUser?.userId || currentUser?.id;

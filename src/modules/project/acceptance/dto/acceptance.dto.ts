@@ -4,7 +4,9 @@ import {
   IsOptional,
   IsArray,
   IsEnum,
+  IsNumber,
 } from "class-validator";
+import { Type } from "class-transformer";
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 import { AcceptanceStatus } from "@modules/project/acceptance/enums/acceptance.enum";
 
@@ -102,9 +104,13 @@ export class AcceptanceQueryDto {
 
   @ApiPropertyOptional({ description: "Trang" })
   @IsOptional()
+  @Type(() => Number)
+  @IsNumber()
   page?: number;
 
   @ApiPropertyOptional({ description: "Số lượng mỗi trang" })
   @IsOptional()
+  @Type(() => Number)
+  @IsNumber()
   limit?: number;
 }

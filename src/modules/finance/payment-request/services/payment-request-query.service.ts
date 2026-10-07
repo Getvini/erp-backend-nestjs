@@ -127,13 +127,18 @@ export class PaymentRequestQueryService {
       });
     }
 
+    const ALLOWED_SORT_MAP: Record<string, string> = {
+      createdAt: "pr.createdAt",
+      dueDate: "pr.dueDate",
+      amount: "pr.amount",
+    };
     const sortColumn =
-      query.sortBy === "amount"
-        ? "pr.amount"
-        : query.sortBy === "dueDate"
-          ? "pr.dueDate"
-          : "pr.createdAt";
-    qb.orderBy(sortColumn, query.sortOrder === "ASC" ? "ASC" : "DESC");
+      query.sortBy && ALLOWED_SORT_MAP[query.sortBy]
+        ? ALLOWED_SORT_MAP[query.sortBy]
+        : "pr.createdAt";
+    const sortDirection =
+      String(query.sortOrder).toUpperCase() === "ASC" ? "ASC" : "DESC";
+    qb.orderBy(sortColumn, sortDirection);
 
     const results = await qb.getMany();
     const withComputed = results.map((r) => {

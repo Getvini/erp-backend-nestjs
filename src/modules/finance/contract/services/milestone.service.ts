@@ -50,108 +50,127 @@ export class MilestoneService {
   }
 
   async create(contractId: string, dto: AddMilestoneDto) {
-    const contract = await this.contractRepo.findOne({
-      where: { id: contractId },
-      relations: ["milestones"],
-    });
-    if (!contract) throw new NotFoundException("Không tìm thấy hợp đồng");
+    return this.dataSource.transaction(async (manager) => {
+      const contractRepo = manager.getRepository(Contract);
+      const milestoneRepo = manager.getRepository(PaymentMilestone);
+      const debtRepo = manager.getRepository(Debts);
 
-    const currentTotal = (contract.milestones || []).reduce(
-      (s, m) => s + Number(m.percentage),
-      0,
-    );
-    if (currentTotal + Number(dto.percentage) > 100) {
-      throw new BadRequestException(
-        `Tổng phần trăm vượt quá 100% (Hiện tại: ${currentTotal}%, Thêm: ${dto.percentage}%)`,
+      const contract = await contractRepo.findOne({
+        where: { id: contractId },
+        relations: ["milestones"],
+      });
+      if (!contract) throw new NotFoundException("Không tìm thấy hợp đồng");
+
+      const currentTotal = (contract.milestones || []).reduce(
+        (s, m) => s + Number(m.percentage),
+        0,
       );
-    }
+      if (currentTotal + Number(dto.percentage) > 100) {
+        throw new BadRequestException(
+          `Tổng phần trăm vượt quá 100% (Hiện tại: ${currentTotal}%, Thêm: ${dto.percentage}%)`,
+        );
+      }
 
-    const amount =
-      dto.amount ?? (getCollectible(contract) * Number(dto.percentage)) / 100;
-    const ms = this.milestoneRepo.create({
-      contractId,
-      name: dto.name,
-      percentage: dto.percentage,
-      amount,
-      description: dto.description,
-      dueDate: dto.dueDate ? (dto.dueDate as any) : null,
-      status: MilestoneStatus.PENDING,
-    });
-    const saved = await this.milestoneRepo.save(ms);
-
-    await this.debtRepo.save(
-      this.debtRepo.create({
+      const amount =
+        dto.amount ?? (getCollectible(contract) * Number(dto.percentage)) / 100;
+      const ms = milestoneRepo.create({
         contractId,
-        milestoneId: saved.id,
-        name: `Phải thu: ${saved.name}`,
-        amount: saved.amount,
-        dueDate: saved.dueDate || (new Date() as any),
-        status: DebtStatus.UNPAID,
-      }),
-    );
+        name: dto.name,
+        percentage: dto.percentage,
+        amount,
+        description: dto.description,
+        dueDate: dto.dueDate ? (dto.dueDate as any) : null,
+        status: MilestoneStatus.PENDING,
+      });
+      const saved = await milestoneRepo.save(ms);
 
-    return saved;
+      await debtRepo.save(
+        debtRepo.create({
+          contractId,
+          milestoneId: saved.id,
+          name: `Phải thu: ${saved.name}`,
+          amount: saved.amount,
+          dueDate: saved.dueDate || (new Date() as any),
+          status: DebtStatus.UNPAID,
+        }),
+      );
+
+      return saved;
+    });
   }
 
   async update(id: string, dto: UpdateMilestoneDto) {
-    const ms = await this.milestoneRepo.findOne({
-      where: { id },
-      relations: ["contract", "contract.milestones", "debt", "debt.payments"],
-    });
-    if (!ms) throw new NotFoundException("Không tìm thấy giai đoạn thanh toán");
-    if (this.isDebtUnmodifiable(ms.debt)) {
-      throw new BadRequestException(
-        `Đợt thanh toán "${ms.name}" đã bị khóa hoặc đã phát sinh thanh toán, không thể chỉnh sửa.`,
-      );
-    }
+    return this.dataSource.transaction(async (manager) => {
+      const milestoneRepo = manager.getRepository(PaymentMilestone);
+      const debtRepo = manager.getRepository(Debts);
 
-    if (
-      dto.percentage !== undefined &&
-      Number(dto.percentage) !== Number(ms.percentage)
-    ) {
-      const otherTotal = (ms.contract?.milestones || [])
-        .filter((m) => m.id !== id)
-        .reduce((s, m) => s + Number(m.percentage), 0);
-      if (otherTotal + Number(dto.percentage) > 100) {
+      const ms = await milestoneRepo.findOne({
+        where: { id },
+        relations: ["contract", "contract.milestones", "debt", "debt.payments"],
+      });
+      if (!ms)
+        throw new NotFoundException("Không tìm thấy giai đoạn thanh toán");
+      if (this.isDebtUnmodifiable(ms.debt)) {
         throw new BadRequestException(
-          "Tổng phần trăm thanh toán vượt quá 100%",
+          `Đợt thanh toán "${ms.name}" đã bị khóa hoặc đã phát sinh thanh toán, không thể chỉnh sửa.`,
         );
       }
-      ms.percentage = dto.percentage;
-      ms.amount = (getCollectible(ms.contract) * Number(dto.percentage)) / 100;
-    }
 
-    if (dto.name) ms.name = dto.name;
-    if (dto.description !== undefined) ms.description = dto.description;
-    if (dto.dueDate !== undefined)
-      ms.dueDate = dto.dueDate ? (dto.dueDate as any) : null;
+      if (
+        dto.percentage !== undefined &&
+        Number(dto.percentage) !== Number(ms.percentage)
+      ) {
+        const otherTotal = (ms.contract?.milestones || [])
+          .filter((m) => m.id !== id)
+          .reduce((s, m) => s + Number(m.percentage), 0);
+        if (otherTotal + Number(dto.percentage) > 100) {
+          throw new BadRequestException(
+            "Tổng phần trăm thanh toán vượt quá 100%",
+          );
+        }
+        ms.percentage = dto.percentage;
+        ms.amount =
+          (getCollectible(ms.contract) * Number(dto.percentage)) / 100;
+      }
 
-    const savedMs = await this.milestoneRepo.save(ms);
-
-    if (ms.debt && !this.isDebtUnmodifiable(ms.debt)) {
-      if (dto.name) ms.debt.name = `Phải thu: ${ms.name}`;
-      if (ms.amount !== undefined) ms.debt.amount = ms.amount;
+      if (dto.name) ms.name = dto.name;
+      if (dto.description !== undefined) ms.description = dto.description;
       if (dto.dueDate !== undefined)
-        ms.debt.dueDate = dto.dueDate ? (dto.dueDate as any) : new Date();
-      await this.debtRepo.save(ms.debt);
-    }
+        ms.dueDate = dto.dueDate ? (dto.dueDate as any) : null;
 
-    return savedMs;
+      const savedMs = await milestoneRepo.save(ms);
+
+      if (ms.debt && !this.isDebtUnmodifiable(ms.debt)) {
+        if (dto.name) ms.debt.name = `Phải thu: ${ms.name}`;
+        if (ms.amount !== undefined) ms.debt.amount = ms.amount;
+        if (dto.dueDate !== undefined)
+          ms.debt.dueDate = dto.dueDate ? (dto.dueDate as any) : new Date();
+        await debtRepo.save(ms.debt);
+      }
+
+      return savedMs;
+    });
   }
 
   async delete(id: string) {
-    const ms = await this.milestoneRepo.findOne({
-      where: { id },
-      relations: ["debt", "debt.payments"],
+    return this.dataSource.transaction(async (manager) => {
+      const milestoneRepo = manager.getRepository(PaymentMilestone);
+      const debtRepo = manager.getRepository(Debts);
+
+      const ms = await milestoneRepo.findOne({
+        where: { id },
+        relations: ["debt", "debt.payments"],
+      });
+      if (!ms)
+        throw new NotFoundException("Không tìm thấy giai đoạn thanh toán");
+      if (this.isDebtUnmodifiable(ms.debt)) {
+        throw new BadRequestException(
+          `Đợt thanh toán "${ms.name}" đã bị khóa hoặc đã phát sinh thanh toán, không thể xóa.`,
+        );
+      }
+      if (ms.debt) await debtRepo.remove(ms.debt as any);
+      await milestoneRepo.remove(ms as any);
+      return { message: "Xóa giai đoạn thanh toán thành công" };
     });
-    if (!ms) throw new NotFoundException("Không tìm thấy giai đoạn thanh toán");
-    if (this.isDebtUnmodifiable(ms.debt)) {
-      throw new BadRequestException(
-        `Đợt thanh toán "${ms.name}" đã bị khóa hoặc đã phát sinh thanh toán, không thể xóa.`,
-      );
-    }
-    if (ms.debt) await this.debtRepo.remove(ms.debt as any);
-    await this.milestoneRepo.remove(ms as any);
-    return { message: "Xóa giai đoạn thanh toán thành công" };
   }
 }

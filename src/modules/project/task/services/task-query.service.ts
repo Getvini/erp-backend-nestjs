@@ -26,6 +26,7 @@ import {
   TASK_LIST_RELATIONS,
   TASK_DETAIL_RELATIONS,
 } from "@modules/project/task/helpers/task-relations.constant";
+import { TaskQueryDto } from "@modules/project/task/dto/task.dto";
 
 @Injectable()
 export class TaskQueryService {
@@ -56,11 +57,28 @@ export class TaskQueryService {
     return isProjectOperatorFromTeam(project.team, userInfo);
   }
 
-  async getAll(filters: any = {}, userInfo?: TaskActor) {
-    const page = parseInt(filters.page, 10) || 1;
-    const limit = parseInt(filters.limit, 10) || 10;
-    const sortBy = filters.sortBy || "createdAt";
-    const sortDir = (filters.sortDir || "DESC").toUpperCase() as "ASC" | "DESC";
+  async getAll(filters: TaskQueryDto = {}, userInfo?: TaskActor) {
+    const page = Number(filters.page) || 1;
+    const limit = Number(filters.limit) || 10;
+    const ALLOWED_SORT_MAP: Record<string, string> = {
+      createdAt: "createdAt",
+      updatedAt: "updatedAt",
+      code: "code",
+      name: "name",
+      status: "status",
+      priority: "priority",
+      plannedStartDate: "plannedStartDate",
+      plannedEndDate: "plannedEndDate",
+      actualStartDate: "actualStartDate",
+      actualEndDate: "actualEndDate",
+      progress: "progress",
+      spentAmount: "spentAmount",
+    };
+
+    const rawSortBy = filters.sortBy || "createdAt";
+    const sortBy = ALLOWED_SORT_MAP[rawSortBy] || "createdAt";
+    const sortDir =
+      (filters.sortDir || "DESC").toUpperCase() === "ASC" ? "ASC" : "DESC";
 
     const where: any = [];
     const projectId = filters.projectId as string | undefined;
@@ -216,8 +234,16 @@ export class TaskQueryService {
     return task;
   }
 
-  async getByProject(projectId: string, query: any, userInfo?: TaskActor) {
-    const filters = { ...query, projectId, limit: query.limit || 500 };
+  async getByProject(
+    projectId: string,
+    query: TaskQueryDto = {},
+    userInfo?: TaskActor,
+  ) {
+    const filters: TaskQueryDto = {
+      ...query,
+      projectId,
+      limit: query.limit || 500,
+    };
     const result = await this.getAll(filters, userInfo);
     return result.data;
   }

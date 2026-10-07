@@ -11,6 +11,10 @@ import {
 import { ApiTags, ApiBearerAuth, ApiOperation } from "@nestjs/swagger";
 import { JwtAuthGuard } from "@core/guards/jwt-auth.guard";
 import { ProjectProductDescriptionService } from "@modules/project/qc/services/project-product-description.service";
+import {
+  CreateProductDescriptionDto,
+  UpdateProductDescriptionDto,
+} from "@modules/project/qc/dto/project-product-description.dto";
 
 @ApiTags("Project - Product Description")
 @ApiBearerAuth()
@@ -29,7 +33,7 @@ export class ProjectProductDescriptionController {
   @ApiOperation({ summary: "Tạo bản mô tả chuẩn sản phẩm mới" })
   async create(
     @Param("id") id: string,
-    @Body() body: any,
+    @Body() body: CreateProductDescriptionDto,
     @Request() req: any,
   ) {
     return this.service.create(id, body, req.user);
@@ -40,7 +44,7 @@ export class ProjectProductDescriptionController {
   async update(
     @Param("id") id: string,
     @Param("submissionId") submissionId: string,
-    @Body() body: any,
+    @Body() body: UpdateProductDescriptionDto,
     @Request() req: any,
   ) {
     return this.service.update(id, submissionId, body, req.user);

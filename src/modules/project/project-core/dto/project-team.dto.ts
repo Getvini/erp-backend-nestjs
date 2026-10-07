@@ -4,7 +4,9 @@ import {
   IsOptional,
   IsArray,
   IsEnum,
+  IsNumber,
 } from "class-validator";
+import { Type } from "class-transformer";
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 import { MemberRole } from "@modules/project/project-core/enums/member-role.enum";
 
@@ -69,4 +71,34 @@ export class UpdateMemberRolesDto {
   @IsArray({ message: "roles phải là mảng" })
   @IsNotEmpty({ message: "roles không được để trống" })
   roles: MemberRole[];
+}
+
+export class UpdateProjectMemberDto {
+  @ApiPropertyOptional({
+    description: "Danh sách vai trò",
+    enum: MemberRole,
+    isArray: true,
+  })
+  @IsArray()
+  @IsOptional()
+  roles?: MemberRole[];
+
+  @ApiPropertyOptional({ description: "Vai trò đơn" })
+  @IsEnum(MemberRole)
+  @IsOptional()
+  role?: MemberRole;
+}
+
+export class QueryTeamMembersDto {
+  @ApiPropertyOptional({ description: "Tháng (1-12)" })
+  @IsOptional()
+  @Type(() => Number)
+  @IsNumber()
+  month?: number;
+
+  @ApiPropertyOptional({ description: "Năm" })
+  @IsOptional()
+  @Type(() => Number)
+  @IsNumber()
+  year?: number;
 }

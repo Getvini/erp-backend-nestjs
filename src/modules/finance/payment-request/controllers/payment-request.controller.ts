@@ -22,6 +22,7 @@ import {
   PayPaymentRequestDto,
   CancelPaymentRequestDto,
   QueryPaymentRequestDto,
+  AttachmentFileDto,
 } from "../dto/payment-request.dto";
 import { CurrentUser } from "@core/decorators/current-user.decorator";
 import { Roles } from "@core/decorators/roles.decorator";
@@ -104,7 +105,7 @@ export class PaymentRequestController {
 
   @Post(":id/invoice-pdfs")
   @ApiOperation({ summary: "Đính kèm thêm hóa đơn PDF" })
-  addInvoicePdf(@Param("id") id: string, @Body() file: any) {
+  addInvoicePdf(@Param("id") id: string, @Body() file: AttachmentFileDto) {
     return this.actionService.addInvoicePdf(id, file);
   }
 
@@ -149,7 +150,7 @@ export class PaymentRequestController {
 
   @Post(":id/payment-proofs")
   @ApiOperation({ summary: "Đính kèm chứng từ thanh toán" })
-  uploadPaymentProof(@Param("id") id: string, @Body() file: any) {
+  uploadPaymentProof(@Param("id") id: string, @Body() file: AttachmentFileDto) {
     return this.workflowService.uploadPaymentProof(id, file);
   }
 

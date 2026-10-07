@@ -2,6 +2,7 @@ import { Controller, Get, Query, UseGuards, Req } from "@nestjs/common";
 import { ApiTags, ApiOperation, ApiBearerAuth } from "@nestjs/swagger";
 import { JwtAuthGuard } from "@core/guards/jwt-auth.guard";
 import { AiDashboardService } from "../services/ai-dashboard.service";
+import { QueryAiDashboardDto } from "../dto/ai-dashboard.dto";
 
 @ApiTags("AI Studio - Dashboard")
 @ApiBearerAuth()
@@ -14,25 +15,17 @@ export class AiDashboardController {
   @ApiOperation({ summary: "Lấy dữ liệu thống kê tổng quan AI Dashboard" })
   async getDashboard(
     @Req() req: any,
-    @Query("userId") userId?: string,
-    @Query("projectId") projectId?: string,
-    @Query("opportunityId") opportunityId?: string,
-    @Query("taskId") taskId?: string,
-    @Query("month") monthStr?: string,
-    @Query("year") yearStr?: string,
+    @Query() query: QueryAiDashboardDto,
   ) {
     const actor = req.user;
-    const month = monthStr ? Number(monthStr) : undefined;
-    const year = yearStr ? Number(yearStr) : undefined;
-
     return this.service.getDashboard(
       actor,
-      userId,
-      projectId,
-      opportunityId,
-      taskId,
-      month,
-      year,
+      query.userId,
+      query.projectId,
+      query.opportunityId,
+      query.taskId,
+      query.month,
+      query.year,
     );
   }
 }

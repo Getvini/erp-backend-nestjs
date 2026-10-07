@@ -7,6 +7,7 @@ import {
   CreateServiceDto,
   UpdateServiceDto,
   BulkDeleteServicesDto,
+  ServiceQueryDto,
 } from "@modules/crm/service/dto/service.dto";
 
 @Injectable()
@@ -18,7 +19,7 @@ export class ServiceService {
     private readonly serviceJobRepository: Repository<ServiceJob>,
   ) {}
 
-  async getAll(query: any = {}) {
+  async getAll(query: ServiceQueryDto = {}) {
     const page = Math.max(1, Number(query.page) || 1);
     const limit = Math.max(1, Number(query.limit) || 1000);
 

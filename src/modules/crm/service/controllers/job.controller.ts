@@ -10,7 +10,11 @@ import {
 } from "@nestjs/common";
 import { ApiTags, ApiBearerAuth } from "@nestjs/swagger";
 import { JobService } from "@modules/crm/service/services/job.service";
-import { CreateJobDto, UpdateJobDto } from "@modules/crm/service/dto/job.dto";
+import {
+  CreateJobDto,
+  UpdateJobDto,
+  JobQueryDto,
+} from "@modules/crm/service/dto/job.dto";
 
 @ApiTags("CRM - Job")
 @ApiBearerAuth()
@@ -19,11 +23,8 @@ export class JobController {
   constructor(private readonly jobService: JobService) {}
 
   @Get()
-  async getAll(
-    @Query("name") name?: string,
-    @Query("category") category?: string,
-  ) {
-    return await this.jobService.getAll({ name, category });
+  async getAll(@Query() query: JobQueryDto) {
+    return await this.jobService.getAll(query);
   }
 
   @Get(":id")

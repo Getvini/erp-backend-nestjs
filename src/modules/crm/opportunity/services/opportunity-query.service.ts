@@ -37,8 +37,28 @@ export class OpportunityQueryService {
     const { isRestrictedToCreator } = this.validateRbac(user);
     const page = Math.max(1, Number(query.page) || 1);
     const limit = Math.max(1, Number(query.limit) || 10);
-    const sortBy = query.sortBy || "createdAt";
-    const sortDir = (query.sortDir || "DESC").toUpperCase() as "ASC" | "DESC";
+    const SORT_COLUMN_MAP: Record<string, string> = {
+      createdAt: "opp.createdAt",
+      updatedAt: "opp.updatedAt",
+      opportunityCode: "opp.opportunityCode",
+      name: "opp.name",
+      expectedRevenue: "opp.expectedRevenue",
+      budget: "opp.budget",
+      startDate: "opp.startDate",
+      endDate: "opp.endDate",
+      priority: "opp.priority",
+      successChance: "opp.successChance",
+      durationMonths: "opp.durationMonths",
+      status: "opp.status",
+      "customer.name": "customer.name",
+      "referralPartner.name": "referralPartner.name",
+      "createdBy.fullName": "createdBy.fullName",
+    };
+
+    const rawSortBy = query.sortBy || "createdAt";
+    const sortColumn = SORT_COLUMN_MAP[rawSortBy] || "opp.createdAt";
+    const sortDir =
+      (query.sortDir || "DESC").toUpperCase() === "ASC" ? "ASC" : "DESC";
 
     const qb = this.opportunityRepository
       .createQueryBuilder("opp")
@@ -46,13 +66,8 @@ export class OpportunityQueryService {
       .leftJoinAndSelect("opp.referralPartner", "referralPartner")
       .leftJoinAndSelect("opp.createdBy", "createdBy")
       .skip((page - 1) * limit)
-      .take(limit);
-
-    if (sortBy.includes(".")) {
-      qb.orderBy(sortBy, sortDir);
-    } else {
-      qb.orderBy(`opp.${sortBy}`, sortDir);
-    }
+      .take(limit)
+      .orderBy(sortColumn, sortDir);
 
     if (isRestrictedToCreator) {
       const actorUserId = user.userId || user.id;

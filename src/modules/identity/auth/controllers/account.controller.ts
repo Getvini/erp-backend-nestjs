@@ -13,6 +13,10 @@ import { RolesGuard } from "@core/guards/roles.guard";
 import { Roles } from "@core/decorators/roles.decorator";
 import { UserRole } from "@modules/identity/user/enums/user-role.enum";
 import { AccountService } from "@modules/identity/auth/services/account.service";
+import {
+  UpdateAccountDto,
+  ResetAccountPasswordDto,
+} from "@modules/identity/auth/dto/auth.dto";
 
 @ApiTags("Identity - Account")
 @ApiBearerAuth()
@@ -36,7 +40,7 @@ export class AccountController {
 
   @Put(":id")
   @ApiOperation({ summary: "Cập nhật tài khoản" })
-  async update(@Param("id") id: string, @Body() body: any) {
+  async update(@Param("id") id: string, @Body() body: UpdateAccountDto) {
     const result = await this.accountService.updateAccount(id, body);
     return {
       message: "Cập nhật tài khoản thành công",
@@ -55,9 +59,9 @@ export class AccountController {
   @ApiOperation({ summary: "Đặt lại mật khẩu cho tài khoản" })
   async resetPassword(
     @Param("id") id: string,
-    @Body("newPassword") newPass: string,
+    @Body() body: ResetAccountPasswordDto,
   ) {
-    await this.accountService.resetPassword(id, newPass);
+    await this.accountService.resetPassword(id, body.newPassword);
     return { message: "Đặt lại mật khẩu thành công" };
   }
 }

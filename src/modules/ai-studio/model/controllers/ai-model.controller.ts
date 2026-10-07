@@ -15,7 +15,11 @@ import { RolesGuard } from "@core/guards/roles.guard";
 import { Roles } from "@core/decorators/roles.decorator";
 import { UserRole } from "@modules/identity/user/enums/user-role.enum";
 import { AiModelService } from "../services/ai-model.service";
-import { CreateAiModelDto, UpdateAiModelDto } from "../dto/ai-model.dto";
+import {
+  CreateAiModelDto,
+  UpdateAiModelDto,
+  QueryAiModelDto,
+} from "../dto/ai-model.dto";
 
 @ApiTags("AI Studio - Models")
 @ApiBearerAuth()
@@ -26,26 +30,8 @@ export class AiModelController {
 
   @Get()
   @ApiOperation({ summary: "Lấy danh sách các AI models có hỗ trợ lọc" })
-  async getAll(
-    @Query("providerCode") providerCode?: string,
-    @Query("modelType") modelType?: string,
-    @Query("isActive") isActive?: string,
-    @Query("supportsMotionControl") supportsMotionControl?: string,
-    @Query("supportsElements") supportsElements?: string,
-  ) {
-    return this.modelService.getAll({
-      providerCode,
-      modelType,
-      isActive: isActive !== undefined ? isActive === "true" : undefined,
-      supportsMotionControl:
-        supportsMotionControl !== undefined
-          ? supportsMotionControl === "true"
-          : undefined,
-      supportsElements:
-        supportsElements !== undefined
-          ? supportsElements === "true"
-          : undefined,
-    });
+  async getAll(@Query() query: QueryAiModelDto) {
+    return this.modelService.getAll(query);
   }
 
   @Get("provider/:providerCode")

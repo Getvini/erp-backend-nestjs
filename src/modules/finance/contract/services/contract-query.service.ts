@@ -43,8 +43,24 @@ export class ContractQueryService {
   async getAll(query: ContractQueryDto, user: any) {
     const page = Number(query.page) || 1;
     const limit = Number(query.limit) || 10;
-    const sortBy = query.sortBy || "createdAt";
-    const sortDir = (query.sortDir || "DESC").toUpperCase() as "ASC" | "DESC";
+    const ALLOWED_SORT_MAP: Record<string, string> = {
+      createdAt: "createdAt",
+      updatedAt: "updatedAt",
+      contractCode: "contractCode",
+      name: "name",
+      status: "status",
+      sellingPrice: "sellingPrice",
+      cost: "cost",
+      signedAt: "signedAt",
+      effectiveDate: "effectiveDate",
+      expirationDate: "expirationDate",
+      durationMonths: "durationMonths",
+    };
+
+    const rawSortBy = query.sortBy || "createdAt";
+    const sortBy = ALLOWED_SORT_MAP[rawSortBy] || "createdAt";
+    const sortDir =
+      (query.sortDir || "DESC").toUpperCase() === "ASC" ? "ASC" : "DESC";
 
     let rbacWhere: any;
     try {

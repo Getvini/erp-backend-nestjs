@@ -14,6 +14,7 @@ import {
   CreateServiceDto,
   UpdateServiceDto,
   BulkDeleteServicesDto,
+  ServiceQueryDto,
 } from "@modules/crm/service/dto/service.dto";
 
 @ApiTags("CRM - Service")
@@ -23,7 +24,7 @@ export class ServiceController {
   constructor(private readonly serviceService: ServiceService) {}
 
   @Get()
-  async getAll(@Query() query: any) {
+  async getAll(@Query() query: ServiceQueryDto) {
     return await this.serviceService.getAll(query);
   }
 

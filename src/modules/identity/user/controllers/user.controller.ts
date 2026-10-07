@@ -21,6 +21,7 @@ import {
   QueryUserDto,
   CreateUserDto,
   UpdateUserDto,
+  UpdateLaborContractsDto,
 } from "@modules/identity/user/dto/user.dto";
 import { Roles } from "@core/decorators/roles.decorator";
 import { UserRole } from "@modules/identity/user/enums/user-role.enum";
@@ -92,9 +93,9 @@ export class UserController {
   @ApiResponse({ status: 200, description: "Cập nhật hợp đồng thành công" })
   async updateLaborContracts(
     @Param("id") id: string,
-    @Body("laborContract") laborContract: any[],
+    @Body() dto: UpdateLaborContractsDto,
   ) {
-    return this.managementService.updateLaborContracts(id, laborContract);
+    return this.managementService.updateLaborContracts(id, dto.laborContract);
   }
 
   @Delete(":id")

@@ -2,6 +2,7 @@ import { Controller, Get, Param, Query, UseGuards } from "@nestjs/common";
 import { ApiTags, ApiOperation, ApiBearerAuth } from "@nestjs/swagger";
 import { JwtAuthGuard } from "@core/guards/jwt-auth.guard";
 import { AiProviderService } from "../services/ai-provider.service";
+import { QueryAiProviderDto } from "../dto/ai-provider.dto";
 
 @ApiTags("AI Studio - Providers")
 @ApiBearerAuth()
@@ -12,16 +13,8 @@ export class AiProviderController {
 
   @Get()
   @ApiOperation({ summary: "Lấy danh sách các AI providers" })
-  async getAll(
-    @Query("code") code?: string,
-    @Query("name") name?: string,
-    @Query("isActive") isActive?: string,
-  ) {
-    return this.providerService.getAll({
-      code,
-      name,
-      isActive: isActive !== undefined ? isActive === "true" : undefined,
-    });
+  async getAll(@Query() query: QueryAiProviderDto) {
+    return this.providerService.getAll(query);
   }
 
   @Get(":id")

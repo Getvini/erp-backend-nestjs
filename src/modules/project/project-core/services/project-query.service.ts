@@ -55,8 +55,20 @@ export class ProjectQueryService {
   ) {
     const page = Math.max(1, Number(filters.page) || 1);
     const limit = Math.max(1, Number(filters.limit) || 10);
-    const sortBy = filters.sortBy || "createdAt";
-    const sortDir = (filters.sortDir || "DESC").toUpperCase() as "ASC" | "DESC";
+    const ALLOWED_SORT_MAP: Record<string, string> = {
+      createdAt: "createdAt",
+      updatedAt: "updatedAt",
+      name: "name",
+      status: "status",
+      startDate: "startDate",
+      endDate: "endDate",
+      progress: "progress",
+    };
+
+    const rawSortBy = filters.sortBy || "createdAt";
+    const sortBy = ALLOWED_SORT_MAP[rawSortBy] || "createdAt";
+    const sortDir =
+      (filters.sortDir || "DESC").toUpperCase() === "ASC" ? "ASC" : "DESC";
 
     const rbacWhere = this.buildRbacWhere(userInfo);
     const baseWhere: any = {};
