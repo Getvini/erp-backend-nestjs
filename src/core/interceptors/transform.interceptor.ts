@@ -53,7 +53,9 @@ export class TransformInterceptor<T> implements NestInterceptor<
           return {
             success: true,
             statusCode,
-            data: res.items,
+            data: res,
+            items: res.items,
+            total: res.total,
             meta: {
               total: res.total,
               page: res.page,

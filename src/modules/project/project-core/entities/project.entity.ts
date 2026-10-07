@@ -125,3 +125,5 @@ export class Project extends BaseEntity {
     createdByName?: string;
   }>;
 }
+
+export { Project as Projects };

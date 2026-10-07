@@ -161,6 +161,18 @@ async function main() {
     { name: 'Finance Acceptance Minutes By Contract', path: sampleContractId ? `/api/finance-documents/acceptance-minutes/contract/${sampleContractId}` : null },
     { name: 'Finance VAT Invoices By Contract', path: sampleContractId ? `/api/finance-documents/vat-invoices/contract/${sampleContractId}` : null },
     { name: 'Finance Payment Dashboard', path: '/api/payment-dashboard' },
+    // --- Phase 5: Realtime, Communication & AI Studio ---
+    { name: 'Realtime Chat Rooms List', path: '/api/chat-rooms' },
+    { name: 'Realtime Notifications Me', path: '/api/notifications/me' },
+    { name: 'Communication Announcements List', path: '/api/announcements' },
+    { name: 'Infrastructure Cloudinary Signature', path: '/api/cloudinary/signature' },
+    { name: 'AI Studio Dashboard', path: '/api/ai-dashboard' },
+    { name: 'AI Studio Providers List', path: '/api/ai-providers' },
+    { name: 'AI Studio Models List', path: '/api/ai-models' },
+    { name: 'AI Studio Elements History', path: '/api/elements/history' },
+    { name: 'AI Studio Assets Library', path: '/api/assets' },
+    { name: 'AI Studio Video Generations History', path: '/api/video-generations/history' },
+    { name: 'AI Studio Motion Control History', path: '/api/video-generations/motion-control/history' },
   ].filter(t => t.path);
 
   let passCount = 0;

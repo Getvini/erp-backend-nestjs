@@ -10,6 +10,8 @@ import { CrmModule } from "./modules/crm/crm.module";
 import { ProjectModule } from "./modules/project/project.module";
 import { FinanceModule } from "./modules/finance/finance.module";
 import { CommunicationModule } from "./modules/communication/communication.module";
+import { RealtimeModule } from "./modules/realtime/realtime.module";
+import { InfrastructureModule } from "./modules/infrastructure/infrastructure.module";
 import { AiStudioModule } from "./modules/ai-studio/ai-studio.module";
 import { SystemModule } from "./modules/system/system.module";
 
@@ -37,6 +39,8 @@ import { SystemModule } from "./modules/system/system.module";
     ProjectModule,
     FinanceModule,
     CommunicationModule,
+    RealtimeModule,
+    InfrastructureModule,
     AiStudioModule,
     SystemModule,
   ],
