@@ -20,8 +20,9 @@ export type WorkloadNormItem = {
 
 @Injectable()
 export class WorkloadNormService {
-  static readonly DEFAULT_MONTHLY_NORM = 2500;
-  static readonly DAYS_PER_MONTH = 30;
+  // Tiêu chuẩn từ 10/2026: 22.000 Vinicoin/tháng và 800 Vinicoin/ngày (22.000 / 800 = 27.5 ngày)
+  static readonly DEFAULT_MONTHLY_NORM = 22000;
+  static readonly DAYS_PER_MONTH = 27.5;
   static readonly ACTIVE_WORKLOAD_STATUSES = [
     TaskStatus.PENDING,
     TaskStatus.NOT_STARTED,

@@ -3,6 +3,8 @@ import { BaseEntity } from "@core/database/base.entity";
 import {
   JobCategory,
   PerformerType,
+  JobLevel,
+  JobResponsibleRole,
 } from "@modules/crm/service/enums/job-category.enum";
 import { ServiceJob } from "./service-job.entity";
 import { VendorJobs } from "@modules/crm/vendor/entities/vendor-job.entity";
@@ -18,6 +20,9 @@ export class Jobs extends BaseEntity {
 
   @Column({ type: "decimal", precision: 15, scale: 3, default: 0 })
   costPrice: number;
+
+  @Column({ type: "decimal", precision: 15, scale: 3, default: 0 })
+  unitPrice: number;
 
   @Column({ default: false })
   isBriefVideo: boolean;
@@ -45,6 +50,20 @@ export class Jobs extends BaseEntity {
     default: "{}",
   })
   categories: JobCategory[];
+
+  @Column({
+    type: "enum",
+    enum: JobLevel,
+    default: JobLevel.A,
+  })
+  level: JobLevel;
+
+  @Column({
+    type: "enum",
+    enum: JobResponsibleRole,
+    nullable: true,
+  })
+  responsibleRole: JobResponsibleRole | null;
 
   @Column({ nullable: true })
   vinicoin: number;

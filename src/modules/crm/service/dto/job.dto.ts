@@ -9,6 +9,8 @@ import {
 import {
   JobCategory,
   PerformerType,
+  JobLevel,
+  JobResponsibleRole,
 } from "@modules/crm/service/enums/job-category.enum";
 
 export class CreateJobDto {
@@ -26,6 +28,10 @@ export class CreateJobDto {
   @IsOptional()
   @IsNumber()
   costPrice?: number;
+
+  @IsOptional()
+  @IsNumber()
+  unitPrice?: number;
 
   @IsOptional()
   @IsBoolean()
@@ -46,6 +52,14 @@ export class CreateJobDto {
   @IsOptional()
   @IsArray()
   categories?: JobCategory[];
+
+  @IsOptional()
+  @IsEnum(JobLevel)
+  level?: JobLevel;
+
+  @IsOptional()
+  @IsEnum(JobResponsibleRole)
+  responsibleRole?: JobResponsibleRole | null;
 
   @IsOptional()
   @IsNumber()
@@ -74,6 +88,10 @@ export class UpdateJobDto {
   costPrice?: number;
 
   @IsOptional()
+  @IsNumber()
+  unitPrice?: number;
+
+  @IsOptional()
   @IsBoolean()
   isBriefVideo?: boolean;
 
@@ -92,6 +110,14 @@ export class UpdateJobDto {
   @IsOptional()
   @IsArray()
   categories?: JobCategory[];
+
+  @IsOptional()
+  @IsEnum(JobLevel)
+  level?: JobLevel;
+
+  @IsOptional()
+  @IsEnum(JobResponsibleRole)
+  responsibleRole?: JobResponsibleRole | null;
 
   @IsOptional()
   @IsNumber()
