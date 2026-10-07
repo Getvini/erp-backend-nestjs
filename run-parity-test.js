@@ -86,6 +86,10 @@ async function main() {
   const taskSample = await client.query(`SELECT id FROM tasks ORDER BY "createdAt" DESC LIMIT 1;`);
   const jobSample = await client.query(`SELECT id FROM jobs ORDER BY "createdAt" DESC LIMIT 1;`);
   const acceptanceSample = await client.query(`SELECT id FROM acceptance_requests ORDER BY "createdAt" DESC LIMIT 1;`);
+  const contractSample = await client.query(`SELECT id FROM contracts ORDER BY "createdAt" DESC LIMIT 1;`);
+  const debtSample = await client.query(`SELECT id FROM debts ORDER BY "createdAt" DESC LIMIT 1;`);
+  const prSample = await client.query(`SELECT id FROM payment_requests ORDER BY "createdAt" DESC LIMIT 1;`);
+  const docSample = await client.query(`SELECT id FROM documents ORDER BY "createdAt" DESC LIMIT 1;`);
   await client.end();
 
   const sampleOppId = oppSample.rows[0]?.id;
@@ -96,11 +100,15 @@ async function main() {
   const sampleTaskId = taskSample.rows[0]?.id;
   const sampleJobId = jobSample.rows[0]?.id;
   const sampleAcceptanceId = acceptanceSample.rows[0]?.id;
+  const sampleContractId = contractSample.rows[0]?.id;
+  const sampleDebtId = debtSample.rows[0]?.id;
+  const samplePrId = prSample.rows[0]?.id;
+  const sampleDocId = docSample.rows[0]?.id;
 
   // 2. Generate token
   const token = jwt.sign({ id: testUser.id, userId: testUser.userId, role: testUser.role, type: 'access' }, JWT_SECRET, { expiresIn: '1h' });
 
-  // 3. Test suites for all Phase 1, Phase 2, and Phase 3 modules
+  // 3. Test suites for all Phase 1, Phase 2, Phase 3, and Phase 4 modules
   const testEndpoints = [
     { name: 'CRM Customers List', path: '/api/customers' },
     { name: 'CRM Customer Detail', path: sampleCustId ? `/api/customers/${sampleCustId}` : null },
@@ -136,6 +144,23 @@ async function main() {
     { name: 'System Settings QC', path: '/api/settings/qc' },
     { name: 'System Settings Workload Norms', path: '/api/settings/workload-norms' },
     { name: 'Project Dashboard Overview', path: '/api/dashboard' },
+    // --- Phase 4: Finance & Accounting Module ---
+    { name: 'Finance Contracts List', path: '/api/contracts' },
+    { name: 'Finance Contract Detail', path: sampleContractId ? `/api/contracts/${sampleContractId}` : null },
+    { name: 'Finance Milestones List', path: '/api/payment-milestones' },
+    { name: 'Finance Milestones By Contract', path: sampleContractId ? `/api/payment-milestones/contract/${sampleContractId}` : null },
+    { name: 'Finance Addendums By Contract', path: sampleContractId ? `/api/contract-addendums/contract/${sampleContractId}` : null },
+    { name: 'Finance Debts List', path: '/api/debts' },
+    { name: 'Finance Debt Detail', path: sampleDebtId ? `/api/debts/${sampleDebtId}` : null },
+    { name: 'Finance Payment Requests List', path: '/api/payment-requests' },
+    { name: 'Finance Payment Requests Total Debt', path: '/api/payment-requests/total-debt' },
+    { name: 'Finance Payment Request Detail', path: samplePrId ? `/api/payment-requests/${samplePrId}` : null },
+    { name: 'Finance Document Library List', path: '/api/document-library' },
+    { name: 'Finance Document Library Tags', path: '/api/document-library/tags' },
+    { name: 'Finance Document Detail', path: sampleDocId ? `/api/document-library/${sampleDocId}` : null },
+    { name: 'Finance Acceptance Minutes By Contract', path: sampleContractId ? `/api/finance-documents/acceptance-minutes/contract/${sampleContractId}` : null },
+    { name: 'Finance VAT Invoices By Contract', path: sampleContractId ? `/api/finance-documents/vat-invoices/contract/${sampleContractId}` : null },
+    { name: 'Finance Payment Dashboard', path: '/api/payment-dashboard' },
   ].filter(t => t.path);
 
   let passCount = 0;

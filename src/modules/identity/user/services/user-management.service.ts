@@ -7,7 +7,10 @@ import { DataSource } from "typeorm";
 import * as bcrypt from "bcrypt";
 import { Users } from "@modules/identity/user/entities/user.entity";
 import { Accounts } from "@modules/identity/auth/entities/account.entity";
-import { CreateUserDto, UpdateUserDto } from "@modules/identity/user/dto/user.dto";
+import {
+  CreateUserDto,
+  UpdateUserDto,
+} from "@modules/identity/user/dto/user.dto";
 
 @Injectable()
 export class UserManagementService {

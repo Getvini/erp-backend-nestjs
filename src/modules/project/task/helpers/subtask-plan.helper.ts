@@ -1,6 +1,9 @@
 import { ConflictException } from "@nestjs/common";
 import { Repository } from "typeorm";
-import { SubtaskPlanStatus, TaskStatus } from "@modules/project/task/enums/task-status.enum";
+import {
+  SubtaskPlanStatus,
+  TaskStatus,
+} from "@modules/project/task/enums/task-status.enum";
 import { Tasks } from "@modules/project/task/entities/task.entity";
 
 export const SUBTASK_PM_APPROVAL_ENABLED = false;

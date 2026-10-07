@@ -9,7 +9,10 @@ import {
 } from "@nestjs/common";
 import { ApiTags, ApiBearerAuth } from "@nestjs/swagger";
 import { VendorService } from "@modules/crm/vendor/services/vendor.service";
-import { CreateVendorDto, UpdateVendorDto } from "@modules/crm/vendor/dto/vendor.dto";
+import {
+  CreateVendorDto,
+  UpdateVendorDto,
+} from "@modules/crm/vendor/dto/vendor.dto";
 
 @ApiTags("CRM - Vendor")
 @ApiBearerAuth()

@@ -3,6 +3,7 @@ import {
   Column,
   ManyToOne,
   OneToMany,
+  OneToOne,
   Index,
   JoinColumn,
 } from "typeorm";
@@ -10,6 +11,7 @@ import { BaseEntity } from "@core/database/base.entity";
 import { Contract } from "./contract.entity";
 import { Users } from "@modules/identity/user/entities/user.entity";
 import { DebtPayments } from "./debt-payment.entity";
+import { PaymentMilestone } from "@modules/finance/contract/entities/payment-milestone.entity";
 
 export enum DebtStatus {
   UNPAID = "UNPAID",
@@ -24,7 +26,11 @@ export enum DebtStatus {
 export class Debts extends BaseEntity {
   @Index()
   @ManyToOne(() => Contract, (contract) => contract.debts)
+  @JoinColumn({ name: "contractId" })
   contract: Contract;
+
+  @Column({ type: "varchar", length: 26, nullable: true })
+  contractId: string;
 
   @Column({ type: "decimal", precision: 15, scale: 3 })
   amount: number;
@@ -68,6 +74,13 @@ export class Debts extends BaseEntity {
 
   @Column({ type: "varchar", length: 26, nullable: true })
   unlockedById: string;
+
+  @OneToOne(() => PaymentMilestone, { nullable: true })
+  @JoinColumn({ name: "milestoneId" })
+  milestone: PaymentMilestone;
+
+  @Column({ type: "varchar", length: 26, nullable: true })
+  milestoneId: string;
 
   @OneToMany(() => DebtPayments, (payment) => payment.debt)
   payments: DebtPayments[];

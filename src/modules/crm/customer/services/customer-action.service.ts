@@ -2,7 +2,10 @@ import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 import { Customers } from "@modules/crm/customer/entities/customer.entity";
-import { CreateCustomerDto, UpdateCustomerDto } from "@modules/crm/customer/dto/customer.dto";
+import {
+  CreateCustomerDto,
+  UpdateCustomerDto,
+} from "@modules/crm/customer/dto/customer.dto";
 import { TaxVerificationService } from "./tax-verification.service";
 import { CustomerQueryService } from "./customer-query.service";
 import { ReferralPartners } from "@modules/crm/service/entities/referral-partner.entity";

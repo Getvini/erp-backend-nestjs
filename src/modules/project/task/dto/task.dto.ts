@@ -11,7 +11,10 @@ import {
 } from "class-validator";
 import { Type } from "class-transformer";
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
-import { TaskStatus, PerformerType } from "@modules/project/task/enums/task-status.enum";
+import {
+  TaskStatus,
+  PerformerType,
+} from "@modules/project/task/enums/task-status.enum";
 
 export class CreateTaskDto {
   @ApiProperty({ description: "Tên task" })

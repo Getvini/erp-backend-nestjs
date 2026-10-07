@@ -7,7 +7,10 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 import { Tasks } from "@modules/project/task/entities/task.entity";
 import { Users } from "@modules/identity/user/entities/user.entity";
-import { TaskStatus, SubtaskPlanStatus } from "@modules/project/task/enums/task-status.enum";
+import {
+  TaskStatus,
+  SubtaskPlanStatus,
+} from "@modules/project/task/enums/task-status.enum";
 import {
   assertTaskProjectNotOnHold,
   TaskActor,

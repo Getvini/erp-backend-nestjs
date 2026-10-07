@@ -5,7 +5,10 @@ import { RolesGuard } from "@core/guards/roles.guard";
 import { Roles } from "@core/decorators/roles.decorator";
 import { UserRole } from "@modules/identity/user/enums/user-role.enum";
 import { SettingService } from "@modules/system/setting/services/setting.service";
-import { UpdateQcConfigDto, UpdateWorkloadNormsDto } from "@modules/system/setting/dto/setting.dto";
+import {
+  UpdateQcConfigDto,
+  UpdateWorkloadNormsDto,
+} from "@modules/system/setting/dto/setting.dto";
 
 @ApiTags("System - Setting")
 @ApiBearerAuth()

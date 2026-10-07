@@ -10,7 +10,10 @@ import { BaseEntity } from "@core/database/base.entity";
 import { Contract } from "@modules/finance/entities/contract.entity";
 import { ProjectTeam } from "./project-team.entity";
 import { Users } from "@modules/identity/user/entities/user.entity";
-import { ProjectStatus, GoogleSheetStatus } from "@modules/project/project-core/enums/project-status.enum";
+import {
+  ProjectStatus,
+  GoogleSheetStatus,
+} from "@modules/project/project-core/enums/project-status.enum";
 
 @Entity("projects")
 export class Project extends BaseEntity {

@@ -61,6 +61,10 @@ export class ContractServices extends BaseEntity {
   @Column({ type: "varchar", length: 26, nullable: true })
   addendumId: string;
 
+  @ManyToOne("ContractAddendum", "services", { nullable: true })
+  @JoinColumn({ name: "addendumId" })
+  addendum: any;
+
   @Column({
     type: "enum",
     enum: ContractServiceStatus,

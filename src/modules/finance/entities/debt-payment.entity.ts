@@ -1,4 +1,4 @@
-import { Entity, Column, ManyToOne, Index } from "typeorm";
+import { Entity, Column, ManyToOne, Index, JoinColumn } from "typeorm";
 import { BaseEntity } from "@core/database/base.entity";
 import { Debts } from "./debt.entity";
 
@@ -6,7 +6,11 @@ import { Debts } from "./debt.entity";
 export class DebtPayments extends BaseEntity {
   @Index()
   @ManyToOne(() => Debts, (debt) => debt.payments)
+  @JoinColumn({ name: "debtId" })
   debt: Debts;
+
+  @Column({ type: "varchar", length: 26, nullable: true })
+  debtId: string;
 
   @Column({ type: "decimal", precision: 15, scale: 2 })
   amount: number;

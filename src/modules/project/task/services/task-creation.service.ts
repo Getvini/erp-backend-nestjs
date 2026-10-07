@@ -25,7 +25,10 @@ import {
   TaskActor,
 } from "@modules/project/task/helpers/task-security.helper";
 import { NotificationService } from "@modules/communication/services/notification.service";
-import { CreateTaskDto, CreateInternalTaskDto } from "@modules/project/task/dto/task.dto";
+import {
+  CreateTaskDto,
+  CreateInternalTaskDto,
+} from "@modules/project/task/dto/task.dto";
 import { TaskInternalCreationService } from "./task-internal-creation.service";
 
 @Injectable()

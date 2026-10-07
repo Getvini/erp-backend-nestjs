@@ -17,7 +17,11 @@ import {
 } from "@nestjs/swagger";
 import { UserQueryService } from "@modules/identity/user/services/user-query.service";
 import { UserManagementService } from "@modules/identity/user/services/user-management.service";
-import { QueryUserDto, CreateUserDto, UpdateUserDto } from "@modules/identity/user/dto/user.dto";
+import {
+  QueryUserDto,
+  CreateUserDto,
+  UpdateUserDto,
+} from "@modules/identity/user/dto/user.dto";
 import { Roles } from "@core/decorators/roles.decorator";
 import { UserRole } from "@modules/identity/user/enums/user-role.enum";
 

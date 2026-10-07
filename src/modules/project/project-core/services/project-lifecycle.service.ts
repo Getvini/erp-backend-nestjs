@@ -15,7 +15,10 @@ import { Users } from "@modules/identity/user/entities/user.entity";
 import { ProjectStatus } from "@modules/project/project-core/enums/project-status.enum";
 import { MemberRole } from "@modules/project/project-core/enums/member-role.enum";
 import { UserRole } from "@modules/identity/user/enums/user-role.enum";
-import { AssignTeamDto, UpdateProjectDto } from "@modules/project/project-core/dto/project.dto";
+import {
+  AssignTeamDto,
+  UpdateProjectDto,
+} from "@modules/project/project-core/dto/project.dto";
 
 type ActorInfo = { id: string; userId?: string; role: string };
 

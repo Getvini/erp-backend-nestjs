@@ -9,7 +9,10 @@ import { Repository } from "typeorm";
 import { Project } from "@modules/project/project-core/entities/project.entity";
 import { ProjectPauseRequest } from "@modules/project/project-core/entities/project-pause-request.entity";
 import { ProjectStatus } from "@modules/project/project-core/enums/project-status.enum";
-import { PauseRequestStatus, PauseMode } from "@modules/project/project-core/enums/pause-request.enum";
+import {
+  PauseRequestStatus,
+  PauseMode,
+} from "@modules/project/project-core/enums/pause-request.enum";
 import { UserRole } from "@modules/identity/user/enums/user-role.enum";
 
 type ActorInfo = { id?: string; userId?: string; role?: string };

@@ -6,7 +6,10 @@ import {
   IsEnum,
   IsArray,
 } from "class-validator";
-import { JobCategory, PerformerType } from "@modules/crm/service/enums/job-category.enum";
+import {
+  JobCategory,
+  PerformerType,
+} from "@modules/crm/service/enums/job-category.enum";
 
 export class CreateJobDto {
   @IsString({ message: "Tên công việc không được để trống" })
