@@ -15,6 +15,7 @@ import {
 } from "../services/notification-emitter.service";
 import { CurrentUser } from "@core/decorators/current-user.decorator";
 import { Request, Response } from "express";
+import { SkipThrottle } from "@nestjs/throttler";
 
 @ApiTags("Realtime - Notification")
 @ApiBearerAuth()
@@ -33,6 +34,7 @@ export class NotificationController {
     return this.service.getMyNotifications(userId);
   }
 
+  @SkipThrottle()
   @Get("stream")
   @ApiOperation({ summary: "SSE Stream nhận thông báo thời gian thực" })
   streamNotifications(

@@ -14,6 +14,8 @@ import { LoginDto, RefreshTokenDto } from "@modules/identity/auth/dto/auth.dto";
 import { Public } from "@core/decorators/public.decorator";
 import { CurrentUser } from "@core/decorators/current-user.decorator";
 
+import { Throttle } from "@nestjs/throttler";
+
 @ApiTags("Identity - Auth")
 @Controller("auth")
 export class AuthController {
@@ -71,6 +73,7 @@ export class AuthController {
     res.clearCookie("refreshToken", options);
   }
 
+  @Throttle({ default: { limit: 5, ttl: 60000 } })
   @Public()
   @Post("login")
   @HttpCode(HttpStatus.OK)
@@ -95,6 +98,7 @@ export class AuthController {
     };
   }
 
+  @Throttle({ default: { limit: 20, ttl: 60000 } })
   @Public()
   @Post("refresh")
   @HttpCode(HttpStatus.OK)

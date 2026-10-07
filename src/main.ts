@@ -101,19 +101,21 @@ async function bootstrap() {
   const reflector = app.get(Reflector);
   app.useGlobalGuards(new JwtAuthGuard(reflector), new RolesGuard(reflector));
 
-  // 7. Khởi tạo tài liệu API Swagger / OpenAPI
-  const swaggerConfig = new DocumentBuilder()
-    .setTitle("ERP Enterprise API (NestJS)")
-    .setDescription(
-      "Tài liệu API Backend NestJS cho Web Portal (erp-UI) và Mobile App (erp-mobile)",
-    )
-    .setVersion("1.0")
-    .addBearerAuth()
-    .build();
+  // 7. Khởi tạo tài liệu API Swagger / OpenAPI (Chỉ bật khi không phải Production)
+  if (process.env.NODE_ENV !== "production") {
+    const swaggerConfig = new DocumentBuilder()
+      .setTitle("ERP Enterprise API (NestJS)")
+      .setDescription(
+        "Tài liệu API Backend NestJS cho Web Portal (erp-UI) và Mobile App (erp-mobile)",
+      )
+      .setVersion("1.0")
+      .addBearerAuth()
+      .build();
 
-  const document = SwaggerModule.createDocument(app, swaggerConfig);
-  SwaggerModule.setup("api/docs", app, document);
-  SwaggerModule.setup("docs", app, document);
+    const document = SwaggerModule.createDocument(app, swaggerConfig);
+    SwaggerModule.setup("api/docs", app, document);
+    SwaggerModule.setup("docs", app, document);
+  }
 
   // 8. Graceful Shutdown
   app.enableShutdownHooks();
@@ -127,9 +129,11 @@ async function bootstrap() {
   logger.log(
     `🚀 ERP NestJS Server is running on: http://localhost:${port}/api/v1`,
   );
-  logger.log(
-    `📑 Swagger Documentation available at: http://localhost:${port}/api/docs`,
-  );
+  if (process.env.NODE_ENV !== "production") {
+    logger.log(
+      `📑 Swagger Documentation available at: http://localhost:${port}/api/docs`,
+    );
+  }
   logger.log(
     `================================================================`,
   );

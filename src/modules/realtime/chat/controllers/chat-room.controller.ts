@@ -15,6 +15,7 @@ import {
   SendChatMessageDto,
 } from "../dto/chat.dto";
 import { CurrentUser } from "@core/decorators/current-user.decorator";
+import { Throttle } from "@nestjs/throttler";
 
 @ApiTags("Realtime - Chat Room")
 @ApiBearerAuth()
@@ -68,6 +69,7 @@ export class ChatRoomController {
     );
   }
 
+  @Throttle({ default: { limit: 300, ttl: 60000 } })
   @Get(":roomId/messages")
   @ApiOperation({ summary: "Lấy lịch sử tin nhắn trong phòng chat" })
   getRoomMessages(
@@ -85,6 +87,7 @@ export class ChatRoomController {
     );
   }
 
+  @Throttle({ default: { limit: 300, ttl: 60000 } })
   @Post(":roomId/messages")
   @ApiOperation({ summary: "Gửi tin nhắn vào phòng chat" })
   sendMessage(

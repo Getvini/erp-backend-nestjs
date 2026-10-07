@@ -15,6 +15,9 @@ import { InfrastructureModule } from "./modules/infrastructure/infrastructure.mo
 import { AiStudioModule } from "./modules/ai-studio/ai-studio.module";
 import { SystemModule } from "./modules/system/system.module";
 
+import { ThrottlerModule, ThrottlerGuard } from "@nestjs/throttler";
+import { APP_GUARD } from "@nestjs/core";
+
 @Module({
   imports: [
     // 1. Cấu hình biến môi trường type-safe fail-fast
@@ -33,7 +36,16 @@ import { SystemModule } from "./modules/system/system.module";
     // 4. Bảo mật Core
     AuthCoreModule,
 
-    // 5. Bounded Contexts
+    // 5. Rate Limiting toàn cục (Default: 100 requests / 60 giây)
+    ThrottlerModule.forRoot([
+      {
+        name: "default",
+        ttl: 60000,
+        limit: 100,
+      },
+    ]),
+
+    // 6. Bounded Contexts
     IdentityModule,
     CrmModule,
     ProjectModule,
@@ -43,6 +55,12 @@ import { SystemModule } from "./modules/system/system.module";
     InfrastructureModule,
     AiStudioModule,
     SystemModule,
+  ],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: ThrottlerGuard,
+    },
   ],
 })
 export class AppModule {}
