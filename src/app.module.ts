@@ -7,10 +7,11 @@ import { DatabaseModule } from "./core/database/database.module";
 import { AuthCoreModule } from "./core/auth/auth-core.module";
 import { IdentityModule } from "./modules/identity/identity.module";
 import { CrmModule } from "./modules/crm/crm.module";
-import { ProjectManagementModule } from "./modules/project-management/project-management.module";
+import { ProjectModule } from "./modules/project/project.module";
 import { FinanceModule } from "./modules/finance/finance.module";
 import { CommunicationModule } from "./modules/communication/communication.module";
 import { AiStudioModule } from "./modules/ai-studio/ai-studio.module";
+import { SystemModule } from "./modules/system/system.module";
 
 @Module({
   imports: [
@@ -30,13 +31,14 @@ import { AiStudioModule } from "./modules/ai-studio/ai-studio.module";
     // 4. Bảo mật Core
     AuthCoreModule,
 
-    // 5. 6 Bounded Contexts
+    // 5. Bounded Contexts
     IdentityModule,
     CrmModule,
-    ProjectManagementModule,
+    ProjectModule,
     FinanceModule,
     CommunicationModule,
     AiStudioModule,
+    SystemModule,
   ],
 })
 export class AppModule {}

@@ -18,6 +18,32 @@ export class NotificationService {
     };
   }
 
+  async createNotification(
+    data: {
+      title: string;
+      content: string;
+      type: string;
+      recipient?: any;
+      sender?: any;
+      link?: string;
+      relatedEntityId?: string;
+      relatedEntityType?: string;
+    },
+    _manager?: any,
+  ) {
+    // Event or log
+    return {
+      id: "noti-" + Date.now(),
+      ...data,
+      isRead: false,
+      createdAt: new Date(),
+    };
+  }
+
+  async create(data: any) {
+    return this.createNotification(data);
+  }
+
   // Lắng nghe sự kiện từ các module khác (Event-Driven)
   @OnEvent("project.created")
   handleProjectCreated(payload: any) {

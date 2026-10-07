@@ -70,27 +70,37 @@ async function main() {
   });
   await client.connect();
 
-  const userRes = await client.query(`SELECT id, role, email FROM accounts WHERE role::text ILIKE '%BOD%' OR role::text ILIKE '%ADMIN%' LIMIT 1;`);
+  const userRes = await client.query(`SELECT id, role, email, "userId" FROM accounts WHERE (role::text ILIKE '%BOD%' OR role::text ILIKE '%ADMIN%') AND "userId" IS NOT NULL LIMIT 1;`);
   if (!userRes.rows.length) {
     throw new Error('No admin user found!');
   }
   const testUser = userRes.rows[0];
-  console.log(`[AUTH] Using Test User: ID=${testUser.id}, Role=${testUser.role}, Email=${testUser.email}`);
+  console.log(`[AUTH] Using Test User: ID=${testUser.id}, UserId=${testUser.userId}, Role=${testUser.role}, Email=${testUser.email}`);
 
-  // Fetch a sample opportunity & customer & service for detail checks
+  // Fetch samples for detail checks
   const oppSample = await client.query(`SELECT id FROM opportunities ORDER BY "createdAt" DESC LIMIT 1;`);
   const custSample = await client.query(`SELECT id FROM customers ORDER BY "createdAt" DESC LIMIT 1;`);
   const srvSample = await client.query(`SELECT id FROM services ORDER BY "createdAt" DESC LIMIT 1;`);
+  const projSample = await client.query(`SELECT id FROM projects ORDER BY "createdAt" DESC LIMIT 1;`);
+  const teamSample = await client.query(`SELECT id FROM project_teams ORDER BY "createdAt" DESC LIMIT 1;`);
+  const taskSample = await client.query(`SELECT id FROM tasks ORDER BY "createdAt" DESC LIMIT 1;`);
+  const jobSample = await client.query(`SELECT id FROM jobs ORDER BY "createdAt" DESC LIMIT 1;`);
+  const acceptanceSample = await client.query(`SELECT id FROM acceptance_requests ORDER BY "createdAt" DESC LIMIT 1;`);
   await client.end();
 
   const sampleOppId = oppSample.rows[0]?.id;
   const sampleCustId = custSample.rows[0]?.id;
   const sampleSrvId = srvSample.rows[0]?.id;
+  const sampleProjId = projSample.rows[0]?.id;
+  const sampleTeamId = teamSample.rows[0]?.id;
+  const sampleTaskId = taskSample.rows[0]?.id;
+  const sampleJobId = jobSample.rows[0]?.id;
+  const sampleAcceptanceId = acceptanceSample.rows[0]?.id;
 
   // 2. Generate token
-  const token = jwt.sign({ id: testUser.id, role: testUser.role, type: 'access' }, JWT_SECRET, { expiresIn: '1h' });
+  const token = jwt.sign({ id: testUser.id, userId: testUser.userId, role: testUser.role, type: 'access' }, JWT_SECRET, { expiresIn: '1h' });
 
-  // 3. Test suites for all Phase 1 and Phase 2 modules
+  // 3. Test suites for all Phase 1, Phase 2, and Phase 3 modules
   const testEndpoints = [
     { name: 'CRM Customers List', path: '/api/customers' },
     { name: 'CRM Customer Detail', path: sampleCustId ? `/api/customers/${sampleCustId}` : null },
@@ -105,6 +115,27 @@ async function main() {
     { name: 'CRM Jobs List', path: '/api/jobs' },
     { name: 'CRM Vendors List', path: '/api/vendors' },
     { name: 'Identity Users List', path: '/api/users' },
+    { name: 'Project Projects List', path: '/api/projects' },
+    { name: 'Project Project Detail', path: sampleProjId ? `/api/projects/${sampleProjId}` : null },
+    { name: 'Project My Projects', path: '/api/projects/my-projects' },
+    { name: 'Project Teams List', path: '/api/teams' },
+    { name: 'Project Team Detail', path: sampleTeamId ? `/api/teams/${sampleTeamId}` : null },
+    { name: 'Project Team Members', path: sampleTeamId ? `/api/teams/${sampleTeamId}/members` : null },
+    { name: 'Project Tasks List', path: '/api/tasks?limit=10' },
+    { name: 'Project Task Detail', path: sampleTaskId ? `/api/tasks/${sampleTaskId}` : null },
+    { name: 'Project Job Criteria By Job', path: sampleJobId ? `/api/job-criteria/job/${sampleJobId}` : null },
+    { name: 'QC Task Reviews By Task', path: sampleTaskId ? `/api/task-reviews/task/${sampleTaskId}` : null },
+    { name: 'QC Task Result Checks By Task', path: sampleTaskId ? `/api/task-result-checks/task/${sampleTaskId}` : null },
+    { name: 'QC Spelling Whitelist', path: sampleProjId ? `/api/projects/${sampleProjId}/spelling-whitelist` : null },
+    { name: 'QC Project Product Descriptions', path: sampleProjId ? `/api/projects/${sampleProjId}/product-descriptions` : null },
+    { name: 'QC Product Info', path: sampleProjId ? `/api/qc/product-info/${sampleProjId}` : null },
+    { name: 'Project Acceptance List', path: '/api/acceptance' },
+    { name: 'Project Acceptance Detail', path: sampleAcceptanceId ? `/api/acceptance/${sampleAcceptanceId}` : null },
+    { name: 'Identity Accounts List', path: '/api/accounts' },
+    { name: 'Identity Account Detail', path: `/api/accounts/${testUser.id}` },
+    { name: 'System Settings QC', path: '/api/settings/qc' },
+    { name: 'System Settings Workload Norms', path: '/api/settings/workload-norms' },
+    { name: 'Project Dashboard Overview', path: '/api/dashboard' },
   ].filter(t => t.path);
 
   let passCount = 0;

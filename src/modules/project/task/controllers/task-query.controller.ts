@@ -1,0 +1,59 @@
+import {
+  Controller,
+  Get,
+  Param,
+  Query,
+  UseGuards,
+  Request,
+} from "@nestjs/common";
+import { ApiTags, ApiBearerAuth, ApiOperation } from "@nestjs/swagger";
+import { JwtAuthGuard } from "../../../../core/guards/jwt-auth.guard";
+import { TaskQueryService } from "../services/task-query.service";
+import { TaskWorkloadService } from "../services/task-workload.service";
+
+@ApiTags("Project - Task")
+@ApiBearerAuth()
+@UseGuards(JwtAuthGuard)
+@Controller("tasks")
+export class TaskQueryController {
+  constructor(
+    private readonly queryService: TaskQueryService,
+    private readonly workloadService: TaskWorkloadService,
+  ) {}
+
+  @Get()
+  @ApiOperation({ summary: "Lấy danh sách công việc (có phân trang & lọc)" })
+  async getAll(@Query() filters: any, @Request() req: any) {
+    return this.queryService.getAll(filters, req.user);
+  }
+
+  @Get("assignee/:userId/daily-workload")
+  @ApiOperation({ summary: "Xem tải công việc hàng ngày của nhân viên" })
+  async getDailyWorkloadByAssignee(
+    @Param("userId") userId: string,
+    @Query("startDate") startDate?: string,
+    @Query("endDate") endDate?: string,
+  ) {
+    return this.workloadService.getDailyWorkloadByAssignee(
+      userId,
+      startDate,
+      endDate,
+    );
+  }
+
+  @Get("project/:projectId")
+  @ApiOperation({ summary: "Lấy danh sách công việc theo dự án" })
+  async getByProject(
+    @Param("projectId") projectId: string,
+    @Query() query: any,
+    @Request() req: any,
+  ) {
+    return this.queryService.getByProject(projectId, query, req.user);
+  }
+
+  @Get(":id")
+  @ApiOperation({ summary: "Xem chi tiết một công việc" })
+  async getOne(@Param("id") id: string, @Request() req: any) {
+    return this.queryService.getOne(id, req.user);
+  }
+}
