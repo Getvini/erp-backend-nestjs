@@ -47,7 +47,11 @@ async function bootstrap() {
         allowedOrigins.includes(origin) ||
         /^http:\/\/(localhost|127\.0\.0\.1|10\.0\.2\.2|192\.168\.\d+\.\d+)(:\d+)?$/.test(
           origin,
-        );
+        ) ||
+        origin.includes("/gdt-api/tax-payer") ||
+        origin.endsWith(".vercel.app") ||
+        origin.endsWith(".onrender.com") ||
+        /^http:\/\/localhost:\d+$/.test(origin);
 
       if (isAllowed) {
         callback(null, true);
