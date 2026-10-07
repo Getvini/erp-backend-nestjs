@@ -17,7 +17,6 @@ export class AccountService {
   async getAllAccounts() {
     return this.accountRepo
       .createQueryBuilder("account")
-      .addSelect("account.password")
       .leftJoinAndSelect("account.user", "user")
       .where("account.isActive = :isActive", { isActive: true })
       .orderBy("account.createdAt", "DESC")
@@ -27,7 +26,6 @@ export class AccountService {
   async getAccountById(id: string) {
     const account = await this.accountRepo
       .createQueryBuilder("account")
-      .addSelect("account.password")
       .leftJoinAndSelect("account.user", "user")
       .where("account.id = :id", { id })
       .getOne();

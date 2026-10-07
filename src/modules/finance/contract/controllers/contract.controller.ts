@@ -24,6 +24,10 @@ import {
   UpdateMilestoneDto,
 } from "@modules/finance/contract/dto/contract.dto";
 import { CurrentUser } from "@core/decorators/current-user.decorator";
+import { UseGuards } from "@nestjs/common";
+import { RolesGuard } from "@core/guards/roles.guard";
+import { Roles } from "@core/decorators/roles.decorator";
+import { UserRole } from "@modules/identity/user/enums/user-role.enum";
 
 @ApiTags("Finance - Contract")
 @ApiBearerAuth()
@@ -54,6 +58,8 @@ export class ContractController {
   }
 
   @Delete(":id")
+  @UseGuards(RolesGuard)
+  @Roles(UserRole.BOD, UserRole.ADMIN, UserRole.ADMIN_SALE)
   @ApiOperation({ summary: "Xóa hợp đồng" })
   delete(@Param("id") id: string) {
     return this.actionService.delete(id);
@@ -86,12 +92,16 @@ export class ContractController {
   }
 
   @Post(":id/approve-proposal")
+  @UseGuards(RolesGuard)
+  @Roles(UserRole.BOD, UserRole.ADMIN, UserRole.ADMIN_SALE)
   @ApiOperation({ summary: "Duyệt hợp đồng đề xuất" })
   approveProposal(@Param("id") id: string) {
     return this.actionService.approveProposal(id);
   }
 
   @Post(":id/reject-proposal")
+  @UseGuards(RolesGuard)
+  @Roles(UserRole.BOD, UserRole.ADMIN, UserRole.ADMIN_SALE)
   @ApiOperation({ summary: "Từ chối hợp đồng đề xuất" })
   rejectProposal(@Param("id") id: string, @Body() dto: RejectProposalDto) {
     return this.actionService.rejectProposal(id, dto.reason);
@@ -109,18 +119,24 @@ export class ContractController {
 
   // Milestones
   @Post(":id/milestones")
+  @UseGuards(RolesGuard)
+  @Roles(UserRole.BOD, UserRole.ADMIN, UserRole.ADMIN_SALE)
   @ApiOperation({ summary: "Thêm đợt thanh toán" })
   addMilestone(@Param("id") contractId: string, @Body() dto: AddMilestoneDto) {
     return this.milestoneService.create(contractId, dto);
   }
 
   @Put("milestones/:id")
+  @UseGuards(RolesGuard)
+  @Roles(UserRole.BOD, UserRole.ADMIN, UserRole.ADMIN_SALE)
   @ApiOperation({ summary: "Cập nhật đợt thanh toán" })
   updateMilestone(@Param("id") id: string, @Body() dto: UpdateMilestoneDto) {
     return this.milestoneService.update(id, dto);
   }
 
   @Delete("milestones/:id")
+  @UseGuards(RolesGuard)
+  @Roles(UserRole.BOD, UserRole.ADMIN, UserRole.ADMIN_SALE)
   @ApiOperation({ summary: "Xóa đợt thanh toán" })
   deleteMilestone(@Param("id") id: string) {
     return this.milestoneService.delete(id);

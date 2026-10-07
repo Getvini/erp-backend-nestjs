@@ -5,9 +5,7 @@ import {
   IsEnum,
   IsArray,
 } from "class-validator";
-import {
-  CustomerType,
-} from "@modules/crm/opportunity/enums/opportunity-status.enum";
+import { CustomerType } from "@modules/crm/opportunity/enums/opportunity-status.enum";
 
 export class CreateOpportunityDto {
   @IsString({ message: "Tên cơ hội không được để trống" })

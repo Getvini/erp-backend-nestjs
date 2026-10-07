@@ -1,11 +1,22 @@
-import { Controller, Get, Post, Param, Body } from "@nestjs/common";
+import { Controller, Get, Post, Param, Body, UseGuards } from "@nestjs/common";
 import { ApiTags, ApiOperation, ApiBearerAuth } from "@nestjs/swagger";
 import { FinanceDocumentService } from "../services/finance-document.service";
 import { CreateFinanceDocumentDto } from "../dto/finance-document.dto";
 import { CurrentUser } from "@core/decorators/current-user.decorator";
+import { RolesGuard } from "@core/guards/roles.guard";
+import { Roles } from "@core/decorators/roles.decorator";
+import { UserRole } from "@modules/identity/user/enums/user-role.enum";
 
 @ApiTags("Finance - Finance Document")
 @ApiBearerAuth()
+@UseGuards(RolesGuard)
+@Roles(
+  UserRole.BOD,
+  UserRole.ADMIN,
+  UserRole.ADMIN_SALE,
+  UserRole.BD,
+  UserRole.PM,
+)
 @Controller("finance-documents")
 export class FinanceDocumentController {
   constructor(private readonly service: FinanceDocumentService) {}

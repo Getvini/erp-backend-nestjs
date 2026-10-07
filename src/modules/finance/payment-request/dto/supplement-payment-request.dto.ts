@@ -1,9 +1,4 @@
-import {
-  IsString,
-  IsOptional,
-  IsNumber,
-  IsArray,
-} from "class-validator";
+import { IsString, IsOptional, IsNumber, IsArray } from "class-validator";
 import { ApiPropertyOptional } from "@nestjs/swagger";
 
 export class SupplementPaymentRequestDto {

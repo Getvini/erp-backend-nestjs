@@ -22,7 +22,6 @@ export class ChatBotService {
           chatInput: message,
           userId,
           userFullName: fullName,
-          accessToken: token,
           sessionId,
           timestamp: new Date().toISOString(),
         }),

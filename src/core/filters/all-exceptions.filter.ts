@@ -34,7 +34,8 @@ export class AllExceptionsFilter implements ExceptionFilter {
       status = HttpStatus.BAD_REQUEST;
       message = "Không thể thực hiện do ràng buộc khóa ngoại không hợp lệ";
     } else if (exception instanceof Error) {
-      message = exception.message;
+      const isDev = process.env.NODE_ENV !== "production";
+      message = isDev ? exception.message : "Lỗi hệ thống nội bộ";
     }
 
     const formattedMessage = Array.isArray(message)

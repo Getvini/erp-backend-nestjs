@@ -13,10 +13,7 @@ export class AiDashboardController {
 
   @Get()
   @ApiOperation({ summary: "Lấy dữ liệu thống kê tổng quan AI Dashboard" })
-  async getDashboard(
-    @Req() req: any,
-    @Query() query: QueryAiDashboardDto,
-  ) {
+  async getDashboard(@Req() req: any, @Query() query: QueryAiDashboardDto) {
     const actor = req.user;
     return this.service.getDashboard(
       actor,

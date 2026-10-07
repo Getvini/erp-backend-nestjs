@@ -17,6 +17,7 @@ import {
   UpdatePaymentRequestDto,
   SupplementPaymentRequestDto,
 } from "../dto/payment-request.dto";
+import { UserRole } from "@modules/identity/user/enums/user-role.enum";
 
 @Injectable()
 export class PaymentRequestActionService {
@@ -92,10 +93,30 @@ export class PaymentRequestActionService {
     return this.repo.save(request);
   }
 
-  async update(id: string, dto: UpdatePaymentRequestDto) {
+  async update(id: string, dto: UpdatePaymentRequestDto, user?: any) {
     const request = await this.repo.findOne({ where: { id } });
     if (!request)
       throw new NotFoundException("Không tìm thấy yêu cầu thanh toán");
+
+    if (
+      request.approvalStatus !== PaymentRequestApprovalStatus.DRAFT &&
+      request.approvalStatus !== PaymentRequestApprovalStatus.NEED_MORE_DOCS
+    ) {
+      throw new BadRequestException(
+        "Chỉ có thể chỉnh sửa yêu cầu thanh toán ở trạng thái nháp hoặc cần bổ sung",
+      );
+    }
+
+    const actorId = user?.userId || user?.id;
+    const isManagement =
+      user?.role === UserRole.ADMIN ||
+      user?.role === UserRole.BOD ||
+      user?.role === UserRole.ADMIN_SALE;
+    if (actorId && request.requesterId !== actorId && !isManagement) {
+      throw new ForbiddenException(
+        "Bạn không phải người tạo yêu cầu thanh toán này",
+      );
+    }
 
     if (dto.content !== undefined) request.content = dto.content.trim();
     if (dto.amount !== undefined) request.amount = dto.amount;
@@ -169,10 +190,20 @@ export class PaymentRequestActionService {
     return this.repo.save(request);
   }
 
-  async addInvoicePdf(id: string, file: any) {
+  async addInvoicePdf(id: string, file: any, user?: any) {
     const request = await this.repo.findOne({ where: { id } });
     if (!request)
       throw new NotFoundException("Không tìm thấy yêu cầu thanh toán");
+    const actorId = user?.userId || user?.id;
+    const isManagement =
+      user?.role === UserRole.ADMIN ||
+      user?.role === UserRole.BOD ||
+      user?.role === UserRole.ADMIN_SALE;
+    if (actorId && request.requesterId !== actorId && !isManagement) {
+      throw new ForbiddenException(
+        "Bạn không có quyền đính kèm file vào yêu cầu này",
+      );
+    }
     request.invoicePdfs = [
       ...(request.invoicePdfs || []),
       { ...file, uploadedAt: new Date().toISOString() },
@@ -180,13 +211,21 @@ export class PaymentRequestActionService {
     return this.repo.save(request);
   }
 
-  async delete(id: string) {
+  async delete(id: string, user?: any) {
     const request = await this.repo.findOne({ where: { id } });
     if (!request)
       throw new NotFoundException("Không tìm thấy yêu cầu thanh toán");
     if (request.approvalStatus !== PaymentRequestApprovalStatus.DRAFT) {
       throw new BadRequestException(
         "Chỉ xóa được yêu cầu thanh toán ở trạng thái nháp",
+      );
+    }
+    const actorId = user?.userId || user?.id;
+    const isManagement =
+      user?.role === UserRole.ADMIN || user?.role === UserRole.BOD;
+    if (actorId && request.requesterId !== actorId && !isManagement) {
+      throw new ForbiddenException(
+        "Bạn không có quyền xóa yêu cầu thanh toán này",
       );
     }
     await this.repo.remove(request);

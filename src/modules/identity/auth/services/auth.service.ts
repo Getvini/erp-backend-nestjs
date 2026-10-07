@@ -121,8 +121,13 @@ export class AuthService {
 
     const refreshSecret =
       this.configService.get<string>("app.jwt.refreshSecret") ||
-      this.configService.get<string>("app.jwt.secret") ||
-      "PHONGVANTMALABIET";
+      this.configService.get<string>("app.jwt.secret");
+
+    if (!refreshSecret) {
+      throw new UnauthorizedException(
+        "Khóa bí mật xác thực chưa được cấu hình",
+      );
+    }
 
     let sessionId: string | null = null;
     try {
@@ -201,12 +206,23 @@ export class AuthService {
     };
   }
 
-  async logout(userId: string) {
-    if (!userId) return { success: true };
-    await this.refreshSessionRepo.update(
-      { accountId: userId },
-      { revokedAt: new Date() },
-    );
+  async logout(userId?: string, rawRefreshToken?: string) {
+    if (rawRefreshToken) {
+      const tokenHash = crypto
+        .createHash("sha256")
+        .update(rawRefreshToken)
+        .digest("hex");
+      await this.refreshSessionRepo.update(
+        { tokenHash },
+        { revokedAt: new Date() },
+      );
+    }
+    if (userId) {
+      await this.refreshSessionRepo.update(
+        { accountId: userId },
+        { revokedAt: new Date() },
+      );
+    }
     return { success: true };
   }
 }

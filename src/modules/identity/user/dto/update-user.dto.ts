@@ -1,10 +1,5 @@
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
-import {
-  IsEnum,
-  IsOptional,
-  IsString,
-  IsArray,
-} from "class-validator";
+import { IsEnum, IsOptional, IsString, IsArray } from "class-validator";
 import { UserRole } from "@modules/identity/user/enums/user-role.enum";
 
 export class UpdateUserDto {

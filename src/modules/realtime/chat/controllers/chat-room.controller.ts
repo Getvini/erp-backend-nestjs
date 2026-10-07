@@ -56,21 +56,30 @@ export class ChatRoomController {
   @Post(":roomId/participants")
   @ApiOperation({ summary: "Thêm thành viên vào phòng chat nhóm" })
   addParticipants(
+    @CurrentUser() user: any,
     @Param("roomId") roomId: string,
     @Body() dto: AddParticipantsDto,
   ) {
-    return this.chatRoomService.addParticipants(roomId, dto.participantIds);
+    const userId = user?.userId || user?.id;
+    return this.chatRoomService.addParticipants(
+      roomId,
+      dto.participantIds,
+      userId,
+    );
   }
 
   @Get(":roomId/messages")
   @ApiOperation({ summary: "Lấy lịch sử tin nhắn trong phòng chat" })
   getRoomMessages(
+    @CurrentUser() user: any,
     @Param("roomId") roomId: string,
     @Query("limit") limit?: number,
     @Query("cursor") cursor?: string,
   ) {
+    const userId = user?.userId || user?.id;
     return this.chatRoomService.getRoomMessages(
       roomId,
+      userId,
       limit ? Number(limit) : 50,
       cursor,
     );

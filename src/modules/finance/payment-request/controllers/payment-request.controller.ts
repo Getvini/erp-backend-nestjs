@@ -75,8 +75,12 @@ export class PaymentRequestController {
 
   @Patch(":id")
   @ApiOperation({ summary: "Cập nhật yêu cầu thanh toán" })
-  update(@Param("id") id: string, @Body() dto: UpdatePaymentRequestDto) {
-    return this.actionService.update(id, dto);
+  update(
+    @Param("id") id: string,
+    @Body() dto: UpdatePaymentRequestDto,
+    @CurrentUser() user: any,
+  ) {
+    return this.actionService.update(id, dto, user);
   }
 
   @Patch(":id/supplement")
@@ -99,14 +103,18 @@ export class PaymentRequestController {
 
   @Delete(":id")
   @ApiOperation({ summary: "Xóa yêu cầu thanh toán nháp" })
-  delete(@Param("id") id: string) {
-    return this.actionService.delete(id);
+  delete(@Param("id") id: string, @CurrentUser() user: any) {
+    return this.actionService.delete(id, user);
   }
 
   @Post(":id/invoice-pdfs")
   @ApiOperation({ summary: "Đính kèm thêm hóa đơn PDF" })
-  addInvoicePdf(@Param("id") id: string, @Body() file: AttachmentFileDto) {
-    return this.actionService.addInvoicePdf(id, file);
+  addInvoicePdf(
+    @Param("id") id: string,
+    @Body() file: AttachmentFileDto,
+    @CurrentUser() user: any,
+  ) {
+    return this.actionService.addInvoicePdf(id, file, user);
   }
 
   @Post(":id/review")
@@ -149,6 +157,8 @@ export class PaymentRequestController {
   }
 
   @Post(":id/payment-proofs")
+  @UseGuards(RolesGuard)
+  @Roles(UserRole.BOD, UserRole.ADMIN, UserRole.ADMIN_SALE)
   @ApiOperation({ summary: "Đính kèm chứng từ thanh toán" })
   uploadPaymentProof(@Param("id") id: string, @Body() file: AttachmentFileDto) {
     return this.workflowService.uploadPaymentProof(id, file);

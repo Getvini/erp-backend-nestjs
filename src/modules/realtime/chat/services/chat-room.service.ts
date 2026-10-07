@@ -162,13 +162,26 @@ export class ChatRoomService {
     return Boolean(p);
   }
 
-  async addParticipants(roomId: string, participantIds: string[]) {
+  async addParticipants(
+    roomId: string,
+    participantIds: string[],
+    requesterId?: string,
+  ) {
     const room = await this.roomRepo.findOne({ where: { id: roomId } });
     if (!room) throw new NotFoundException("Không tìm thấy phòng chat");
     if (!room.isGroup) {
       throw new BadRequestException(
         "Không thể thêm thành viên vào cuộc trò chuyện 1-1",
       );
+    }
+
+    if (requesterId) {
+      const isMember = await this.isParticipant(roomId, requesterId);
+      if (!isMember) {
+        throw new ForbiddenException(
+          "Bạn không phải thành viên của phòng chat này",
+        );
+      }
     }
 
     const resolvedIds = await this.resolveUserIds(participantIds);
@@ -191,7 +204,21 @@ export class ChatRoomService {
     });
   }
 
-  async getRoomMessages(roomId: string, limit = 50, cursor?: string) {
+  async getRoomMessages(
+    roomId: string,
+    userId?: string,
+    limit = 50,
+    cursor?: string,
+  ) {
+    if (userId) {
+      const isMember = await this.isParticipant(roomId, userId);
+      if (!isMember) {
+        throw new ForbiddenException(
+          "Bạn không phải thành viên của phòng chat này",
+        );
+      }
+    }
+
     const where: any = { roomId };
     if (cursor) {
       const cursorMsg = await this.messageRepo.findOne({

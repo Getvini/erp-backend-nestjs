@@ -24,6 +24,7 @@ import {
   UpdateLaborContractsDto,
 } from "@modules/identity/user/dto/user.dto";
 import { Roles } from "@core/decorators/roles.decorator";
+import { CurrentUser } from "@core/decorators/current-user.decorator";
 import { UserRole } from "@modules/identity/user/enums/user-role.enum";
 
 @ApiTags("Identity - User")
@@ -40,15 +41,15 @@ export class UserController {
     summary: "Lấy danh sách người dùng kèm phân trang và tìm kiếm",
   })
   @ApiResponse({ status: 200, description: "Danh sách nhân sự" })
-  async findAll(@Query() query: QueryUserDto) {
-    return this.queryService.getAllUsers(query);
+  async findAll(@Query() query: QueryUserDto, @CurrentUser() user: any) {
+    return this.queryService.getAllUsers(query, user);
   }
 
   @Get(":id")
   @ApiOperation({ summary: "Xem chi tiết nhân viên theo ID" })
   @ApiResponse({ status: 200, description: "Chi tiết nhân sự" })
-  async findOne(@Param("id") id: string) {
-    return this.queryService.getUserById(id);
+  async findOne(@Param("id") id: string, @CurrentUser() user: any) {
+    return this.queryService.getUserById(id, user);
   }
 
   @Post()

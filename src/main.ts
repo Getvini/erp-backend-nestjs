@@ -24,11 +24,36 @@ async function bootstrap() {
   app.use(compression());
   app.use(cookieParser());
 
-  // 2. Cấu hình CORS đa nguồn (Web erp-UI + Mobile erp-mobile)
+  // 2. Cấu hình CORS an toàn (Web erp-UI + Mobile erp-mobile)
+  const allowedOrigins = [
+    process.env.FRONTEND_URL,
+    process.env.CORS_ORIGIN,
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "http://127.0.0.1:3000",
+    "http://127.0.0.1:5173",
+    "http://localhost:8081",
+    "http://localhost:19006",
+  ].filter(Boolean) as string[];
+
   app.enableCors({
     origin: (origin, callback) => {
-      // Cho phép requests không có origin (như curl hoặc mobile apps) và localhost/domain dev
-      callback(null, true);
+      // Cho phép requests không có origin (native mobile apps, curl, server-to-server)
+      if (!origin) {
+        return callback(null, true);
+      }
+
+      const isAllowed =
+        allowedOrigins.includes(origin) ||
+        /^http:\/\/(localhost|127\.0\.0\.1|10\.0\.2\.2|192\.168\.\d+\.\d+)(:\d+)?$/.test(
+          origin,
+        );
+
+      if (isAllowed) {
+        callback(null, true);
+      } else {
+        callback(new Error(`Nguồn ${origin} không được phép truy cập CORS`));
+      }
     },
     credentials: true,
   });

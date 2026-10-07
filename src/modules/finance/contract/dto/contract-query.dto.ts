@@ -1,8 +1,4 @@
-import {
-  IsString,
-  IsOptional,
-  IsIn,
-} from "class-validator";
+import { IsString, IsOptional, IsIn } from "class-validator";
 import { ApiPropertyOptional } from "@nestjs/swagger";
 import { PaginationQueryDto } from "@core/dto/pagination-query.dto";
 

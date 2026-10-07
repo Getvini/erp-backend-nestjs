@@ -1,8 +1,4 @@
-import {
-  IsOptional,
-  IsEnum,
-  IsArray,
-} from "class-validator";
+import { IsOptional, IsEnum, IsArray } from "class-validator";
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 import { PaymentMethod } from "../entities/payment-request.entity";
 

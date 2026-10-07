@@ -12,10 +12,7 @@ import {
 import { ApiTags, ApiOperation, ApiBearerAuth } from "@nestjs/swagger";
 import { JwtAuthGuard } from "@core/guards/jwt-auth.guard";
 import { AssetService } from "../services/asset.service";
-import {
-  QueryAiAssetDto,
-  UpdateAssetFavoriteDto,
-} from "../dto/asset.dto";
+import { QueryAiAssetDto, UpdateAssetFavoriteDto } from "../dto/asset.dto";
 
 @ApiTags("AI Studio - Assets")
 @ApiBearerAuth()
@@ -26,10 +23,7 @@ export class AssetController {
 
   @Get()
   @ApiOperation({ summary: "Lấy danh sách thư viện media/assets của user" })
-  async findLibrary(
-    @Req() req: any,
-    @Query() query: QueryAiAssetDto,
-  ) {
+  async findLibrary(@Req() req: any, @Query() query: QueryAiAssetDto) {
     return this.assetService.findLibrary(req.user.id, {
       tab: query.tab || "creative",
       type: query.type || "all",

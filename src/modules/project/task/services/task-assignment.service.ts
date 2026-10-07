@@ -209,7 +209,8 @@ export class TaskAssignmentService {
 
     task.assignee = newAssignee;
     task.assigneeId = newAssignee.id;
-    task.performerType = data.performerType || task.performerType || PerformerType.INTERNAL;
+    task.performerType =
+      data.performerType || task.performerType || PerformerType.INTERNAL;
     task.reassignNote = data.reason;
     task.status = TaskStatus.NOT_STARTED;
     task.assignerId = currentUser?.userId || currentUser?.id;

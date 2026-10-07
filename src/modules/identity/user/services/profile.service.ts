@@ -8,6 +8,7 @@ import { Repository } from "typeorm";
 import * as bcrypt from "bcrypt";
 import { Users } from "@modules/identity/user/entities/user.entity";
 import { Accounts } from "@modules/identity/auth/entities/account.entity";
+import { RefreshSessions } from "@modules/identity/auth/entities/refresh-session.entity";
 import {
   UpdateProfileDto,
   ChangePasswordDto,
@@ -87,6 +88,13 @@ export class ProfileService {
 
     account.password = await bcrypt.hash(dto.newPassword, 10);
     await this.accountRepo.save(account);
+
+    // Thu hồi toàn bộ refresh sessions đang hoạt động để buộc đăng nhập lại
+    await this.accountRepo.manager.update(
+      RefreshSessions,
+      { accountId: account.id },
+      { revokedAt: new Date() },
+    );
 
     return { message: "Đổi mật khẩu thành công" };
   }

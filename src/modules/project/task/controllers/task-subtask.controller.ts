@@ -41,7 +41,11 @@ export class TaskSubtaskController {
     @Body() body: RespondTaskStaffingDto,
     @Request() req: any,
   ) {
-    return this.delegationService.respondStaffingRequest(id, body.action, req.user);
+    return this.delegationService.respondStaffingRequest(
+      id,
+      body.action,
+      req.user,
+    );
   }
 
   @Post(":id/subtasks")

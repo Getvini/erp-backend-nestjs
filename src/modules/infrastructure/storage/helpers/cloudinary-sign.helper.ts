@@ -15,8 +15,13 @@ export function sanitizeCloudinarySegment(value: string): string {
 
 export function getCloudinaryFolder(folder?: string): string {
   const companyFolder = sanitizeCloudinarySegment(DEFAULT_COMPANY_FOLDER);
-  const cleanFolder = (folder || "ERP/others").replace(/^\/+|\/+$/g, "");
+  const rawFolder = folder || "ERP/others";
+  const segments = rawFolder
+    .split("/")
+    .map((s) => sanitizeCloudinarySegment(s))
+    .filter(Boolean);
 
+  const cleanFolder = segments.join("/");
   if (!cleanFolder) {
     return `${companyFolder}/ERP/others`;
   }

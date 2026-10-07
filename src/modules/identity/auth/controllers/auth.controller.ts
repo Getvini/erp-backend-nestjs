@@ -116,7 +116,6 @@ export class AuthController {
     };
   }
 
-  @Public()
   @Post("logout")
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: "Đăng xuất khỏi hệ thống" })
@@ -126,7 +125,8 @@ export class AuthController {
     @Req() req: Request,
     @Res({ passthrough: true }) res: Response,
   ) {
+    const rawRefreshToken = req.cookies?.refreshToken;
     this.clearAuthCookies(res, req);
-    return this.authService.logout(accountId);
+    return this.authService.logout(accountId, rawRefreshToken);
   }
 }

@@ -1,8 +1,4 @@
-import {
-  IsString,
-  IsOptional,
-  IsIn,
-} from "class-validator";
+import { IsString, IsOptional, IsIn } from "class-validator";
 import { PaginationQueryDto } from "@core/dto/pagination-query.dto";
 
 export const ALLOWED_OPPORTUNITY_SORT_FIELDS = [
