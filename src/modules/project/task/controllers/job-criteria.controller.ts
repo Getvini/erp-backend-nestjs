@@ -9,12 +9,12 @@ import {
   UseGuards,
 } from "@nestjs/common";
 import { ApiTags, ApiBearerAuth, ApiOperation } from "@nestjs/swagger";
-import { JwtAuthGuard } from "../../../../core/guards/jwt-auth.guard";
-import { JobCriteriaService } from "../services/job-criteria.service";
+import { JwtAuthGuard } from "@core/guards/jwt-auth.guard";
+import { JobCriteriaService } from "@modules/project/task/services/job-criteria.service";
 import {
   CreateJobCriteriaDto,
   SyncJobCriteriaItemDto,
-} from "../dto/job-criteria.dto";
+} from "@modules/project/task/dto/job-criteria.dto";
 
 @ApiTags("Project - Job Criteria")
 @ApiBearerAuth()

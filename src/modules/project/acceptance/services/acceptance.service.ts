@@ -7,8 +7,8 @@ import {
   CreateAcceptanceDto,
   AcceptanceQueryDto,
   ProcessAcceptanceDecisionDto,
-} from "../dto/acceptance.dto";
-import { AcceptanceActor } from "../helpers/acceptance-validation.helper";
+} from "@modules/project/acceptance/dto/acceptance.dto";
+import { AcceptanceActor } from "@modules/project/acceptance/helpers/acceptance-validation.helper";
 
 @Injectable()
 export class AcceptanceService {

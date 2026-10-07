@@ -1,7 +1,7 @@
 import { Injectable, BadRequestException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-import { SystemSettings } from "../entities/system-setting.entity";
+import { SystemSettings } from "@modules/system/setting/entities/system-setting.entity";
 import {
   QC_DEFAULT_CONFIG,
   QC_MODEL_OPTIONS,
@@ -10,9 +10,9 @@ import {
   QC_SETTING_KEY,
   QcConfig,
   isValidQcConfig,
-} from "../constants/qc.constant";
-import { WorkloadNormService } from "../../../project/task/services/workload-norm.service";
-import { UserRole } from "../../../identity/user/enums/user-role.enum";
+} from "@modules/system/setting/constants/qc.constant";
+import { WorkloadNormService } from "@modules/project/task/services/workload-norm.service";
+import { UserRole } from "@modules/identity/user/enums/user-role.enum";
 
 type Actor = { id?: string; userId?: string; role?: string };
 

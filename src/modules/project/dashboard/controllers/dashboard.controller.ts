@@ -7,9 +7,9 @@ import {
   UnauthorizedException,
 } from "@nestjs/common";
 import { ApiTags, ApiBearerAuth, ApiOperation } from "@nestjs/swagger";
-import { JwtAuthGuard } from "../../../../core/guards/jwt-auth.guard";
-import { DashboardService } from "../services/dashboard.service";
-import { DashboardQueryDto } from "../dto/dashboard.dto";
+import { JwtAuthGuard } from "@core/guards/jwt-auth.guard";
+import { DashboardService } from "@modules/project/dashboard/services/dashboard.service";
+import { DashboardQueryDto } from "@modules/project/dashboard/dto/dashboard.dto";
 
 @ApiTags("Project - Dashboard")
 @ApiBearerAuth()

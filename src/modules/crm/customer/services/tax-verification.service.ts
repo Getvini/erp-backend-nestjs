@@ -1,7 +1,7 @@
 import { Injectable, BadRequestException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository, Not } from "typeorm";
-import { Customers } from "../entities/customer.entity";
+import { Customers } from "@modules/crm/customer/entities/customer.entity";
 
 @Injectable()
 export class TaxVerificationService {

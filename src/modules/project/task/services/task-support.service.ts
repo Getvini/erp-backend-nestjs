@@ -7,15 +7,15 @@ import {
 } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-import { Tasks } from "../entities/task.entity";
-import { TaskStatus } from "../enums/task-status.enum";
-import { NotificationService } from "../../../communication/services/notification.service";
+import { Tasks } from "@modules/project/task/entities/task.entity";
+import { TaskStatus } from "@modules/project/task/enums/task-status.enum";
+import { NotificationService } from "@modules/communication/services/notification.service";
 import {
   assertTaskProjectNotOnHold,
   isManagementRole,
   isProjectOperatorFromTeam,
   TaskActor,
-} from "../helpers/task-security.helper";
+} from "@modules/project/task/helpers/task-security.helper";
 
 @Injectable()
 export class TaskSupportService {

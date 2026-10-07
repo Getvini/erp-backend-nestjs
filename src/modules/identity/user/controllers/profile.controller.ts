@@ -5,9 +5,9 @@ import {
   ApiBearerAuth,
   ApiResponse,
 } from "@nestjs/swagger";
-import { ProfileService } from "../services/profile.service";
-import { UpdateProfileDto, ChangePasswordDto } from "../dto/profile.dto";
-import { CurrentUser } from "../../../../core/decorators/current-user.decorator";
+import { ProfileService } from "@modules/identity/user/services/profile.service";
+import { UpdateProfileDto, ChangePasswordDto } from "@modules/identity/user/dto/profile.dto";
+import { CurrentUser } from "@core/decorators/current-user.decorator";
 
 @ApiTags("Identity - User")
 @ApiBearerAuth()

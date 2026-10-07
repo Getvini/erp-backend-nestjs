@@ -9,15 +9,15 @@ import {
   Request,
 } from "@nestjs/common";
 import { ApiTags, ApiBearerAuth, ApiOperation } from "@nestjs/swagger";
-import { JwtAuthGuard } from "../../../../core/guards/jwt-auth.guard";
-import { RolesGuard } from "../../../../core/guards/roles.guard";
-import { Roles } from "../../../../core/decorators/roles.decorator";
-import { UserRole } from "../../../identity/user/enums/user-role.enum";
-import { VinicoinService } from "../services/vinicoin.service";
+import { JwtAuthGuard } from "@core/guards/jwt-auth.guard";
+import { RolesGuard } from "@core/guards/roles.guard";
+import { Roles } from "@core/decorators/roles.decorator";
+import { UserRole } from "@modules/identity/user/enums/user-role.enum";
+import { VinicoinService } from "@modules/project/reward/services/vinicoin.service";
 import {
   VinicoinQueryDto,
   ManualVinicoinAdjustmentDto,
-} from "../dto/vinicoin.dto";
+} from "@modules/project/reward/dto/vinicoin.dto";
 
 @ApiTags("Project - Reward (Vinicoin)")
 @ApiBearerAuth()

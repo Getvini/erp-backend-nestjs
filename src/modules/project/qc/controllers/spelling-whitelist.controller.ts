@@ -9,9 +9,9 @@ import {
   Request,
 } from "@nestjs/common";
 import { ApiTags, ApiBearerAuth, ApiOperation } from "@nestjs/swagger";
-import { JwtAuthGuard } from "../../../../core/guards/jwt-auth.guard";
-import { SpellingWhitelistService } from "../services/spelling-whitelist.service";
-import { AddWhitelistWordDto } from "../dto/spelling-whitelist.dto";
+import { JwtAuthGuard } from "@core/guards/jwt-auth.guard";
+import { SpellingWhitelistService } from "@modules/project/qc/services/spelling-whitelist.service";
+import { AddWhitelistWordDto } from "@modules/project/qc/dto/spelling-whitelist.dto";
 
 @ApiTags("Project - Spelling Whitelist")
 @ApiBearerAuth()

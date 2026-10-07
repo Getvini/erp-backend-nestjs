@@ -1,6 +1,6 @@
 import { Entity, Column, OneToMany } from "typeorm";
-import { BaseEntity } from "../../../../core/database/base.entity";
-import { VendorType } from "../enums/vendor-type.enum";
+import { BaseEntity } from "@core/database/base.entity";
+import { VendorType } from "@modules/crm/vendor/enums/vendor-type.enum";
 import { VendorJobs } from "./vendor-job.entity";
 
 @Entity("vendors")

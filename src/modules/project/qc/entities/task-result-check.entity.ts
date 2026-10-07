@@ -1,7 +1,7 @@
 import { Entity, Column, OneToOne, JoinColumn } from "typeorm";
-import { BaseEntity } from "../../../../core/database/base.entity";
-import { Tasks } from "../../task/entities/task.entity";
-import { TaskResultCheckStatus } from "../enums/qc.enum";
+import { BaseEntity } from "@core/database/base.entity";
+import { Tasks } from "@modules/project/task/entities/task.entity";
+import { TaskResultCheckStatus } from "@modules/project/qc/enums/qc.enum";
 
 @Entity("task_result_checks")
 export class TaskResultChecks extends BaseEntity {

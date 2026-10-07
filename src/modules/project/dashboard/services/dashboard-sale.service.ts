@@ -1,10 +1,10 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository, FindOperator } from "typeorm";
-import { Contract } from "../../../finance/entities/contract.entity";
-import { Customers } from "../../../crm/customer/entities/customer.entity";
-import { Opportunities } from "../../../crm/opportunity/entities/opportunity.entity";
-import { DebtStatus } from "../../../finance/entities/debt.entity";
+import { Contract } from "@modules/finance/entities/contract.entity";
+import { Customers } from "@modules/crm/customer/entities/customer.entity";
+import { Opportunities } from "@modules/crm/opportunity/entities/opportunity.entity";
+import { DebtStatus } from "@modules/finance/entities/debt.entity";
 
 @Injectable()
 export class DashboardSaleService {

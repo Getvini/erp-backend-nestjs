@@ -1,13 +1,13 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository, In } from "typeorm";
-import { Services } from "../entities/service.entity";
-import { ServiceJob } from "../entities/service-job.entity";
+import { Services } from "@modules/crm/service/entities/service.entity";
+import { ServiceJob } from "@modules/crm/service/entities/service-job.entity";
 import {
   CreateServiceDto,
   UpdateServiceDto,
   BulkDeleteServicesDto,
-} from "../dto/service.dto";
+} from "@modules/crm/service/dto/service.dto";
 
 @Injectable()
 export class ServiceService {

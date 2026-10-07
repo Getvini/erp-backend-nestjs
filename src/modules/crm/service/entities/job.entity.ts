@@ -1,9 +1,9 @@
 import { Entity, Column, OneToMany } from "typeorm";
-import { BaseEntity } from "../../../../core/database/base.entity";
-import { JobCategory, PerformerType } from "../enums/job-category.enum";
+import { BaseEntity } from "@core/database/base.entity";
+import { JobCategory, PerformerType } from "@modules/crm/service/enums/job-category.enum";
 import { ServiceJob } from "./service-job.entity";
-import { VendorJobs } from "../../vendor/entities/vendor-job.entity";
-import { JobCriterias } from "../../../project/task/entities/job-criteria.entity";
+import { VendorJobs } from "@modules/crm/vendor/entities/vendor-job.entity";
+import { JobCriterias } from "@modules/project/task/entities/job-criteria.entity";
 
 @Entity("jobs")
 export class Jobs extends BaseEntity {

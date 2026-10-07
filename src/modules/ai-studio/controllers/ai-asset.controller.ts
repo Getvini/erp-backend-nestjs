@@ -5,8 +5,8 @@ import {
   ApiBearerAuth,
   ApiResponse,
 } from "@nestjs/swagger";
-import { AiAssetService } from "../services/ai-asset.service";
-import { CurrentUser } from "../../../core/decorators/current-user.decorator";
+import { AiAssetService } from "@modules/ai-studio/services/ai-asset.service";
+import { CurrentUser } from "@core/decorators/current-user.decorator";
 
 @ApiTags("AI Studio (Tài nguyên & Thế hệ Video AI)")
 @ApiBearerAuth()

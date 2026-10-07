@@ -1,6 +1,6 @@
 import { Entity, Column, ManyToOne, OneToMany, JoinColumn } from "typeorm";
-import { BaseEntity } from "../../../../core/database/base.entity";
-import { Users } from "../../../identity/user/entities/user.entity";
+import { BaseEntity } from "@core/database/base.entity";
+import { Users } from "@modules/identity/user/entities/user.entity";
 import { TeamMember } from "./team-member.entity";
 import { Project } from "./project.entity";
 

@@ -9,14 +9,14 @@ import {
   Query,
   Req,
 } from "@nestjs/common";
-import { CustomerQueryService } from "../services/customer-query.service";
-import { CustomerActionService } from "../services/customer-action.service";
+import { CustomerQueryService } from "@modules/crm/customer/services/customer-query.service";
+import { CustomerActionService } from "@modules/crm/customer/services/customer-action.service";
 import { ApiTags, ApiBearerAuth } from "@nestjs/swagger";
 import {
   CreateCustomerDto,
   UpdateCustomerDto,
   CustomerQueryDto,
-} from "../dto/customer.dto";
+} from "@modules/crm/customer/dto/customer.dto";
 
 @ApiTags("CRM - Customer")
 @ApiBearerAuth()

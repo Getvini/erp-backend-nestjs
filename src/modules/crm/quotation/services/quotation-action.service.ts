@@ -1,10 +1,10 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-import { Quotations } from "../entities/quotation.entity";
-import { QuotationDetails } from "../entities/quotation-detail.entity";
-import { CreateQuotationDto, UpdateQuotationDto } from "../dto/quotation.dto";
-import { QuotationStatus, QuotationType } from "../enums/quotation-status.enum";
+import { Quotations } from "@modules/crm/quotation/entities/quotation.entity";
+import { QuotationDetails } from "@modules/crm/quotation/entities/quotation-detail.entity";
+import { CreateQuotationDto, UpdateQuotationDto } from "@modules/crm/quotation/dto/quotation.dto";
+import { QuotationStatus, QuotationType } from "@modules/crm/quotation/enums/quotation-status.enum";
 import { QuotationQueryService } from "./quotation-query.service";
 
 @Injectable()

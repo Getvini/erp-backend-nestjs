@@ -8,13 +8,13 @@ import {
   Param,
   Query,
 } from "@nestjs/common";
-import { ServiceService } from "../services/service.service";
+import { ServiceService } from "@modules/crm/service/services/service.service";
 import { ApiTags, ApiBearerAuth } from "@nestjs/swagger";
 import {
   CreateServiceDto,
   UpdateServiceDto,
   BulkDeleteServicesDto,
-} from "../dto/service.dto";
+} from "@modules/crm/service/dto/service.dto";
 
 @ApiTags("CRM - Service")
 @ApiBearerAuth()

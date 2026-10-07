@@ -9,18 +9,18 @@ import {
   Query,
   Req,
 } from "@nestjs/common";
-import { OpportunityQueryService } from "../services/opportunity-query.service";
-import { OpportunityLifecycleService } from "../services/opportunity-lifecycle.service";
+import { OpportunityQueryService } from "@modules/crm/opportunity/services/opportunity-query.service";
+import { OpportunityLifecycleService } from "@modules/crm/opportunity/services/opportunity-lifecycle.service";
 import {
   CreateOpportunityDto,
   UpdateOpportunityDto,
   OpportunityQueryDto,
   AddCustomerDto,
   RejectOpportunityDto,
-} from "../dto/opportunity.dto";
+} from "@modules/crm/opportunity/dto/opportunity.dto";
 import { ApiTags, ApiBearerAuth } from "@nestjs/swagger";
-import { Roles } from "../../../../core/decorators/roles.decorator";
-import { UserRole } from "../../../identity/user/enums/user-role.enum";
+import { Roles } from "@core/decorators/roles.decorator";
+import { UserRole } from "@modules/identity/user/enums/user-role.enum";
 
 @ApiTags("CRM - Opportunity")
 @ApiBearerAuth()

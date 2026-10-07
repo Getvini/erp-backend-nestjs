@@ -1,5 +1,5 @@
 import { BadRequestException } from "@nestjs/common";
-import { Tasks } from "../entities/task.entity";
+import { Tasks } from "@modules/project/task/entities/task.entity";
 
 export const getVietnamCalendarDateKey = (date: Date | string): string => {
   const d = typeof date === "string" ? new Date(date) : date;

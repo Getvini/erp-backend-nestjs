@@ -6,18 +6,18 @@ import {
 } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository, In } from "typeorm";
-import { AcceptanceRequests } from "../entities/acceptance-request.entity";
-import { ContractServices } from "../entities/contract-service.entity";
-import { Users } from "../../../identity/user/entities/user.entity";
-import { Project } from "../../project-core/entities/project.entity";
-import { ProjectStatus } from "../../project-core/enums/project-status.enum";
-import { Tasks } from "../../task/entities/task.entity";
-import { TaskStatus } from "../../task/enums/task-status.enum";
+import { AcceptanceRequests } from "@modules/project/acceptance/entities/acceptance-request.entity";
+import { ContractServices } from "@modules/project/acceptance/entities/contract-service.entity";
+import { Users } from "@modules/identity/user/entities/user.entity";
+import { Project } from "@modules/project/project-core/entities/project.entity";
+import { ProjectStatus } from "@modules/project/project-core/enums/project-status.enum";
+import { Tasks } from "@modules/project/task/entities/task.entity";
+import { TaskStatus } from "@modules/project/task/enums/task-status.enum";
 import {
   AcceptanceStatus,
   ContractServiceStatus,
-} from "../enums/acceptance.enum";
-import { NotificationService } from "../../../communication/services/notification.service";
+} from "@modules/project/acceptance/enums/acceptance.enum";
+import { NotificationService } from "@modules/communication/services/notification.service";
 
 @Injectable()
 export class AcceptanceCreateService {

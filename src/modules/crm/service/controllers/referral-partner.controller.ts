@@ -7,12 +7,12 @@ import {
   Body,
   Param,
 } from "@nestjs/common";
-import { ReferralPartnerService } from "../services/referral-partner.service";
+import { ReferralPartnerService } from "@modules/crm/service/services/referral-partner.service";
 import { ApiTags, ApiBearerAuth } from "@nestjs/swagger";
 import {
   CreateReferralPartnerDto,
   UpdateReferralPartnerDto,
-} from "../dto/referral-partner.dto";
+} from "@modules/crm/service/dto/referral-partner.dto";
 
 @ApiTags("CRM - Referral Partner")
 @ApiBearerAuth()

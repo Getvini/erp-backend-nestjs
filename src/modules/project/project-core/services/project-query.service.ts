@@ -5,10 +5,10 @@ import {
 } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository, In, ILike } from "typeorm";
-import { Project } from "../entities/project.entity";
-import { ProjectStatus } from "../enums/project-status.enum";
-import { QueryProjectDto } from "../dto/project.dto";
-import { UserRole } from "../../../identity/user/enums/user-role.enum";
+import { Project } from "@modules/project/project-core/entities/project.entity";
+import { ProjectStatus } from "@modules/project/project-core/enums/project-status.enum";
+import { QueryProjectDto } from "@modules/project/project-core/dto/project.dto";
+import { UserRole } from "@modules/identity/user/enums/user-role.enum";
 
 @Injectable()
 export class ProjectQueryService {

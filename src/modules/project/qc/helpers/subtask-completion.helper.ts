@@ -1,7 +1,7 @@
 import { Repository } from "typeorm";
 import { ConflictException } from "@nestjs/common";
-import { TaskStatus } from "../../task/enums/task-status.enum";
-import { Tasks } from "../../task/entities/task.entity";
+import { TaskStatus } from "@modules/project/task/enums/task-status.enum";
+import { Tasks } from "@modules/project/task/entities/task.entity";
 
 export const completedSubtaskStatuses = [
   TaskStatus.INTERNAL_COMPLETED,

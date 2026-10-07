@@ -1,9 +1,9 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from "typeorm";
-import { BaseEntity } from "../../../../core/database/base.entity";
-import { Project } from "../../project-core/entities/project.entity";
-import { Users } from "../../../identity/user/entities/user.entity";
+import { BaseEntity } from "@core/database/base.entity";
+import { Project } from "@modules/project/project-core/entities/project.entity";
+import { Users } from "@modules/identity/user/entities/user.entity";
 import { ProjectProductDescriptionItems } from "./project-product-description-item.entity";
-import { ProjectProductDescriptionStatus } from "../enums/qc.enum";
+import { ProjectProductDescriptionStatus } from "@modules/project/qc/enums/qc.enum";
 
 @Entity("project_product_description_submissions")
 export class ProjectProductDescriptionSubmissions extends BaseEntity {

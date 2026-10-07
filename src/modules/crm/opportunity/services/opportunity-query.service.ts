@@ -5,9 +5,9 @@ import {
 } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-import { Opportunities } from "../entities/opportunity.entity";
-import { OpportunityQueryDto } from "../dto/opportunity.dto";
-import { UserRole } from "../../../identity/user/enums/user-role.enum";
+import { Opportunities } from "@modules/crm/opportunity/entities/opportunity.entity";
+import { OpportunityQueryDto } from "@modules/crm/opportunity/dto/opportunity.dto";
+import { UserRole } from "@modules/identity/user/enums/user-role.enum";
 
 @Injectable()
 export class OpportunityQueryService {

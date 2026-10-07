@@ -1,5 +1,5 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne } from "typeorm";
-import { BaseEntity } from "../../../../core/database/base.entity";
+import { BaseEntity } from "@core/database/base.entity";
 import { Accounts } from "./account.entity";
 
 @Entity("refresh_sessions")

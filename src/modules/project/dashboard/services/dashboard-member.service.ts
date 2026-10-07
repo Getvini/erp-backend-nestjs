@@ -1,16 +1,16 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository, In, Between, FindOperator } from "typeorm";
-import { Tasks } from "../../task/entities/task.entity";
-import { Users } from "../../../identity/user/entities/user.entity";
-import { Violations } from "../../task/entities/violation.entity";
-import { ProjectStatus } from "../../project-core/enums/project-status.enum";
-import { TaskStatus } from "../../task/enums/task-status.enum";
+import { Tasks } from "@modules/project/task/entities/task.entity";
+import { Users } from "@modules/identity/user/entities/user.entity";
+import { Violations } from "@modules/project/task/entities/violation.entity";
+import { ProjectStatus } from "@modules/project/project-core/enums/project-status.enum";
+import { TaskStatus } from "@modules/project/task/enums/task-status.enum";
 import {
   DashboardScopeType,
   selectDashboardWorkItems,
   DashboardScopeContext,
-} from "../types/dashboard-scope.types";
+} from "@modules/project/dashboard/types/dashboard-scope.types";
 
 const TASK_SELECT_FIELDS = {
   id: true,

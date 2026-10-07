@@ -9,15 +9,15 @@ import {
   Request,
 } from "@nestjs/common";
 import { ApiTags, ApiBearerAuth, ApiOperation } from "@nestjs/swagger";
-import { JwtAuthGuard } from "../../../../core/guards/jwt-auth.guard";
-import { AcceptanceService } from "../services/acceptance.service";
+import { JwtAuthGuard } from "@core/guards/jwt-auth.guard";
+import { AcceptanceService } from "@modules/project/acceptance/services/acceptance.service";
 import {
   CreateAcceptanceDto,
   ApproveAcceptanceDto,
   RejectAcceptanceDto,
   ProcessAcceptanceDto,
   AcceptanceQueryDto,
-} from "../dto/acceptance.dto";
+} from "@modules/project/acceptance/dto/acceptance.dto";
 
 @ApiTags("Project - Acceptance")
 @ApiBearerAuth()

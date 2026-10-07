@@ -5,9 +5,9 @@ import {
 } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-import { Customers } from "../entities/customer.entity";
-import { CustomerQueryDto } from "../dto/customer.dto";
-import { UserRole } from "../../../identity/user/enums/user-role.enum";
+import { Customers } from "@modules/crm/customer/entities/customer.entity";
+import { CustomerQueryDto } from "@modules/crm/customer/dto/customer.dto";
+import { UserRole } from "@modules/identity/user/enums/user-role.enum";
 
 @Injectable()
 export class CustomerQueryService {

@@ -5,8 +5,8 @@ import {
 } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository, In } from "typeorm";
-import { ProjectSpellCheckWhitelists } from "../entities/project-spell-check-whitelist.entity";
-import { Project } from "../../project-core/entities/project.entity";
+import { ProjectSpellCheckWhitelists } from "@modules/project/qc/entities/project-spell-check-whitelist.entity";
+import { Project } from "@modules/project/project-core/entities/project.entity";
 
 type Actor = { id?: string; userId?: string; role?: string };
 

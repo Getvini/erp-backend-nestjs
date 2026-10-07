@@ -6,16 +6,16 @@ import {
 } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-import { Project } from "../entities/project.entity";
-import { ProjectTeam } from "../entities/project-team.entity";
-import { TeamMember } from "../entities/team-member.entity";
-import { TeamMemberRole } from "../entities/team-member-role.entity";
-import { Contract } from "../../../finance/entities/contract.entity";
-import { Users } from "../../../identity/user/entities/user.entity";
-import { ProjectStatus } from "../enums/project-status.enum";
-import { MemberRole } from "../enums/member-role.enum";
-import { UserRole } from "../../../identity/user/enums/user-role.enum";
-import { AssignTeamDto, UpdateProjectDto } from "../dto/project.dto";
+import { Project } from "@modules/project/project-core/entities/project.entity";
+import { ProjectTeam } from "@modules/project/project-core/entities/project-team.entity";
+import { TeamMember } from "@modules/project/project-core/entities/team-member.entity";
+import { TeamMemberRole } from "@modules/project/project-core/entities/team-member-role.entity";
+import { Contract } from "@modules/finance/entities/contract.entity";
+import { Users } from "@modules/identity/user/entities/user.entity";
+import { ProjectStatus } from "@modules/project/project-core/enums/project-status.enum";
+import { MemberRole } from "@modules/project/project-core/enums/member-role.enum";
+import { UserRole } from "@modules/identity/user/enums/user-role.enum";
+import { AssignTeamDto, UpdateProjectDto } from "@modules/project/project-core/dto/project.dto";
 
 type ActorInfo = { id: string; userId?: string; role: string };
 

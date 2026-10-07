@@ -1,11 +1,11 @@
 import { Entity, Column, ManyToOne, ManyToMany, JoinColumn } from "typeorm";
-import { BaseEntity } from "../../../../core/database/base.entity";
-import { Services } from "../../../crm/service/entities/service.entity";
-import { Jobs } from "../../../crm/service/entities/job.entity";
-import { Contract } from "../../../finance/entities/contract.entity";
-import { Tasks } from "../../task/entities/task.entity";
+import { BaseEntity } from "@core/database/base.entity";
+import { Services } from "@modules/crm/service/entities/service.entity";
+import { Jobs } from "@modules/crm/service/entities/job.entity";
+import { Contract } from "@modules/finance/entities/contract.entity";
+import { Tasks } from "@modules/project/task/entities/task.entity";
 import { AcceptanceRequests } from "./acceptance-request.entity";
-import { ContractServiceStatus } from "../enums/acceptance.enum";
+import { ContractServiceStatus } from "@modules/project/acceptance/enums/acceptance.enum";
 
 export type ServiceResult = {
   taskId: string;

@@ -1,8 +1,8 @@
 import { Entity, Column, ManyToOne, JoinColumn } from "typeorm";
-import { BaseEntity } from "../../../../core/database/base.entity";
+import { BaseEntity } from "@core/database/base.entity";
 import { Quotations } from "./quotation.entity";
-import { Services } from "../../service/entities/service.entity";
-import { Jobs } from "../../service/entities/job.entity";
+import { Services } from "@modules/crm/service/entities/service.entity";
+import { Jobs } from "@modules/crm/service/entities/job.entity";
 
 @Entity("quotation_details")
 export class QuotationDetails extends BaseEntity {

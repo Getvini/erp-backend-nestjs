@@ -5,14 +5,14 @@ import {
 } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-import { Tasks } from "../entities/task.entity";
-import { Users } from "../../../identity/user/entities/user.entity";
-import { TaskStatus, SubtaskPlanStatus } from "../enums/task-status.enum";
+import { Tasks } from "@modules/project/task/entities/task.entity";
+import { Users } from "@modules/identity/user/entities/user.entity";
+import { TaskStatus, SubtaskPlanStatus } from "@modules/project/task/enums/task-status.enum";
 import {
   assertTaskProjectNotOnHold,
   TaskActor,
-} from "../helpers/task-security.helper";
-import { CreateSubtaskDto } from "../dto/task.dto";
+} from "@modules/project/task/helpers/task-security.helper";
+import { CreateSubtaskDto } from "@modules/project/task/dto/task.dto";
 
 @Injectable()
 export class TaskDelegationService {

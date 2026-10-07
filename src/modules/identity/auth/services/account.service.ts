@@ -2,8 +2,8 @@ import { Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 import * as bcrypt from "bcrypt";
-import { Accounts } from "../entities/account.entity";
-import { Users } from "../../user/entities/user.entity";
+import { Accounts } from "@modules/identity/auth/entities/account.entity";
+import { Users } from "@modules/identity/user/entities/user.entity";
 
 @Injectable()
 export class AccountService {

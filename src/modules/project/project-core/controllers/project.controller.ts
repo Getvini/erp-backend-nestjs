@@ -9,10 +9,10 @@ import {
   Query,
 } from "@nestjs/common";
 import { ApiTags, ApiBearerAuth, ApiOperation } from "@nestjs/swagger";
-import { ProjectQueryService } from "../services/project-query.service";
-import { ProjectLifecycleService } from "../services/project-lifecycle.service";
-import { ProjectPauseService } from "../services/project-pause.service";
-import { ProjectCloseService } from "../services/project-close.service";
+import { ProjectQueryService } from "@modules/project/project-core/services/project-query.service";
+import { ProjectLifecycleService } from "@modules/project/project-core/services/project-lifecycle.service";
+import { ProjectPauseService } from "@modules/project/project-core/services/project-pause.service";
+import { ProjectCloseService } from "@modules/project/project-core/services/project-close.service";
 import {
   QueryProjectDto,
   UpdateProjectDto,
@@ -25,8 +25,8 @@ import {
   RejectCloseDto,
   UpdateProjectStatusDto,
   UpdateWorkingFilesDto,
-} from "../dto/project.dto";
-import { CurrentUser } from "../../../../core/decorators/current-user.decorator";
+} from "@modules/project/project-core/dto/project.dto";
+import { CurrentUser } from "@core/decorators/current-user.decorator";
 
 @ApiTags("Project - Core")
 @ApiBearerAuth()

@@ -1,12 +1,12 @@
 import { Injectable } from "@nestjs/common";
 import { Between, FindOperator } from "typeorm";
-import { TaskStatus } from "../../task/enums/task-status.enum";
-import { UserRole } from "../../../identity/user/enums/user-role.enum";
-import { WorkloadSummaryService } from "../../task/services/workload-summary.service";
+import { TaskStatus } from "@modules/project/task/enums/task-status.enum";
+import { UserRole } from "@modules/identity/user/enums/user-role.enum";
+import { WorkloadSummaryService } from "@modules/project/task/services/workload-summary.service";
 import {
   DashboardActor,
   DashboardScopeType,
-} from "../types/dashboard-scope.types";
+} from "@modules/project/dashboard/types/dashboard-scope.types";
 import { DashboardScopeService } from "./dashboard-scope.service";
 import { DashboardAdminService } from "./dashboard-admin.service";
 import { DashboardSaleService } from "./dashboard-sale.service";

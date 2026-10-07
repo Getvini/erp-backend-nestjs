@@ -7,12 +7,12 @@ import {
   Body,
   Param,
 } from "@nestjs/common";
-import { ServicePackageService } from "../services/service-package.service";
+import { ServicePackageService } from "@modules/crm/service/services/service-package.service";
 import { ApiTags, ApiBearerAuth } from "@nestjs/swagger";
 import {
   CreateServicePackageDto,
   UpdateServicePackageDto,
-} from "../dto/service-package.dto";
+} from "@modules/crm/service/dto/service-package.dto";
 
 @ApiTags("CRM - Service Package")
 @ApiBearerAuth()

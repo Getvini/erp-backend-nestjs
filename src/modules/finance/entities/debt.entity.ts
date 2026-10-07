@@ -6,9 +6,9 @@ import {
   Index,
   JoinColumn,
 } from "typeorm";
-import { BaseEntity } from "../../../core/database/base.entity";
+import { BaseEntity } from "@core/database/base.entity";
 import { Contract } from "./contract.entity";
-import { Users } from "../../identity/user/entities/user.entity";
+import { Users } from "@modules/identity/user/entities/user.entity";
 import { DebtPayments } from "./debt-payment.entity";
 
 export enum DebtStatus {

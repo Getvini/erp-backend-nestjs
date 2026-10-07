@@ -1,16 +1,16 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository, In } from "typeorm";
-import { Project } from "../../project-core/entities/project.entity";
-import { Tasks } from "../../task/entities/task.entity";
-import { Users } from "../../../identity/user/entities/user.entity";
-import { ProjectStatus } from "../../project-core/enums/project-status.enum";
-import { MemberRole } from "../../project-core/enums/member-role.enum";
+import { Project } from "@modules/project/project-core/entities/project.entity";
+import { Tasks } from "@modules/project/task/entities/task.entity";
+import { Users } from "@modules/identity/user/entities/user.entity";
+import { ProjectStatus } from "@modules/project/project-core/enums/project-status.enum";
+import { MemberRole } from "@modules/project/project-core/enums/member-role.enum";
 import {
   memberHasRole,
   getMemberRoles,
-} from "../../project-core/entities/team-member.entity";
-import { UserRole } from "../../../identity/user/enums/user-role.enum";
+} from "@modules/project/project-core/entities/team-member.entity";
+import { UserRole } from "@modules/identity/user/enums/user-role.enum";
 import {
   DashboardActor,
   DashboardMemberOption,
@@ -18,7 +18,7 @@ import {
   DashboardScopeContext,
   DashboardScopeError,
   resolveDashboardScope,
-} from "../types/dashboard-scope.types";
+} from "@modules/project/dashboard/types/dashboard-scope.types";
 
 const ACTIVE_PROJECT_STATUSES = [
   ProjectStatus.PENDING_CONFIRMATION,

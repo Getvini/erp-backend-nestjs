@@ -6,21 +6,21 @@ import {
   OneToMany,
   Index,
 } from "typeorm";
-import { BaseEntity } from "../../../../core/database/base.entity";
-import { Project } from "../../project-core/entities/project.entity";
-import { Jobs } from "../../../crm/service/entities/job.entity";
-import { Users } from "../../../identity/user/entities/user.entity";
-import { Vendors } from "../../../crm/vendor/entities/vendor.entity";
-import { Opportunities } from "../../../crm/opportunity/entities/opportunity.entity";
-import { OpportunityServiceJobs } from "../../../crm/opportunity/entities/opportunity-service-job.entity";
-import { Services } from "../../../crm/service/entities/service.entity";
-import { Quotations } from "../../../crm/quotation/entities/quotation.entity";
+import { BaseEntity } from "@core/database/base.entity";
+import { Project } from "@modules/project/project-core/entities/project.entity";
+import { Jobs } from "@modules/crm/service/entities/job.entity";
+import { Users } from "@modules/identity/user/entities/user.entity";
+import { Vendors } from "@modules/crm/vendor/entities/vendor.entity";
+import { Opportunities } from "@modules/crm/opportunity/entities/opportunity.entity";
+import { OpportunityServiceJobs } from "@modules/crm/opportunity/entities/opportunity-service-job.entity";
+import { Services } from "@modules/crm/service/entities/service.entity";
+import { Quotations } from "@modules/crm/quotation/entities/quotation.entity";
 import {
   TaskStatus,
   PerformerType,
   PricingStatus,
   SubtaskPlanStatus,
-} from "../enums/task-status.enum";
+} from "@modules/project/task/enums/task-status.enum";
 import { TaskIterations } from "./task-iteration.entity";
 import { Violations } from "./violation.entity";
 

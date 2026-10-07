@@ -1,9 +1,9 @@
 import { Entity, Column, OneToMany } from "typeorm";
-import { BaseEntity } from "../../../../core/database/base.entity";
-import { PartnerType } from "../enums/partner-type.enum";
-import { Customers } from "../../customer/entities/customer.entity";
+import { BaseEntity } from "@core/database/base.entity";
+import { PartnerType } from "@modules/crm/service/enums/partner-type.enum";
+import { Customers } from "@modules/crm/customer/entities/customer.entity";
 
-import { Opportunities } from "../../opportunity/entities/opportunity.entity";
+import { Opportunities } from "@modules/crm/opportunity/entities/opportunity.entity";
 
 @Entity("referral_partners")
 export class ReferralPartners extends BaseEntity {

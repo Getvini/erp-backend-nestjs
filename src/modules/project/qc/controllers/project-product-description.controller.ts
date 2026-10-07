@@ -9,8 +9,8 @@ import {
   Request,
 } from "@nestjs/common";
 import { ApiTags, ApiBearerAuth, ApiOperation } from "@nestjs/swagger";
-import { JwtAuthGuard } from "../../../../core/guards/jwt-auth.guard";
-import { ProjectProductDescriptionService } from "../services/project-product-description.service";
+import { JwtAuthGuard } from "@core/guards/jwt-auth.guard";
+import { ProjectProductDescriptionService } from "@modules/project/qc/services/project-product-description.service";
 
 @ApiTags("Project - Product Description")
 @ApiBearerAuth()

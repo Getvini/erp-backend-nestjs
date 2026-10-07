@@ -5,11 +5,11 @@ import { TaskResultChecks } from "./entities/task-result-check.entity";
 import { ProjectSpellCheckWhitelists } from "./entities/project-spell-check-whitelist.entity";
 import { ProjectProductDescriptionSubmissions } from "./entities/project-product-description.entity";
 import { ProjectProductDescriptionItems } from "./entities/project-product-description-item.entity";
-import { Tasks } from "../task/entities/task.entity";
-import { JobCriterias } from "../task/entities/job-criteria.entity";
-import { Project } from "../project-core/entities/project.entity";
-import { Users } from "../../identity/user/entities/user.entity";
-import { CommunicationModule } from "../../communication/communication.module";
+import { Tasks } from "@modules/project/task/entities/task.entity";
+import { JobCriterias } from "@modules/project/task/entities/job-criteria.entity";
+import { Project } from "@modules/project/project-core/entities/project.entity";
+import { Users } from "@modules/identity/user/entities/user.entity";
+import { CommunicationModule } from "@modules/communication/communication.module";
 
 import { TaskReviewService } from "./services/task-review.service";
 import { TaskReviewFinalizeService } from "./services/task-review-finalize.service";

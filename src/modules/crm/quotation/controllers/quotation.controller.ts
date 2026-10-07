@@ -8,16 +8,16 @@ import {
   Param,
   Req,
 } from "@nestjs/common";
-import { QuotationQueryService } from "../services/quotation-query.service";
-import { QuotationActionService } from "../services/quotation-action.service";
+import { QuotationQueryService } from "@modules/crm/quotation/services/quotation-query.service";
+import { QuotationActionService } from "@modules/crm/quotation/services/quotation-action.service";
 import {
   CreateQuotationDto,
   UpdateQuotationDto,
   RejectQuotationDto,
-} from "../dto/quotation.dto";
+} from "@modules/crm/quotation/dto/quotation.dto";
 import { ApiTags, ApiBearerAuth } from "@nestjs/swagger";
-import { Roles } from "../../../../core/decorators/roles.decorator";
-import { UserRole } from "../../../identity/user/enums/user-role.enum";
+import { Roles } from "@core/decorators/roles.decorator";
+import { UserRole } from "@modules/identity/user/enums/user-role.enum";
 
 @ApiTags("CRM - Quotation")
 @ApiBearerAuth()

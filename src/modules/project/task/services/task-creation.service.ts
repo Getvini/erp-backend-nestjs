@@ -6,26 +6,26 @@ import {
 } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-import { Tasks } from "../entities/task.entity";
-import { Project } from "../../project-core/entities/project.entity";
-import { Jobs } from "../../../crm/service/entities/job.entity";
-import { Users } from "../../../identity/user/entities/user.entity";
-import { Opportunities } from "../../../crm/opportunity/entities/opportunity.entity";
-import { OpportunityServiceJobs } from "../../../crm/opportunity/entities/opportunity-service-job.entity";
+import { Tasks } from "@modules/project/task/entities/task.entity";
+import { Project } from "@modules/project/project-core/entities/project.entity";
+import { Jobs } from "@modules/crm/service/entities/job.entity";
+import { Users } from "@modules/identity/user/entities/user.entity";
+import { Opportunities } from "@modules/crm/opportunity/entities/opportunity.entity";
+import { OpportunityServiceJobs } from "@modules/crm/opportunity/entities/opportunity-service-job.entity";
 import {
   TaskStatus,
   PerformerType,
   PricingStatus,
-} from "../enums/task-status.enum";
-import { buildDefaultTaskNickname } from "../helpers/task-nickname.helper";
+} from "@modules/project/task/enums/task-status.enum";
+import { buildDefaultTaskNickname } from "@modules/project/task/helpers/task-nickname.helper";
 import {
   isProjectOperatorFromTeam,
   assertTaskProjectNotOnHold,
   isManagementRole,
   TaskActor,
-} from "../helpers/task-security.helper";
-import { NotificationService } from "../../../communication/services/notification.service";
-import { CreateTaskDto, CreateInternalTaskDto } from "../dto/task.dto";
+} from "@modules/project/task/helpers/task-security.helper";
+import { NotificationService } from "@modules/communication/services/notification.service";
+import { CreateTaskDto, CreateInternalTaskDto } from "@modules/project/task/dto/task.dto";
 import { TaskInternalCreationService } from "./task-internal-creation.service";
 
 @Injectable()

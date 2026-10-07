@@ -7,9 +7,9 @@ import {
   Request,
 } from "@nestjs/common";
 import { ApiTags, ApiBearerAuth, ApiOperation } from "@nestjs/swagger";
-import { JwtAuthGuard } from "../../../../core/guards/jwt-auth.guard";
-import { TaskQueryService } from "../services/task-query.service";
-import { TaskWorkloadService } from "../services/task-workload.service";
+import { JwtAuthGuard } from "@core/guards/jwt-auth.guard";
+import { TaskQueryService } from "@modules/project/task/services/task-query.service";
+import { TaskWorkloadService } from "@modules/project/task/services/task-workload.service";
 
 @ApiTags("Project - Task")
 @ApiBearerAuth()

@@ -1,7 +1,7 @@
 import { Entity, Column, ManyToOne, JoinColumn } from "typeorm";
-import { BaseEntity } from "../../../../core/database/base.entity";
+import { BaseEntity } from "@core/database/base.entity";
 import { Vendors } from "./vendor.entity";
-import { Jobs } from "../../service/entities/job.entity";
+import { Jobs } from "@modules/crm/service/entities/job.entity";
 
 @Entity("vendor_jobs")
 export class VendorJobs extends BaseEntity {

@@ -1,9 +1,9 @@
 import { Entity, Column, ManyToOne, JoinColumn } from "typeorm";
-import { BaseEntity } from "../../../../core/database/base.entity";
-import { Tasks } from "../../task/entities/task.entity";
-import { JobCriterias } from "../../task/entities/job-criteria.entity";
-import { Users } from "../../../identity/user/entities/user.entity";
-import { ReviewerType } from "../enums/qc.enum";
+import { BaseEntity } from "@core/database/base.entity";
+import { Tasks } from "@modules/project/task/entities/task.entity";
+import { JobCriterias } from "@modules/project/task/entities/job-criteria.entity";
+import { Users } from "@modules/identity/user/entities/user.entity";
+import { ReviewerType } from "@modules/project/qc/enums/qc.enum";
 
 @Entity("task_reviews")
 export class TaskReviews extends BaseEntity {

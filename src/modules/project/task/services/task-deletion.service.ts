@@ -5,10 +5,10 @@ import {
 } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository, DataSource } from "typeorm";
-import { Tasks } from "../entities/task.entity";
-import { Services } from "../../../crm/service/entities/service.entity";
-import { TaskStatus, PricingStatus } from "../enums/task-status.enum";
-import { assertTaskProjectNotOnHold } from "../helpers/task-security.helper";
+import { Tasks } from "@modules/project/task/entities/task.entity";
+import { Services } from "@modules/crm/service/entities/service.entity";
+import { TaskStatus, PricingStatus } from "@modules/project/task/enums/task-status.enum";
+import { assertTaskProjectNotOnHold } from "@modules/project/task/helpers/task-security.helper";
 
 @Injectable()
 export class TaskDeletionService {

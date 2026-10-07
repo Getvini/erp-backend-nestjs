@@ -5,8 +5,8 @@ import {
   DeleteDateColumn,
   JoinColumn,
 } from "typeorm";
-import { BaseEntity } from "../../../../core/database/base.entity";
-import { Jobs } from "../../../crm/service/entities/job.entity";
+import { BaseEntity } from "@core/database/base.entity";
+import { Jobs } from "@modules/crm/service/entities/job.entity";
 
 @Entity("job_criterias")
 export class JobCriterias extends BaseEntity {

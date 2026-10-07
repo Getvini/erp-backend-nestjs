@@ -5,12 +5,12 @@ import {
 } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-import { OpportunityServices } from "../entities/opportunity-service.entity";
-import { OpportunityServiceJobs } from "../entities/opportunity-service-job.entity";
+import { OpportunityServices } from "@modules/crm/opportunity/entities/opportunity-service.entity";
+import { OpportunityServiceJobs } from "@modules/crm/opportunity/entities/opportunity-service-job.entity";
 import {
   CreateOppServiceDto,
   UpdateOppServiceDto,
-} from "../dto/opportunity-service.dto";
+} from "@modules/crm/opportunity/dto/opportunity-service.dto";
 
 function calculateRecommendedSellingPrice(costAtSale: number): number {
   const cost = Number(costAtSale || 0);

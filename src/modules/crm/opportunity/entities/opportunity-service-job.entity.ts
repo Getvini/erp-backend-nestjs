@@ -1,6 +1,6 @@
 import { Entity, Column, ManyToOne, JoinColumn } from "typeorm";
-import { BaseEntity } from "../../../../core/database/base.entity";
-import { Jobs } from "../../service/entities/job.entity";
+import { BaseEntity } from "@core/database/base.entity";
+import { Jobs } from "@modules/crm/service/entities/job.entity";
 import { OpportunityServices } from "./opportunity-service.entity";
 
 @Entity("opportunity_service_jobs")

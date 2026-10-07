@@ -1,19 +1,19 @@
 import { Injectable, BadRequestException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-import { Opportunities } from "../entities/opportunity.entity";
-import { OpportunityPackages } from "../entities/opportunity-package.entity";
-import { OpportunityServices } from "../entities/opportunity-service.entity";
-import { OpportunityServiceJobs } from "../entities/opportunity-service-job.entity";
-import { OpportunityRejections } from "../entities/opportunity-rejection.entity";
+import { Opportunities } from "@modules/crm/opportunity/entities/opportunity.entity";
+import { OpportunityPackages } from "@modules/crm/opportunity/entities/opportunity-package.entity";
+import { OpportunityServices } from "@modules/crm/opportunity/entities/opportunity-service.entity";
+import { OpportunityServiceJobs } from "@modules/crm/opportunity/entities/opportunity-service-job.entity";
+import { OpportunityRejections } from "@modules/crm/opportunity/entities/opportunity-rejection.entity";
 import {
   CreateOpportunityDto,
   UpdateOpportunityDto,
-} from "../dto/opportunity.dto";
-import { OpportunityStatus } from "../enums/opportunity-status.enum";
-import { TaxVerificationService } from "../../customer/services/tax-verification.service";
+} from "@modules/crm/opportunity/dto/opportunity.dto";
+import { OpportunityStatus } from "@modules/crm/opportunity/enums/opportunity-status.enum";
+import { TaxVerificationService } from "@modules/crm/customer/services/tax-verification.service";
 import { OpportunityQueryService } from "./opportunity-query.service";
-import { OpportunitySyncHelper } from "../helpers/opportunity-sync.helper";
+import { OpportunitySyncHelper } from "@modules/crm/opportunity/helpers/opportunity-sync.helper";
 
 @Injectable()
 export class OpportunityLifecycleService {

@@ -8,9 +8,9 @@ import {
   UseGuards,
 } from "@nestjs/common";
 import { ApiTags, ApiBearerAuth, ApiOperation } from "@nestjs/swagger";
-import { JwtAuthGuard } from "../../../../core/guards/jwt-auth.guard";
-import { SpellingCheckService } from "../services/spelling-check.service";
-import { SpellingCheckFromUrlDto } from "../dto/spelling-check.dto";
+import { JwtAuthGuard } from "@core/guards/jwt-auth.guard";
+import { SpellingCheckService } from "@modules/project/qc/services/spelling-check.service";
+import { SpellingCheckFromUrlDto } from "@modules/project/qc/dto/spelling-check.dto";
 
 @ApiTags("Project - Spelling Check")
 @ApiBearerAuth()

@@ -6,19 +6,19 @@ import {
 } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository, In, DataSource } from "typeorm";
-import { Tasks } from "../entities/task.entity";
-import { Users } from "../../../identity/user/entities/user.entity";
-import { TaskStatus, PerformerType } from "../enums/task-status.enum";
-import { NotificationService } from "../../../communication/services/notification.service";
+import { Tasks } from "@modules/project/task/entities/task.entity";
+import { Users } from "@modules/identity/user/entities/user.entity";
+import { TaskStatus, PerformerType } from "@modules/project/task/enums/task-status.enum";
+import { NotificationService } from "@modules/communication/services/notification.service";
 import {
   assertTaskProjectNotOnHold,
   assertTaskNotLocked,
   isManagementRole,
   isProjectLeadFromTeam,
   TaskActor,
-} from "../helpers/task-security.helper";
-import { assertParentDeadlineNotBeforeSubtasks } from "../helpers/subtask-deadline.helper";
-import { TaskAssignmentDto } from "../dto/task.dto";
+} from "@modules/project/task/helpers/task-security.helper";
+import { assertParentDeadlineNotBeforeSubtasks } from "@modules/project/task/helpers/subtask-deadline.helper";
+import { TaskAssignmentDto } from "@modules/project/task/dto/task.dto";
 
 @Injectable()
 export class TaskAssignmentService {

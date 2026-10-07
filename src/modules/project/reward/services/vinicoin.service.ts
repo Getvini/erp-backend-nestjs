@@ -6,15 +6,15 @@ import {
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository, EntityManager } from "typeorm";
 import { ulid } from "ulid";
-import { Accounts } from "../../../identity/auth/entities/account.entity";
+import { Accounts } from "@modules/identity/auth/entities/account.entity";
 import {
   VinicoinTransactions,
   VinicoinTransactionType,
-} from "../entities/vinicoin-transaction.entity";
+} from "@modules/project/reward/entities/vinicoin-transaction.entity";
 import {
   VinicoinQueryDto,
   ManualVinicoinAdjustmentDto,
-} from "../dto/vinicoin.dto";
+} from "@modules/project/reward/dto/vinicoin.dto";
 
 @Injectable()
 export class VinicoinService {

@@ -1,6 +1,6 @@
 import { IsOptional, IsString, IsNumber, IsEnum } from "class-validator";
 import { ApiPropertyOptional, ApiProperty } from "@nestjs/swagger";
-import { VinicoinTransactionType } from "../entities/vinicoin-transaction.entity";
+import { VinicoinTransactionType } from "@modules/project/reward/entities/vinicoin-transaction.entity";
 
 export class VinicoinQueryDto {
   @ApiPropertyOptional({ description: "Trang" })

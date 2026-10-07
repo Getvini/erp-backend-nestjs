@@ -1,7 +1,7 @@
 import { Entity, Column, ManyToOne, OneToMany, JoinColumn } from "typeorm";
-import { BaseEntity } from "../../../../core/database/base.entity";
+import { BaseEntity } from "@core/database/base.entity";
 import { Opportunities } from "./opportunity.entity";
-import { ServicePackages } from "../../service/entities/service-package.entity";
+import { ServicePackages } from "@modules/crm/service/entities/service-package.entity";
 import { OpportunityServices } from "./opportunity-service.entity";
 
 @Entity("opportunity_packages")

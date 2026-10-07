@@ -1,7 +1,7 @@
 import { Controller, Get, Param, UseGuards, Request } from "@nestjs/common";
 import { ApiTags, ApiBearerAuth, ApiOperation } from "@nestjs/swagger";
-import { JwtAuthGuard } from "../../../../core/guards/jwt-auth.guard";
-import { QcScanService } from "../services/qc-scan.service";
+import { JwtAuthGuard } from "@core/guards/jwt-auth.guard";
+import { QcScanService } from "@modules/project/qc/services/qc-scan.service";
 
 @ApiTags("Project - QC Engine")
 @ApiBearerAuth()

@@ -5,17 +5,17 @@ import {
 } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-import { ProjectTeam } from "../entities/project-team.entity";
-import { TeamMember } from "../entities/team-member.entity";
-import { TeamMemberRole } from "../entities/team-member-role.entity";
-import { Users } from "../../../identity/user/entities/user.entity";
-import { MemberRole } from "../enums/member-role.enum";
-import { UserRole } from "../../../identity/user/enums/user-role.enum";
+import { ProjectTeam } from "@modules/project/project-core/entities/project-team.entity";
+import { TeamMember } from "@modules/project/project-core/entities/team-member.entity";
+import { TeamMemberRole } from "@modules/project/project-core/entities/team-member-role.entity";
+import { Users } from "@modules/identity/user/entities/user.entity";
+import { MemberRole } from "@modules/project/project-core/enums/member-role.enum";
+import { UserRole } from "@modules/identity/user/enums/user-role.enum";
 import {
   CreateProjectTeamDto,
   UpdateProjectTeamDto,
   AddTeamMemberDto,
-} from "../dto/project-team.dto";
+} from "@modules/project/project-core/dto/project-team.dto";
 
 type ActorInfo = { id?: string; userId?: string; role?: string };
 

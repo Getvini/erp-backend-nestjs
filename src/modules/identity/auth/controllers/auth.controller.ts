@@ -9,10 +9,10 @@ import {
 } from "@nestjs/common";
 import { ApiTags, ApiOperation, ApiResponse } from "@nestjs/swagger";
 import { Request, Response } from "express";
-import { AuthService } from "../services/auth.service";
-import { LoginDto, RefreshTokenDto } from "../dto/auth.dto";
-import { Public } from "../../../../core/decorators/public.decorator";
-import { CurrentUser } from "../../../../core/decorators/current-user.decorator";
+import { AuthService } from "@modules/identity/auth/services/auth.service";
+import { LoginDto, RefreshTokenDto } from "@modules/identity/auth/dto/auth.dto";
+import { Public } from "@core/decorators/public.decorator";
+import { CurrentUser } from "@core/decorators/current-user.decorator";
 
 @ApiTags("Identity - Auth")
 @Controller("auth")

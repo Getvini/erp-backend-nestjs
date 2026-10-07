@@ -1,12 +1,12 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-import { ServicePackages } from "../entities/service-package.entity";
-import { ServicePackageItems } from "../entities/service-package-item.entity";
+import { ServicePackages } from "@modules/crm/service/entities/service-package.entity";
+import { ServicePackageItems } from "@modules/crm/service/entities/service-package-item.entity";
 import {
   CreateServicePackageDto,
   UpdateServicePackageDto,
-} from "../dto/service-package.dto";
+} from "@modules/crm/service/dto/service-package.dto";
 
 @Injectable()
 export class ServicePackageService {

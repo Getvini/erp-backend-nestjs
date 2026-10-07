@@ -1,10 +1,10 @@
 import { ConflictException } from "@nestjs/common";
 import { Not, IsNull } from "typeorm";
-import { ProjectStatus } from "../../project-core/enums/project-status.enum";
-import { ProjectTeam } from "../../project-core/entities/project-team.entity";
-import { MemberRole } from "../../project-core/enums/member-role.enum";
-import { UserRole } from "../../../identity/user/enums/user-role.enum";
-import { TaskStatus } from "../enums/task-status.enum";
+import { ProjectStatus } from "@modules/project/project-core/enums/project-status.enum";
+import { ProjectTeam } from "@modules/project/project-core/entities/project-team.entity";
+import { MemberRole } from "@modules/project/project-core/enums/member-role.enum";
+import { UserRole } from "@modules/identity/user/enums/user-role.enum";
+import { TaskStatus } from "@modules/project/task/enums/task-status.enum";
 
 export type TaskActor = { id?: string; userId?: string; role?: string };
 

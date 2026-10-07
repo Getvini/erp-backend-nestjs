@@ -5,8 +5,8 @@ import {
   ApiBearerAuth,
   ApiResponse,
 } from "@nestjs/swagger";
-import { NotificationService } from "../services/notification.service";
-import { CurrentUser } from "../../../core/decorators/current-user.decorator";
+import { NotificationService } from "@modules/communication/services/notification.service";
+import { CurrentUser } from "@core/decorators/current-user.decorator";
 
 @ApiTags("Communication (Thông báo & Tin nhắn)")
 @ApiBearerAuth()

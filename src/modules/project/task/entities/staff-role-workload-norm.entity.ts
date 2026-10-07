@@ -5,7 +5,7 @@ import {
   PrimaryColumn,
   UpdateDateColumn,
 } from "typeorm";
-import { UserRole } from "../../../identity/user/enums/user-role.enum";
+import { UserRole } from "@modules/identity/user/enums/user-role.enum";
 
 @Entity("staff_role_workload_norms")
 export class StaffRoleWorkloadNorms {

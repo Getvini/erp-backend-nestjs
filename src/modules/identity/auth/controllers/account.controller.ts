@@ -8,11 +8,11 @@ import {
   UseGuards,
 } from "@nestjs/common";
 import { ApiTags, ApiBearerAuth, ApiOperation } from "@nestjs/swagger";
-import { JwtAuthGuard } from "../../../../core/guards/jwt-auth.guard";
-import { RolesGuard } from "../../../../core/guards/roles.guard";
-import { Roles } from "../../../../core/decorators/roles.decorator";
-import { UserRole } from "../../user/enums/user-role.enum";
-import { AccountService } from "../services/account.service";
+import { JwtAuthGuard } from "@core/guards/jwt-auth.guard";
+import { RolesGuard } from "@core/guards/roles.guard";
+import { Roles } from "@core/decorators/roles.decorator";
+import { UserRole } from "@modules/identity/user/enums/user-role.enum";
+import { AccountService } from "@modules/identity/auth/services/account.service";
 
 @ApiTags("Identity - Account")
 @ApiBearerAuth()

@@ -13,19 +13,19 @@ import {
   MoreThanOrEqual,
   LessThanOrEqual,
 } from "typeorm";
-import { Tasks } from "../entities/task.entity";
-import { Project } from "../../project-core/entities/project.entity";
-import { UserRole } from "../../../identity/user/enums/user-role.enum";
+import { Tasks } from "@modules/project/task/entities/task.entity";
+import { Project } from "@modules/project/project-core/entities/project.entity";
+import { UserRole } from "@modules/identity/user/enums/user-role.enum";
 import {
   isManagementRole,
   isProjectOperatorFromTeam,
   getTaskFilters,
   TaskActor,
-} from "../helpers/task-security.helper";
+} from "@modules/project/task/helpers/task-security.helper";
 import {
   TASK_LIST_RELATIONS,
   TASK_DETAIL_RELATIONS,
-} from "../helpers/task-relations.constant";
+} from "@modules/project/task/helpers/task-relations.constant";
 
 @Injectable()
 export class TaskQueryService {

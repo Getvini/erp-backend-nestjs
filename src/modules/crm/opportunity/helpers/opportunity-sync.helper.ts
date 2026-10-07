@@ -1,11 +1,11 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-import { Opportunities } from "../entities/opportunity.entity";
-import { OpportunityPackages } from "../entities/opportunity-package.entity";
-import { OpportunityServices } from "../entities/opportunity-service.entity";
-import { OpportunityServiceJobs } from "../entities/opportunity-service-job.entity";
-import { Services } from "../../service/entities/service.entity";
+import { Opportunities } from "@modules/crm/opportunity/entities/opportunity.entity";
+import { OpportunityPackages } from "@modules/crm/opportunity/entities/opportunity-package.entity";
+import { OpportunityServices } from "@modules/crm/opportunity/entities/opportunity-service.entity";
+import { OpportunityServiceJobs } from "@modules/crm/opportunity/entities/opportunity-service-job.entity";
+import { Services } from "@modules/crm/service/entities/service.entity";
 import { calculateRecommendedSellingPrice } from "./pricing.helper";
 
 @Injectable()

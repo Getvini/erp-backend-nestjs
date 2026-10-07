@@ -1,12 +1,12 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository, In } from "typeorm";
-import { Project } from "../../project-core/entities/project.entity";
-import { ContractServices } from "../../acceptance/entities/contract-service.entity";
-import { ProjectStatus } from "../../project-core/enums/project-status.enum";
-import { ContractServiceStatus } from "../../acceptance/enums/acceptance.enum";
-import { getMemberRoles } from "../../project-core/entities/team-member.entity";
-import { DashboardScopeType } from "../types/dashboard-scope.types";
+import { Project } from "@modules/project/project-core/entities/project.entity";
+import { ContractServices } from "@modules/project/acceptance/entities/contract-service.entity";
+import { ProjectStatus } from "@modules/project/project-core/enums/project-status.enum";
+import { ContractServiceStatus } from "@modules/project/acceptance/enums/acceptance.enum";
+import { getMemberRoles } from "@modules/project/project-core/entities/team-member.entity";
+import { DashboardScopeType } from "@modules/project/dashboard/types/dashboard-scope.types";
 
 @Injectable()
 export class DashboardProjectService {

@@ -1,13 +1,13 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository, In } from "typeorm";
-import { Tasks } from "../entities/task.entity";
-import { Users } from "../../../identity/user/entities/user.entity";
+import { Tasks } from "@modules/project/task/entities/task.entity";
+import { Users } from "@modules/identity/user/entities/user.entity";
 import {
   UserRole,
   STAFF_ROLES,
-} from "../../../identity/user/enums/user-role.enum";
-import { PerformerType } from "../enums/task-status.enum";
+} from "@modules/identity/user/enums/user-role.enum";
+import { PerformerType } from "@modules/project/task/enums/task-status.enum";
 import { WorkloadNormService } from "./workload-norm.service";
 
 export type WorkloadSummary = {

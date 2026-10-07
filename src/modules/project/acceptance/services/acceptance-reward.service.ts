@@ -1,18 +1,18 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository, EntityManager } from "typeorm";
-import { ContractServices } from "../entities/contract-service.entity";
-import { Tasks } from "../../task/entities/task.entity";
-import { Project } from "../../project-core/entities/project.entity";
-import { ProjectStatus } from "../../project-core/enums/project-status.enum";
+import { ContractServices } from "@modules/project/acceptance/entities/contract-service.entity";
+import { Tasks } from "@modules/project/task/entities/task.entity";
+import { Project } from "@modules/project/project-core/entities/project.entity";
+import { ProjectStatus } from "@modules/project/project-core/enums/project-status.enum";
 import {
   Contract,
   ContractStatus,
-} from "../../../finance/entities/contract.entity";
-import { VinicoinService } from "../../reward/services/vinicoin.service";
-import { calculatePercentageRewardPlan } from "../helpers/task-reward.helper";
-import { PerformerType } from "../../../crm/service/enums/job-category.enum";
-import { ContractServiceStatus } from "../enums/acceptance.enum";
+} from "@modules/finance/entities/contract.entity";
+import { VinicoinService } from "@modules/project/reward/services/vinicoin.service";
+import { calculatePercentageRewardPlan } from "@modules/project/acceptance/helpers/task-reward.helper";
+import { PerformerType } from "@modules/crm/service/enums/job-category.enum";
+import { ContractServiceStatus } from "@modules/project/acceptance/enums/acceptance.enum";
 
 @Injectable()
 export class AcceptanceRewardService {

@@ -1,9 +1,9 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository, ILike } from "typeorm";
-import { AcceptanceRequests } from "../entities/acceptance-request.entity";
-import { AcceptanceStatus } from "../enums/acceptance.enum";
-import { AcceptanceQueryDto } from "../dto/acceptance.dto";
+import { AcceptanceRequests } from "@modules/project/acceptance/entities/acceptance-request.entity";
+import { AcceptanceStatus } from "@modules/project/acceptance/enums/acceptance.enum";
+import { AcceptanceQueryDto } from "@modules/project/acceptance/dto/acceptance.dto";
 
 @Injectable()
 export class AcceptanceQueryService {

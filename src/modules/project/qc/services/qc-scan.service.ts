@@ -1,6 +1,6 @@
 import { Injectable, BadRequestException } from "@nestjs/common";
 import { ProjectProductDescriptionService } from "./project-product-description.service";
-import { ProjectProductDescriptionStatus } from "../enums/qc.enum";
+import { ProjectProductDescriptionStatus } from "@modules/project/qc/enums/qc.enum";
 
 const AI_SERVICE_URL = process.env.AI_SERVICE_URL || "http://localhost:8000";
 const REQUEST_TIMEOUT_MS = 5 * 60 * 1000;

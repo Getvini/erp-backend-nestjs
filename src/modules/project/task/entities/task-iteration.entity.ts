@@ -1,6 +1,6 @@
 import { Entity, Column, ManyToOne, JoinColumn } from "typeorm";
-import { BaseEntity } from "../../../../core/database/base.entity";
-import { Users } from "../../../identity/user/entities/user.entity";
+import { BaseEntity } from "@core/database/base.entity";
+import { Users } from "@modules/identity/user/entities/user.entity";
 import { Tasks } from "./task.entity";
 
 @Entity("task_iterations")

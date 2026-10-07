@@ -9,14 +9,14 @@ import {
   Request,
 } from "@nestjs/common";
 import { ApiTags, ApiBearerAuth, ApiOperation } from "@nestjs/swagger";
-import { JwtAuthGuard } from "../../../../core/guards/jwt-auth.guard";
-import { TaskReviewService } from "../services/task-review.service";
-import { TaskReviewFinalizeService } from "../services/task-review-finalize.service";
+import { JwtAuthGuard } from "@core/guards/jwt-auth.guard";
+import { TaskReviewService } from "@modules/project/qc/services/task-review.service";
+import { TaskReviewFinalizeService } from "@modules/project/qc/services/task-review-finalize.service";
 import {
   ToggleCriteriaDto,
   FinalizeReviewDto,
   RejectReviewDto,
-} from "../dto/task-review.dto";
+} from "@modules/project/qc/dto/task-review.dto";
 
 @ApiTags("Project - QC Task Review")
 @ApiBearerAuth()

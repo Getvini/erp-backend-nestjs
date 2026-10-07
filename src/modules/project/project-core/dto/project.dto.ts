@@ -7,7 +7,7 @@ import {
   IsArray,
 } from "class-validator";
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
-import { ProjectStatus } from "../enums/project-status.enum";
+import { ProjectStatus } from "@modules/project/project-core/enums/project-status.enum";
 
 export class QueryProjectDto {
   @ApiPropertyOptional({ description: "Số trang" })

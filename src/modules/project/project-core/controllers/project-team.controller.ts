@@ -10,15 +10,15 @@ import {
   Query,
 } from "@nestjs/common";
 import { ApiTags, ApiBearerAuth, ApiOperation } from "@nestjs/swagger";
-import { ProjectTeamService } from "../services/project-team.service";
+import { ProjectTeamService } from "@modules/project/project-core/services/project-team.service";
 import {
   CreateProjectTeamDto,
   UpdateProjectTeamDto,
   ChangeLeadDto,
   AddTeamMemberDto,
   UpdateMemberRolesDto,
-} from "../dto/project-team.dto";
-import { CurrentUser } from "../../../../core/decorators/current-user.decorator";
+} from "@modules/project/project-core/dto/project-team.dto";
+import { CurrentUser } from "@core/decorators/current-user.decorator";
 
 @ApiTags("Project - Team")
 @ApiBearerAuth()

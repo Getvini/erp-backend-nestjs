@@ -5,9 +5,9 @@ import {
 } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-import { ProjectProductDescriptionSubmissions } from "../entities/project-product-description.entity";
-import { ProjectProductDescriptionItems } from "../entities/project-product-description-item.entity";
-import { ProjectProductDescriptionStatus } from "../enums/qc.enum";
+import { ProjectProductDescriptionSubmissions } from "@modules/project/qc/entities/project-product-description.entity";
+import { ProjectProductDescriptionItems } from "@modules/project/qc/entities/project-product-description-item.entity";
+import { ProjectProductDescriptionStatus } from "@modules/project/qc/enums/qc.enum";
 
 type Actor = { id?: string; userId?: string; role?: string };
 

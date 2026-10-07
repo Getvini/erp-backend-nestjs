@@ -6,10 +6,10 @@ import {
   Index,
   JoinColumn,
 } from "typeorm";
-import { BaseEntity } from "../../../../core/database/base.entity";
-import { Opportunities } from "../../opportunity/entities/opportunity.entity";
-import { Users } from "../../../identity/user/entities/user.entity";
-import { QuotationStatus, QuotationType } from "../enums/quotation-status.enum";
+import { BaseEntity } from "@core/database/base.entity";
+import { Opportunities } from "@modules/crm/opportunity/entities/opportunity.entity";
+import { Users } from "@modules/identity/user/entities/user.entity";
+import { QuotationStatus, QuotationType } from "@modules/crm/quotation/enums/quotation-status.enum";
 import { QuotationDetails } from "./quotation-detail.entity";
 
 @Entity("quotations")

@@ -4,11 +4,11 @@ import { Repository } from "typeorm";
 import {
   Contract,
   ContractStatus,
-} from "../../../finance/entities/contract.entity";
-import { Quotations } from "../../../crm/quotation/entities/quotation.entity";
-import { QuotationStatus } from "../../../crm/quotation/enums/quotation-status.enum";
-import { OpportunityStatus } from "../../../crm/opportunity/enums/opportunity-status.enum";
-import { Debts } from "../../../finance/entities/debt.entity";
+} from "@modules/finance/entities/contract.entity";
+import { Quotations } from "@modules/crm/quotation/entities/quotation.entity";
+import { QuotationStatus } from "@modules/crm/quotation/enums/quotation-status.enum";
+import { OpportunityStatus } from "@modules/crm/opportunity/enums/opportunity-status.enum";
+import { Debts } from "@modules/finance/entities/debt.entity";
 
 @Injectable()
 export class DashboardAdminService {

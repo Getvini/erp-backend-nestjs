@@ -1,7 +1,7 @@
 import { Entity, Column, ManyToOne, JoinColumn } from "typeorm";
-import { BaseEntity } from "../../../../core/database/base.entity";
+import { BaseEntity } from "@core/database/base.entity";
 import { Opportunities } from "./opportunity.entity";
-import { Users } from "../../../identity/user/entities/user.entity";
+import { Users } from "@modules/identity/user/entities/user.entity";
 
 @Entity("opportunity_rejections")
 export class OpportunityRejections extends BaseEntity {

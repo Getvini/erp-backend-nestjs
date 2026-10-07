@@ -5,22 +5,22 @@ import {
   ConflictException,
 } from "@nestjs/common";
 import { DataSource } from "typeorm";
-import { Users } from "../../../identity/user/entities/user.entity";
-import { ProjectStatus } from "../../project-core/enums/project-status.enum";
-import { Tasks } from "../../task/entities/task.entity";
-import { TaskStatus } from "../../task/enums/task-status.enum";
+import { Users } from "@modules/identity/user/entities/user.entity";
+import { ProjectStatus } from "@modules/project/project-core/enums/project-status.enum";
+import { Tasks } from "@modules/project/task/entities/task.entity";
+import { TaskStatus } from "@modules/project/task/enums/task-status.enum";
 import {
   AcceptanceStatus,
   ContractServiceStatus,
-} from "../enums/acceptance.enum";
-import { NotificationService } from "../../../communication/services/notification.service";
+} from "@modules/project/acceptance/enums/acceptance.enum";
+import { NotificationService } from "@modules/communication/services/notification.service";
 import { AcceptanceRewardService } from "./acceptance-reward.service";
 import {
   AcceptanceActor,
   assertAcceptanceActor,
   assertSubtaskPlansApproved,
   getLockedRequest,
-} from "../helpers/acceptance-validation.helper";
+} from "@modules/project/acceptance/helpers/acceptance-validation.helper";
 
 @Injectable()
 export class AcceptanceDecisionService {

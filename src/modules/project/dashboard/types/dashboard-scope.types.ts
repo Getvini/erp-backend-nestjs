@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus } from "@nestjs/common";
-import { UserRole } from "../../../identity/user/enums/user-role.enum";
-import { ProjectStatus } from "../../project-core/enums/project-status.enum";
+import { UserRole } from "@modules/identity/user/enums/user-role.enum";
+import { ProjectStatus } from "@modules/project/project-core/enums/project-status.enum";
 
 export enum DashboardScopeType {
   PERSONAL = "PERSONAL",

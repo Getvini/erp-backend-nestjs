@@ -1,5 +1,5 @@
 import { IsString, IsOptional, IsEnum, Matches } from "class-validator";
-import { VendorType } from "../enums/vendor-type.enum";
+import { VendorType } from "@modules/crm/vendor/enums/vendor-type.enum";
 
 export class CreateVendorDto {
   @IsString({ message: "Tên nhà cung cấp không được để trống" })

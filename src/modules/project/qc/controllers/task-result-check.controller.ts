@@ -9,12 +9,12 @@ import {
   Request,
 } from "@nestjs/common";
 import { ApiTags, ApiBearerAuth, ApiOperation } from "@nestjs/swagger";
-import { JwtAuthGuard } from "../../../../core/guards/jwt-auth.guard";
-import { TaskResultCheckService } from "../services/task-result-check.service";
+import { JwtAuthGuard } from "@core/guards/jwt-auth.guard";
+import { TaskResultCheckService } from "@modules/project/qc/services/task-result-check.service";
 import {
   ToggleCheckItemDto,
   ToggleBulkCheckDto,
-} from "../dto/task-result-check.dto";
+} from "@modules/project/qc/dto/task-result-check.dto";
 
 @ApiTags("Project - QC Task Result Check")
 @ApiBearerAuth()

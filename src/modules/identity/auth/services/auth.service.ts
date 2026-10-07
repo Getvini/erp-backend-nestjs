@@ -6,9 +6,9 @@ import * as bcrypt from "bcrypt";
 import * as crypto from "crypto";
 import * as jwt from "jsonwebtoken";
 import { ulid } from "ulid";
-import { Accounts } from "../entities/account.entity";
-import { RefreshSessions } from "../entities/refresh-session.entity";
-import { LoginDto } from "../dto/auth.dto";
+import { Accounts } from "@modules/identity/auth/entities/account.entity";
+import { RefreshSessions } from "@modules/identity/auth/entities/refresh-session.entity";
+import { LoginDto } from "@modules/identity/auth/dto/auth.dto";
 import { ConfigService } from "@nestjs/config";
 
 @Injectable()

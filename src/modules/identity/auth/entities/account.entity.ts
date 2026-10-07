@@ -6,9 +6,9 @@ import {
   ManyToOne,
   OneToMany,
 } from "typeorm";
-import { BaseEntity } from "../../../../core/database/base.entity";
-import { Users } from "../../user/entities/user.entity";
-import { UserRole } from "../../user/enums/user-role.enum";
+import { BaseEntity } from "@core/database/base.entity";
+import { Users } from "@modules/identity/user/entities/user.entity";
+import { UserRole } from "@modules/identity/user/enums/user-role.enum";
 import { RefreshSessions } from "./refresh-session.entity";
 
 @Entity("accounts")

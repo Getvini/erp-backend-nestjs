@@ -10,13 +10,13 @@ import {
   Request,
 } from "@nestjs/common";
 import { ApiTags, ApiBearerAuth, ApiOperation } from "@nestjs/swagger";
-import { JwtAuthGuard } from "../../../../core/guards/jwt-auth.guard";
-import { TaskCreationService } from "../services/task-creation.service";
-import { TaskStartService } from "../services/task-start.service";
-import { TaskAssignmentService } from "../services/task-assignment.service";
-import { TaskResultService } from "../services/task-result.service";
-import { TaskSupportService } from "../services/task-support.service";
-import { TaskDeletionService } from "../services/task-deletion.service";
+import { JwtAuthGuard } from "@core/guards/jwt-auth.guard";
+import { TaskCreationService } from "@modules/project/task/services/task-creation.service";
+import { TaskStartService } from "@modules/project/task/services/task-start.service";
+import { TaskAssignmentService } from "@modules/project/task/services/task-assignment.service";
+import { TaskResultService } from "@modules/project/task/services/task-result.service";
+import { TaskSupportService } from "@modules/project/task/services/task-support.service";
+import { TaskDeletionService } from "@modules/project/task/services/task-deletion.service";
 import {
   CreateTaskDto,
   CreateInternalTaskDto,
@@ -25,7 +25,7 @@ import {
   BulkStartTasksDto,
   BulkUnassignTasksDto,
   UpdateTaskNicknameDto,
-} from "../dto/task.dto";
+} from "@modules/project/task/dto/task.dto";
 
 @ApiTags("Project - Task")
 @ApiBearerAuth()

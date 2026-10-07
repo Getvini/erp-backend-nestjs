@@ -5,15 +5,15 @@ import {
 } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-import { Project } from "../entities/project.entity";
-import { ProjectPauseRequest } from "../entities/project-pause-request.entity";
-import { ProjectStatus } from "../enums/project-status.enum";
+import { Project } from "@modules/project/project-core/entities/project.entity";
+import { ProjectPauseRequest } from "@modules/project/project-core/entities/project-pause-request.entity";
+import { ProjectStatus } from "@modules/project/project-core/enums/project-status.enum";
 import {
   PauseRequestStatus,
   CloseMode,
   ClosedByType,
-} from "../enums/pause-request.enum";
-import { UserRole } from "../../../identity/user/enums/user-role.enum";
+} from "@modules/project/project-core/enums/pause-request.enum";
+import { UserRole } from "@modules/identity/user/enums/user-role.enum";
 
 type ActorInfo = { id?: string; userId?: string; role?: string };
 

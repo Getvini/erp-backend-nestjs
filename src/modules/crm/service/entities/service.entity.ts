@@ -1,5 +1,5 @@
 import { Entity, Column, OneToMany } from "typeorm";
-import { BaseEntity } from "../../../../core/database/base.entity";
+import { BaseEntity } from "@core/database/base.entity";
 import { ServiceJob } from "./service-job.entity";
 
 @Entity("services")

@@ -5,10 +5,10 @@ import {
   ConflictException,
 } from "@nestjs/common";
 import { EntityManager } from "typeorm";
-import { AcceptanceRequests } from "../entities/acceptance-request.entity";
-import { AcceptanceStatus } from "../enums/acceptance.enum";
-import { Tasks } from "../../task/entities/task.entity";
-import { SubtaskPlanStatus } from "../../task/enums/task-status.enum";
+import { AcceptanceRequests } from "@modules/project/acceptance/entities/acceptance-request.entity";
+import { AcceptanceStatus } from "@modules/project/acceptance/enums/acceptance.enum";
+import { Tasks } from "@modules/project/task/entities/task.entity";
+import { SubtaskPlanStatus } from "@modules/project/task/enums/task-status.enum";
 import { isAcceptanceApprover } from "./acceptance-permission.helper";
 
 export type AcceptanceActor = {

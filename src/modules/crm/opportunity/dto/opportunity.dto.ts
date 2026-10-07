@@ -8,7 +8,7 @@ import {
 import {
   OpportunityStatus,
   CustomerType,
-} from "../enums/opportunity-status.enum";
+} from "@modules/crm/opportunity/enums/opportunity-status.enum";
 
 export class CreateOpportunityDto {
   @IsString({ message: "Tên cơ hội không được để trống" })

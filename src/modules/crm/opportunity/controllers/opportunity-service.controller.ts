@@ -8,11 +8,11 @@ import {
   Param,
 } from "@nestjs/common";
 import { ApiTags, ApiBearerAuth } from "@nestjs/swagger";
-import { OpportunityServiceService } from "../services/opportunity-service.service";
+import { OpportunityServiceService } from "@modules/crm/opportunity/services/opportunity-service.service";
 import {
   CreateOppServiceDto,
   UpdateOppServiceDto,
-} from "../dto/opportunity-service.dto";
+} from "@modules/crm/opportunity/dto/opportunity-service.dto";
 
 @ApiTags("CRM - Opportunity")
 @ApiBearerAuth()

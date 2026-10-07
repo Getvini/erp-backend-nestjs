@@ -6,11 +6,11 @@ import {
   JoinTable,
   JoinColumn,
 } from "typeorm";
-import { BaseEntity } from "../../../../core/database/base.entity";
-import { Users } from "../../../identity/user/entities/user.entity";
-import { Project } from "../../project-core/entities/project.entity";
+import { BaseEntity } from "@core/database/base.entity";
+import { Users } from "@modules/identity/user/entities/user.entity";
+import { Project } from "@modules/project/project-core/entities/project.entity";
 import { ContractServices } from "./contract-service.entity";
-import { AcceptanceStatus } from "../enums/acceptance.enum";
+import { AcceptanceStatus } from "@modules/project/acceptance/enums/acceptance.enum";
 
 @Entity("acceptance_requests")
 export class AcceptanceRequests extends BaseEntity {

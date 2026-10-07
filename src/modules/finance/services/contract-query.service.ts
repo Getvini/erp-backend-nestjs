@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { QueryContractDto } from "../dto/contract.dto";
+import { QueryContractDto } from "@modules/finance/dto/contract.dto";
 
 @Injectable()
 export class ContractQueryService {

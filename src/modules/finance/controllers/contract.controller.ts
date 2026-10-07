@@ -5,9 +5,9 @@ import {
   ApiBearerAuth,
   ApiResponse,
 } from "@nestjs/swagger";
-import { ContractQueryService } from "../services/contract-query.service";
-import { QueryContractDto } from "../dto/contract.dto";
-import { CurrentUser } from "../../../core/decorators/current-user.decorator";
+import { ContractQueryService } from "@modules/finance/services/contract-query.service";
+import { QueryContractDto } from "@modules/finance/dto/contract.dto";
+import { CurrentUser } from "@core/decorators/current-user.decorator";
 
 @ApiTags("Finance (Tài chính, Hợp đồng & Công nợ)")
 @ApiBearerAuth()

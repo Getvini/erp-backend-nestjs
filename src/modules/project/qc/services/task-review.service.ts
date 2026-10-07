@@ -6,12 +6,12 @@ import {
 } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-import { TaskReviews } from "../entities/task-review.entity";
-import { Tasks } from "../../task/entities/task.entity";
-import { TaskStatus } from "../../task/enums/task-status.enum";
-import { ReviewerType } from "../enums/qc.enum";
-import { canDecideTaskOutcome } from "../helpers/task-outcome-auth.helper";
-import { NotificationService } from "../../../communication/services/notification.service";
+import { TaskReviews } from "@modules/project/qc/entities/task-review.entity";
+import { Tasks } from "@modules/project/task/entities/task.entity";
+import { TaskStatus } from "@modules/project/task/enums/task-status.enum";
+import { ReviewerType } from "@modules/project/qc/enums/qc.enum";
+import { canDecideTaskOutcome } from "@modules/project/qc/helpers/task-outcome-auth.helper";
+import { NotificationService } from "@modules/communication/services/notification.service";
 
 type ReviewActor = { id?: string; userId?: string; role?: string };
 

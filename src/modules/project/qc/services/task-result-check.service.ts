@@ -6,11 +6,11 @@ import {
 } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository, DataSource } from "typeorm";
-import { TaskResultChecks } from "../entities/task-result-check.entity";
-import { Tasks } from "../../task/entities/task.entity";
-import { TaskResultCheckStatus } from "../enums/qc.enum";
+import { TaskResultChecks } from "@modules/project/qc/entities/task-result-check.entity";
+import { Tasks } from "@modules/project/task/entities/task.entity";
+import { TaskResultCheckStatus } from "@modules/project/qc/enums/qc.enum";
 import { SpellingWhitelistService } from "./spelling-whitelist.service";
-import { canDecideTaskOutcome } from "../helpers/task-outcome-auth.helper";
+import { canDecideTaskOutcome } from "@modules/project/qc/helpers/task-outcome-auth.helper";
 
 type Actor = { id?: string; userId?: string; role?: string };
 

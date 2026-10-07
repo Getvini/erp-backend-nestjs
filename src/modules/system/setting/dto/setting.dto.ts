@@ -1,6 +1,6 @@
 import { IsString, IsOptional, IsNumber, IsArray } from "class-validator";
 import { ApiPropertyOptional, ApiProperty } from "@nestjs/swagger";
-import { UserRole } from "../../../identity/user/enums/user-role.enum";
+import { UserRole } from "@modules/identity/user/enums/user-role.enum";
 
 export class UpdateQcConfigDto {
   @ApiPropertyOptional({

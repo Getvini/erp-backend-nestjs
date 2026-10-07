@@ -1,12 +1,12 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository, Between, IsNull } from "typeorm";
-import { Tasks } from "../entities/task.entity";
-import { Users } from "../../../identity/user/entities/user.entity";
-import { TaskStatus } from "../enums/task-status.enum";
-import { TaskActor } from "../helpers/task-security.helper";
-import { NotificationService } from "../../../communication/services/notification.service";
-import { CreateInternalTaskDto } from "../dto/task.dto";
+import { Tasks } from "@modules/project/task/entities/task.entity";
+import { Users } from "@modules/identity/user/entities/user.entity";
+import { TaskStatus } from "@modules/project/task/enums/task-status.enum";
+import { TaskActor } from "@modules/project/task/helpers/task-security.helper";
+import { NotificationService } from "@modules/communication/services/notification.service";
+import { CreateInternalTaskDto } from "@modules/project/task/dto/task.dto";
 
 @Injectable()
 export class TaskInternalCreationService {

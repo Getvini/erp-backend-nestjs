@@ -7,13 +7,13 @@ import {
   JoinColumn,
   Index,
 } from "typeorm";
-import { BaseEntity } from "../../../core/database/base.entity";
-import { Customers } from "../../crm/customer/entities/customer.entity";
-import { Opportunities } from "../../crm/opportunity/entities/opportunity.entity";
-import { Users } from "../../identity/user/entities/user.entity";
+import { BaseEntity } from "@core/database/base.entity";
+import { Customers } from "@modules/crm/customer/entities/customer.entity";
+import { Opportunities } from "@modules/crm/opportunity/entities/opportunity.entity";
+import { Users } from "@modules/identity/user/entities/user.entity";
 import { Project } from "@modules/project/project-core/entities/project.entity";
 import { Debts } from "./debt.entity";
-import { ContractServices } from "../../project/acceptance/entities/contract-service.entity";
+import { ContractServices } from "@modules/project/acceptance/entities/contract-service.entity";
 
 export enum ContractStatus {
   DRAFT = "DRAFT",

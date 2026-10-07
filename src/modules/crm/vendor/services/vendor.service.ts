@@ -1,9 +1,9 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-import { Vendors } from "../entities/vendor.entity";
-import { VendorJobs } from "../entities/vendor-job.entity";
-import { CreateVendorDto, UpdateVendorDto } from "../dto/vendor.dto";
+import { Vendors } from "@modules/crm/vendor/entities/vendor.entity";
+import { VendorJobs } from "@modules/crm/vendor/entities/vendor-job.entity";
+import { CreateVendorDto, UpdateVendorDto } from "@modules/crm/vendor/dto/vendor.dto";
 
 @Injectable()
 export class VendorService {

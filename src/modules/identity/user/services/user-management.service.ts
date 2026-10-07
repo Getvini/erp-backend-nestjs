@@ -5,9 +5,9 @@ import {
 } from "@nestjs/common";
 import { DataSource } from "typeorm";
 import * as bcrypt from "bcrypt";
-import { Users } from "../entities/user.entity";
-import { Accounts } from "../../auth/entities/account.entity";
-import { CreateUserDto, UpdateUserDto } from "../dto/user.dto";
+import { Users } from "@modules/identity/user/entities/user.entity";
+import { Accounts } from "@modules/identity/auth/entities/account.entity";
+import { CreateUserDto, UpdateUserDto } from "@modules/identity/user/dto/user.dto";
 
 @Injectable()
 export class UserManagementService {

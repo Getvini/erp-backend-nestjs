@@ -5,7 +5,7 @@ import {
   IsEnum,
   Matches,
 } from "class-validator";
-import { CustomerSource } from "../enums/customer-source.enum";
+import { CustomerSource } from "@modules/crm/customer/enums/customer-source.enum";
 
 export class CreateCustomerDto {
   @IsString({ message: "Tên khách hàng không được để trống" })

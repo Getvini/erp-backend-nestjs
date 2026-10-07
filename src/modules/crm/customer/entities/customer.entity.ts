@@ -1,10 +1,10 @@
 import { Entity, Column, ManyToOne, OneToMany } from "typeorm";
-import { BaseEntity } from "../../../../core/database/base.entity";
-import { CustomerSource } from "../enums/customer-source.enum";
-import { ReferralPartners } from "../../service/entities/referral-partner.entity";
-import { Users } from "../../../identity/user/entities/user.entity";
+import { BaseEntity } from "@core/database/base.entity";
+import { CustomerSource } from "@modules/crm/customer/enums/customer-source.enum";
+import { ReferralPartners } from "@modules/crm/service/entities/referral-partner.entity";
+import { Users } from "@modules/identity/user/entities/user.entity";
 
-import { Opportunities } from "../../opportunity/entities/opportunity.entity";
+import { Opportunities } from "@modules/crm/opportunity/entities/opportunity.entity";
 
 @Entity("customers")
 export class Customers extends BaseEntity {

@@ -1,9 +1,9 @@
 import { Injectable, BadRequestException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-import { Tasks } from "../entities/task.entity";
-import { Users } from "../../../identity/user/entities/user.entity";
-import { PerformerType } from "../enums/task-status.enum";
+import { Tasks } from "@modules/project/task/entities/task.entity";
+import { Users } from "@modules/identity/user/entities/user.entity";
+import { PerformerType } from "@modules/project/task/enums/task-status.enum";
 import { WorkloadNormService, STAFF_ROLES } from "./workload-norm.service";
 
 @Injectable()

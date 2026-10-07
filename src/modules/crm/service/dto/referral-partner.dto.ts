@@ -1,5 +1,5 @@
 import { IsString, IsOptional, IsEnum, Matches } from "class-validator";
-import { PartnerType } from "../enums/partner-type.enum";
+import { PartnerType } from "@modules/crm/service/enums/partner-type.enum";
 
 export class CreateReferralPartnerDto {
   @IsString({ message: "Tên đối tác không được để trống" })

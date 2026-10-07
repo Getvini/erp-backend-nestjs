@@ -6,15 +6,15 @@ import {
   Index,
   JoinColumn,
 } from "typeorm";
-import { BaseEntity } from "../../../../core/database/base.entity";
-import { Customers } from "../../customer/entities/customer.entity";
-import { ReferralPartners } from "../../service/entities/referral-partner.entity";
-import { Users } from "../../../identity/user/entities/user.entity";
+import { BaseEntity } from "@core/database/base.entity";
+import { Customers } from "@modules/crm/customer/entities/customer.entity";
+import { ReferralPartners } from "@modules/crm/service/entities/referral-partner.entity";
+import { Users } from "@modules/identity/user/entities/user.entity";
 import {
   OpportunityStatus,
   CustomerType,
-} from "../enums/opportunity-status.enum";
-import { Quotations } from "../../quotation/entities/quotation.entity";
+} from "@modules/crm/opportunity/enums/opportunity-status.enum";
+import { Quotations } from "@modules/crm/quotation/entities/quotation.entity";
 import { OpportunityPackages } from "./opportunity-package.entity";
 import { OpportunityServices } from "./opportunity-service.entity";
 import { OpportunityRejections } from "./opportunity-rejection.entity";

@@ -1,5 +1,5 @@
 import { Module } from "@nestjs/common";
-import { AuthCoreModule } from "../../core/auth/auth-core.module";
+import { AuthCoreModule } from "@core/auth/auth-core.module";
 import { AuthModule } from "./auth/auth.module";
 import { UserModule } from "./user/user.module";
 

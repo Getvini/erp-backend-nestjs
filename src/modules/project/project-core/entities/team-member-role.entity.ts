@@ -1,6 +1,6 @@
 import { Column, Entity, ManyToOne, Unique } from "typeorm";
-import { BaseEntity } from "../../../../core/database/base.entity";
-import { MemberRole } from "../enums/member-role.enum";
+import { BaseEntity } from "@core/database/base.entity";
+import { MemberRole } from "@modules/project/project-core/enums/member-role.enum";
 import { TeamMember } from "./team-member.entity";
 
 @Entity("team_member_roles")

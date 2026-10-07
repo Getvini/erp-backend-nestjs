@@ -7,16 +7,16 @@ import {
 } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository, In, DataSource } from "typeorm";
-import { Tasks } from "../entities/task.entity";
-import { TaskStatus } from "../enums/task-status.enum";
-import { NotificationService } from "../../../communication/services/notification.service";
+import { Tasks } from "@modules/project/task/entities/task.entity";
+import { TaskStatus } from "@modules/project/task/enums/task-status.enum";
+import { NotificationService } from "@modules/communication/services/notification.service";
 import {
   assertTaskProjectNotOnHold,
   assertTaskNotLocked,
   TaskActor,
-} from "../helpers/task-security.helper";
-import { assertSubtaskPlanApproved } from "../helpers/subtask-plan.helper";
-import { assertParentDeadlineNotBeforeSubtasks } from "../helpers/subtask-deadline.helper";
+} from "@modules/project/task/helpers/task-security.helper";
+import { assertSubtaskPlanApproved } from "@modules/project/task/helpers/subtask-plan.helper";
+import { assertParentDeadlineNotBeforeSubtasks } from "@modules/project/task/helpers/subtask-deadline.helper";
 
 @Injectable()
 export class TaskStartService {

@@ -1,11 +1,11 @@
 import { Controller, Get, Put, Body, UseGuards, Request } from "@nestjs/common";
 import { ApiTags, ApiBearerAuth, ApiOperation } from "@nestjs/swagger";
-import { JwtAuthGuard } from "../../../../core/guards/jwt-auth.guard";
-import { RolesGuard } from "../../../../core/guards/roles.guard";
-import { Roles } from "../../../../core/decorators/roles.decorator";
-import { UserRole } from "../../../identity/user/enums/user-role.enum";
-import { SettingService } from "../services/setting.service";
-import { UpdateQcConfigDto, UpdateWorkloadNormsDto } from "../dto/setting.dto";
+import { JwtAuthGuard } from "@core/guards/jwt-auth.guard";
+import { RolesGuard } from "@core/guards/roles.guard";
+import { Roles } from "@core/decorators/roles.decorator";
+import { UserRole } from "@modules/identity/user/enums/user-role.enum";
+import { SettingService } from "@modules/system/setting/services/setting.service";
+import { UpdateQcConfigDto, UpdateWorkloadNormsDto } from "@modules/system/setting/dto/setting.dto";
 
 @ApiTags("System - Setting")
 @ApiBearerAuth()

@@ -6,9 +6,9 @@ import {
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 import * as bcrypt from "bcrypt";
-import { Users } from "../entities/user.entity";
-import { Accounts } from "../../auth/entities/account.entity";
-import { UpdateProfileDto, ChangePasswordDto } from "../dto/profile.dto";
+import { Users } from "@modules/identity/user/entities/user.entity";
+import { Accounts } from "@modules/identity/auth/entities/account.entity";
+import { UpdateProfileDto, ChangePasswordDto } from "@modules/identity/user/dto/profile.dto";
 
 @Injectable()
 export class ProfileService {

@@ -9,8 +9,8 @@ import {
   Query,
 } from "@nestjs/common";
 import { ApiTags, ApiBearerAuth } from "@nestjs/swagger";
-import { JobService } from "../services/job.service";
-import { CreateJobDto, UpdateJobDto } from "../dto/job.dto";
+import { JobService } from "@modules/crm/service/services/job.service";
+import { CreateJobDto, UpdateJobDto } from "@modules/crm/service/dto/job.dto";
 
 @ApiTags("CRM - Job")
 @ApiBearerAuth()

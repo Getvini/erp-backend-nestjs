@@ -1,9 +1,9 @@
 import { Entity, ManyToOne, Column, OneToMany } from "typeorm";
-import { BaseEntity } from "../../../../core/database/base.entity";
+import { BaseEntity } from "@core/database/base.entity";
 import { ProjectTeam } from "./project-team.entity";
-import { Users } from "../../../identity/user/entities/user.entity";
+import { Users } from "@modules/identity/user/entities/user.entity";
 import { TeamMemberRole } from "./team-member-role.entity";
-import { MemberRole } from "../enums/member-role.enum";
+import { MemberRole } from "@modules/project/project-core/enums/member-role.enum";
 
 @Entity("team_members")
 export class TeamMember extends BaseEntity {

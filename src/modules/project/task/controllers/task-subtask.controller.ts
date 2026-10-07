@@ -8,12 +8,12 @@ import {
   Request,
 } from "@nestjs/common";
 import { ApiTags, ApiBearerAuth, ApiOperation } from "@nestjs/swagger";
-import { JwtAuthGuard } from "../../../../core/guards/jwt-auth.guard";
-import { TaskDelegationService } from "../services/task-delegation.service";
+import { JwtAuthGuard } from "@core/guards/jwt-auth.guard";
+import { TaskDelegationService } from "@modules/project/task/services/task-delegation.service";
 import {
   CreateSubtaskDto,
   RespondSubtaskPlanDto,
-} from "../dto/task-subtask.dto";
+} from "@modules/project/task/dto/task-subtask.dto";
 
 @ApiTags("Project - Task Subtask")
 @ApiBearerAuth()

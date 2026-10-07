@@ -6,7 +6,7 @@ import {
   IsEnum,
 } from "class-validator";
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
-import { AcceptanceStatus } from "../enums/acceptance.enum";
+import { AcceptanceStatus } from "@modules/project/acceptance/enums/acceptance.enum";
 
 export class CreateAcceptanceDto {
   @ApiProperty({ description: "ID dự án" })

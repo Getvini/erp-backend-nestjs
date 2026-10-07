@@ -1,4 +1,4 @@
-import { UserRole } from "../../../identity/user/enums/user-role.enum";
+import { UserRole } from "@modules/identity/user/enums/user-role.enum";
 
 export const ACCEPTANCE_APPROVER_ROLES: (UserRole | string)[] = [
   UserRole.BOD,

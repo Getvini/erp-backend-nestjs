@@ -1,7 +1,7 @@
 import { Entity, Column, ManyToOne, JoinColumn } from "typeorm";
-import { BaseEntity } from "../../../../core/database/base.entity";
-import { Users } from "../../../identity/user/entities/user.entity";
-import { ViolationType } from "../enums/task-status.enum";
+import { BaseEntity } from "@core/database/base.entity";
+import { Users } from "@modules/identity/user/entities/user.entity";
+import { ViolationType } from "@modules/project/task/enums/task-status.enum";
 import { Tasks } from "./task.entity";
 
 @Entity("violations")

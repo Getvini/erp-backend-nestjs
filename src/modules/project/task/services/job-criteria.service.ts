@@ -1,12 +1,12 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-import { JobCriterias } from "../entities/job-criteria.entity";
-import { Jobs } from "../../../crm/service/entities/job.entity";
+import { JobCriterias } from "@modules/project/task/entities/job-criteria.entity";
+import { Jobs } from "@modules/crm/service/entities/job.entity";
 import {
   CreateJobCriteriaDto,
   SyncJobCriteriaItemDto,
-} from "../dto/job-criteria.dto";
+} from "@modules/project/task/dto/job-criteria.dto";
 
 @Injectable()
 export class JobCriteriaService {

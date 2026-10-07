@@ -1,7 +1,7 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { SystemSettings } from "./entities/system-setting.entity";
-import { TaskModule } from "../../project/task/task.module";
+import { TaskModule } from "@modules/project/task/task.module";
 import { SettingService } from "./services/setting.service";
 import { SettingController } from "./controllers/setting.controller";
 

@@ -6,7 +6,7 @@ import {
   IsEnum,
 } from "class-validator";
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
-import { MemberRole } from "../enums/member-role.enum";
+import { MemberRole } from "@modules/project/project-core/enums/member-role.enum";
 
 export class CreateProjectTeamDto {
   @ApiProperty({ description: "Tên đội ngũ" })

@@ -1,12 +1,12 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository, In } from "typeorm";
-import { StaffRoleWorkloadNorms } from "../entities/staff-role-workload-norm.entity";
+import { StaffRoleWorkloadNorms } from "@modules/project/task/entities/staff-role-workload-norm.entity";
 import {
   UserRole,
   STAFF_ROLES,
-} from "../../../identity/user/enums/user-role.enum";
-import { TaskStatus } from "../enums/task-status.enum";
+} from "@modules/identity/user/enums/user-role.enum";
+import { TaskStatus } from "@modules/project/task/enums/task-status.enum";
 
 export { STAFF_ROLES };
 

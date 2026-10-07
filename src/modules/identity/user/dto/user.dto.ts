@@ -7,7 +7,7 @@ import {
   Matches,
   MinLength,
 } from "class-validator";
-import { UserRole } from "../enums/user-role.enum";
+import { UserRole } from "@modules/identity/user/enums/user-role.enum";
 
 export class QueryUserDto {
   @ApiPropertyOptional({ description: "Tìm kiếm theo tên, username, sđt" })

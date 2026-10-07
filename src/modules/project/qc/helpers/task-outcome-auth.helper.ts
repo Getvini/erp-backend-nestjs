@@ -1,4 +1,4 @@
-import { MemberRole } from "../../project-core/enums/member-role.enum";
+import { MemberRole } from "@modules/project/project-core/enums/member-role.enum";
 
 type UserRef = { id?: string | null } | null | undefined;
 type TeamRef =

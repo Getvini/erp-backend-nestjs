@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
-import { TaskStatus } from "../../task/enums/task-status.enum";
-import { DashboardScopeType } from "../types/dashboard-scope.types";
+import { TaskStatus } from "@modules/project/task/enums/task-status.enum";
+import { DashboardScopeType } from "@modules/project/dashboard/types/dashboard-scope.types";
 
 @Injectable()
 export class DashboardMemberPayloadService {

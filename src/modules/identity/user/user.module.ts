@@ -6,7 +6,7 @@ import { UserQueryService } from "./services/user-query.service";
 import { UserManagementService } from "./services/user-management.service";
 import { ProfileService } from "./services/profile.service";
 import { Users } from "./entities/user.entity";
-import { Accounts } from "../auth/entities/account.entity";
+import { Accounts } from "@modules/identity/auth/entities/account.entity";
 
 @Module({
   imports: [TypeOrmModule.forFeature([Users, Accounts])],
