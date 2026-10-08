@@ -1,4 +1,4 @@
-import { Entity, Column, OneToMany } from "typeorm";
+import { Entity, Column, OneToMany, DeleteDateColumn } from "typeorm";
 import { BaseEntity } from "@core/database/base.entity";
 import { ServicePackageItems } from "./service-package-item.entity";
 
@@ -20,4 +20,7 @@ export class ServicePackages extends BaseEntity {
 
   @Column({ type: "decimal", precision: 15, scale: 3, default: 0 })
   price: number;
+
+  @DeleteDateColumn()
+  deletedAt: Date;
 }

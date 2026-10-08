@@ -1,4 +1,4 @@
-import { Entity, Column, OneToMany } from "typeorm";
+import { Entity, Column, OneToMany, DeleteDateColumn } from "typeorm";
 import { BaseEntity } from "@core/database/base.entity";
 import {
   JobCategory,
@@ -79,4 +79,7 @@ export class Jobs extends BaseEntity {
 
   @OneToMany(() => JobCriterias, (criteria) => criteria.job, { cascade: true })
   criteria: JobCriterias[];
+
+  @DeleteDateColumn()
+  deletedAt: Date;
 }

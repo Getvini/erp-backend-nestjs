@@ -17,7 +17,7 @@ export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
       url: dbUrl,
       ssl: ssl ? { rejectUnauthorized } : false,
       autoLoadEntities: true,
-      synchronize: false, // ⚠️ CẤM synchronize trên production, dùng migrations!
+      synchronize: !isProd,
       extra: {
         max: 25,
         min: 5,

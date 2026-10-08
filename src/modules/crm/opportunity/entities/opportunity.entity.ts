@@ -5,6 +5,7 @@ import {
   OneToMany,
   Index,
   JoinColumn,
+  DeleteDateColumn,
 } from "typeorm";
 import { BaseEntity } from "@core/database/base.entity";
 import { Customers } from "@modules/crm/customer/entities/customer.entity";
@@ -131,4 +132,7 @@ export class Opportunities extends BaseEntity {
 
   @Column({ nullable: true })
   createdById: string;
+
+  @DeleteDateColumn()
+  deletedAt: Date;
 }

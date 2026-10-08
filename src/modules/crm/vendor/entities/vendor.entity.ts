@@ -1,4 +1,4 @@
-import { Entity, Column, OneToMany } from "typeorm";
+import { Entity, Column, OneToMany, DeleteDateColumn } from "typeorm";
 import { BaseEntity } from "@core/database/base.entity";
 import { VendorType } from "@modules/crm/vendor/enums/vendor-type.enum";
 import { VendorJobs } from "./vendor-job.entity";
@@ -41,4 +41,7 @@ export class Vendors extends BaseEntity {
 
   @OneToMany(() => VendorJobs, (vj) => vj.vendor)
   vendorJobs: VendorJobs[];
+
+  @DeleteDateColumn()
+  deletedAt: Date;
 }

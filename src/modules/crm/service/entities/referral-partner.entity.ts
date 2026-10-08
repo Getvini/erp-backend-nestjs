@@ -1,4 +1,4 @@
-import { Entity, Column, OneToMany } from "typeorm";
+import { Entity, Column, OneToMany, DeleteDateColumn } from "typeorm";
 import { BaseEntity } from "@core/database/base.entity";
 import { PartnerType } from "@modules/crm/service/enums/partner-type.enum";
 import { Customers } from "@modules/crm/customer/entities/customer.entity";
@@ -34,4 +34,7 @@ export class ReferralPartners extends BaseEntity {
 
   @OneToMany(() => Opportunities, (opp) => opp.referralPartner)
   opportunities: Opportunities[];
+
+  @DeleteDateColumn()
+  deletedAt: Date;
 }

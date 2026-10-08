@@ -1,4 +1,4 @@
-import { Entity, Column, OneToMany } from "typeorm";
+import { Entity, Column, OneToMany, DeleteDateColumn } from "typeorm";
 import { BaseEntity } from "@core/database/base.entity";
 import { ServiceJob } from "./service-job.entity";
 
@@ -29,4 +29,7 @@ export class Services extends BaseEntity {
     cascade: true,
   })
   serviceJobs: ServiceJob[];
+
+  @DeleteDateColumn()
+  deletedAt: Date;
 }
