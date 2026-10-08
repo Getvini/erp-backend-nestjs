@@ -1,0 +1,2528 @@
+{
+  "generatedAt": "2026-10-08T03:27:40.181Z",
+  "totalControllers": 48,
+  "totalEndpoints": 288,
+  "controllers": [
+    {
+      "name": "AcceptanceController",
+      "prefix": "/acceptance",
+      "endpointCount": 6,
+      "endpoints": [
+        {
+          "methodName": "getAllRequests",
+          "httpMethod": "GET",
+          "fullPath": "/acceptance/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getRequest",
+          "httpMethod": "GET",
+          "fullPath": "/acceptance/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "createRequest",
+          "httpMethod": "POST",
+          "fullPath": "/acceptance/request",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "approveRequest",
+          "httpMethod": "POST",
+          "fullPath": "/acceptance/:id/approve",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "rejectRequest",
+          "httpMethod": "POST",
+          "fullPath": "/acceptance/:id/reject",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "processRequest",
+          "httpMethod": "POST",
+          "fullPath": "/acceptance/:id/process",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "AccountController",
+      "prefix": "/accounts",
+      "endpointCount": 5,
+      "endpoints": [
+        {
+          "methodName": "index",
+          "httpMethod": "GET",
+          "fullPath": "/accounts/",
+          "roles": [
+            "ADMIN",
+            "BOD",
+            "ADMIN",
+            "BOD"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "show",
+          "httpMethod": "GET",
+          "fullPath": "/accounts/:id",
+          "roles": [
+            "ADMIN",
+            "BOD",
+            "ADMIN",
+            "BOD"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "update",
+          "httpMethod": "PUT",
+          "fullPath": "/accounts/:id",
+          "roles": [
+            "ADMIN",
+            "BOD",
+            "ADMIN",
+            "BOD"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "delete",
+          "httpMethod": "DELETE",
+          "fullPath": "/accounts/:id",
+          "roles": [
+            "ADMIN",
+            "BOD",
+            "ADMIN",
+            "BOD"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "resetPassword",
+          "httpMethod": "PUT",
+          "fullPath": "/accounts/:id/reset-password",
+          "roles": [
+            "ADMIN",
+            "BOD",
+            "ADMIN",
+            "BOD"
+          ],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "AiDashboardController",
+      "prefix": "/ai-dashboard",
+      "endpointCount": 1,
+      "endpoints": [
+        {
+          "methodName": "getDashboard",
+          "httpMethod": "GET",
+          "fullPath": "/ai-dashboard/",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "AiElementController",
+      "prefix": "/elements",
+      "endpointCount": 6,
+      "endpoints": [
+        {
+          "methodName": "create",
+          "httpMethod": "POST",
+          "fullPath": "/elements/create",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getHistory",
+          "httpMethod": "GET",
+          "fullPath": "/elements/history",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getKlingTaskStatus",
+          "httpMethod": "GET",
+          "fullPath": "/elements/task/:taskId/status",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getStatus",
+          "httpMethod": "GET",
+          "fullPath": "/elements/:id/status",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "remove",
+          "httpMethod": "DELETE",
+          "fullPath": "/elements/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "setFavorite",
+          "httpMethod": "PATCH",
+          "fullPath": "/elements/:id/favorite",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "AiModelController",
+      "prefix": "/ai-models",
+      "endpointCount": 6,
+      "endpoints": [
+        {
+          "methodName": "getAll",
+          "httpMethod": "GET",
+          "fullPath": "/ai-models/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getByProvider",
+          "httpMethod": "GET",
+          "fullPath": "/ai-models/provider/:providerCode",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getOne",
+          "httpMethod": "GET",
+          "fullPath": "/ai-models/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "create",
+          "httpMethod": "POST",
+          "fullPath": "/ai-models/",
+          "roles": [
+            "ADMIN"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "update",
+          "httpMethod": "PATCH",
+          "fullPath": "/ai-models/:id",
+          "roles": [
+            "ADMIN"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "delete",
+          "httpMethod": "DELETE",
+          "fullPath": "/ai-models/:id",
+          "roles": [
+            "ADMIN"
+          ],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "AiProviderController",
+      "prefix": "/ai-providers",
+      "endpointCount": 2,
+      "endpoints": [
+        {
+          "methodName": "getAll",
+          "httpMethod": "GET",
+          "fullPath": "/ai-providers/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getOne",
+          "httpMethod": "GET",
+          "fullPath": "/ai-providers/:id",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "AnnouncementController",
+      "prefix": "/announcements",
+      "endpointCount": 9,
+      "endpoints": [
+        {
+          "methodName": "getAll",
+          "httpMethod": "GET",
+          "fullPath": "/announcements/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getOne",
+          "httpMethod": "GET",
+          "fullPath": "/announcements/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "create",
+          "httpMethod": "POST",
+          "fullPath": "/announcements/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "update",
+          "httpMethod": "PUT",
+          "fullPath": "/announcements/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "delete",
+          "httpMethod": "DELETE",
+          "fullPath": "/announcements/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "markAsRead",
+          "httpMethod": "PUT",
+          "fullPath": "/announcements/:id/read",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getComments",
+          "httpMethod": "GET",
+          "fullPath": "/announcements/:id/comments",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "addComment",
+          "httpMethod": "POST",
+          "fullPath": "/announcements/:id/comments",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "deleteComment",
+          "httpMethod": "DELETE",
+          "fullPath": "/announcements/:id/comments/:commentId",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "AssetController",
+      "prefix": "/assets",
+      "endpointCount": 3,
+      "endpoints": [
+        {
+          "methodName": "findLibrary",
+          "httpMethod": "GET",
+          "fullPath": "/assets/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getOne",
+          "httpMethod": "GET",
+          "fullPath": "/assets/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "toggleFavorite",
+          "httpMethod": "PATCH",
+          "fullPath": "/assets/:id/favorite",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "AuthController",
+      "prefix": "/auth",
+      "endpointCount": 3,
+      "endpoints": [
+        {
+          "methodName": "login",
+          "httpMethod": "POST",
+          "fullPath": "/auth/login",
+          "roles": [],
+          "isPublic": true
+        },
+        {
+          "methodName": "refresh",
+          "httpMethod": "POST",
+          "fullPath": "/auth/refresh",
+          "roles": [],
+          "isPublic": true
+        },
+        {
+          "methodName": "logout",
+          "httpMethod": "POST",
+          "fullPath": "/auth/logout",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "ChatBotController",
+      "prefix": "/chat",
+      "endpointCount": 1,
+      "endpoints": [
+        {
+          "methodName": "sendMessage",
+          "httpMethod": "POST",
+          "fullPath": "/chat/",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "ChatRoomController",
+      "prefix": "/chat-rooms",
+      "endpointCount": 6,
+      "endpoints": [
+        {
+          "methodName": "getUserRooms",
+          "httpMethod": "GET",
+          "fullPath": "/chat-rooms/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "createRoom",
+          "httpMethod": "POST",
+          "fullPath": "/chat-rooms/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "addParticipants",
+          "httpMethod": "POST",
+          "fullPath": "/chat-rooms/:roomId/participants",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getRoomMessages",
+          "httpMethod": "GET",
+          "fullPath": "/chat-rooms/:roomId/messages",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "sendMessage",
+          "httpMethod": "POST",
+          "fullPath": "/chat-rooms/:roomId/messages",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "markRoomAsRead",
+          "httpMethod": "POST",
+          "fullPath": "/chat-rooms/:roomId/read",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "CloudinaryController",
+      "prefix": "/cloudinary",
+      "endpointCount": 1,
+      "endpoints": [
+        {
+          "methodName": "getSignature",
+          "httpMethod": "GET",
+          "fullPath": "/cloudinary/signature",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "ContractAddendumController",
+      "prefix": "/contract-addendums",
+      "endpointCount": 9,
+      "endpoints": [
+        {
+          "methodName": "create",
+          "httpMethod": "POST",
+          "fullPath": "/contract-addendums/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "addItems",
+          "httpMethod": "POST",
+          "fullPath": "/contract-addendums/:id/items",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "uploadSigned",
+          "httpMethod": "POST",
+          "fullPath": "/contract-addendums/:id/upload-signed",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "scaleDown",
+          "httpMethod": "POST",
+          "fullPath": "/contract-addendums/:id/scale-down",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "saleApprove",
+          "httpMethod": "POST",
+          "fullPath": "/contract-addendums/:id/sale-approve",
+          "roles": [
+            "BD",
+            "ADMIN"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "saleReject",
+          "httpMethod": "POST",
+          "fullPath": "/contract-addendums/:id/sale-reject",
+          "roles": [
+            "BD",
+            "ADMIN"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "resubmit",
+          "httpMethod": "POST",
+          "fullPath": "/contract-addendums/:id/resubmit",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "bodApprove",
+          "httpMethod": "POST",
+          "fullPath": "/contract-addendums/:id/bod-approve",
+          "roles": [
+            "BOD",
+            "ADMIN"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "bodReject",
+          "httpMethod": "POST",
+          "fullPath": "/contract-addendums/:id/bod-reject",
+          "roles": [
+            "BOD",
+            "ADMIN"
+          ],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "ContractController",
+      "prefix": "/contracts",
+      "endpointCount": 12,
+      "endpoints": [
+        {
+          "methodName": "getAll",
+          "httpMethod": "GET",
+          "fullPath": "/contracts/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getOne",
+          "httpMethod": "GET",
+          "fullPath": "/contracts/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "create",
+          "httpMethod": "POST",
+          "fullPath": "/contracts/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "delete",
+          "httpMethod": "DELETE",
+          "fullPath": "/contracts/:id",
+          "roles": [
+            "BOD",
+            "ADMIN",
+            "ADMIN_SALE"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "updateNickname",
+          "httpMethod": "PATCH",
+          "fullPath": "/contracts/services/:id/nickname",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "uploadProposal",
+          "httpMethod": "POST",
+          "fullPath": "/contracts/:id/proposal",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "approveProposal",
+          "httpMethod": "POST",
+          "fullPath": "/contracts/:id/approve-proposal",
+          "roles": [
+            "BOD",
+            "ADMIN",
+            "ADMIN_SALE"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "rejectProposal",
+          "httpMethod": "POST",
+          "fullPath": "/contracts/:id/reject-proposal",
+          "roles": [
+            "BOD",
+            "ADMIN",
+            "ADMIN_SALE"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "uploadSigned",
+          "httpMethod": "POST",
+          "fullPath": "/contracts/:id/signed",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "addMilestone",
+          "httpMethod": "POST",
+          "fullPath": "/contracts/:id/milestones",
+          "roles": [
+            "BOD",
+            "ADMIN",
+            "ADMIN_SALE"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "updateMilestone",
+          "httpMethod": "PUT",
+          "fullPath": "/contracts/milestones/:id",
+          "roles": [
+            "BOD",
+            "ADMIN",
+            "ADMIN_SALE"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "deleteMilestone",
+          "httpMethod": "DELETE",
+          "fullPath": "/contracts/milestones/:id",
+          "roles": [
+            "BOD",
+            "ADMIN",
+            "ADMIN_SALE"
+          ],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "CustomerController",
+      "prefix": "/customers",
+      "endpointCount": 5,
+      "endpoints": [
+        {
+          "methodName": "getAll",
+          "httpMethod": "GET",
+          "fullPath": "/customers/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getOne",
+          "httpMethod": "GET",
+          "fullPath": "/customers/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "create",
+          "httpMethod": "POST",
+          "fullPath": "/customers/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "update",
+          "httpMethod": "PUT",
+          "fullPath": "/customers/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "delete",
+          "httpMethod": "DELETE",
+          "fullPath": "/customers/:id",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "DashboardController",
+      "prefix": "/dashboard",
+      "endpointCount": 1,
+      "endpoints": [
+        {
+          "methodName": "getDashboardData",
+          "httpMethod": "GET",
+          "fullPath": "/dashboard/",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "DebtController",
+      "prefix": "/debts",
+      "endpointCount": 8,
+      "endpoints": [
+        {
+          "methodName": "getAll",
+          "httpMethod": "GET",
+          "fullPath": "/debts/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getOne",
+          "httpMethod": "GET",
+          "fullPath": "/debts/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getByContract",
+          "httpMethod": "GET",
+          "fullPath": "/debts/contract/:contractId",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "createFromMilestone",
+          "httpMethod": "POST",
+          "fullPath": "/debts/activate",
+          "roles": [
+            "BOD",
+            "ADMIN",
+            "ADMIN_SALE"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "unlockDebt",
+          "httpMethod": "POST",
+          "fullPath": "/debts/:id/unlock",
+          "roles": [
+            "BOD",
+            "ADMIN"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "delete",
+          "httpMethod": "DELETE",
+          "fullPath": "/debts/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "createPayment",
+          "httpMethod": "POST",
+          "fullPath": "/debts/payments",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "deletePayment",
+          "httpMethod": "DELETE",
+          "fullPath": "/debts/payments/:id",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "DocumentLibraryController",
+      "prefix": "/document-library",
+      "endpointCount": 8,
+      "endpoints": [
+        {
+          "methodName": "findDocuments",
+          "httpMethod": "GET",
+          "fullPath": "/document-library/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getAllTags",
+          "httpMethod": "GET",
+          "fullPath": "/document-library/tags",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getOne",
+          "httpMethod": "GET",
+          "fullPath": "/document-library/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "download",
+          "httpMethod": "GET",
+          "fullPath": "/document-library/:id/download",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getVersions",
+          "httpMethod": "GET",
+          "fullPath": "/document-library/:id/versions",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "downloadVersion",
+          "httpMethod": "GET",
+          "fullPath": "/document-library/:id/versions/:versionId/download",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "update",
+          "httpMethod": "PUT",
+          "fullPath": "/document-library/:id",
+          "roles": [
+            "BOD",
+            "ADMIN",
+            "ADMIN_SALE"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "delete",
+          "httpMethod": "DELETE",
+          "fullPath": "/document-library/:id",
+          "roles": [
+            "BOD",
+            "ADMIN",
+            "ADMIN_SALE"
+          ],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "FinanceDocumentController",
+      "prefix": "/finance-documents",
+      "endpointCount": 3,
+      "endpoints": [
+        {
+          "methodName": "getByContract",
+          "httpMethod": "GET",
+          "fullPath": "/finance-documents/contracts/:contractId",
+          "roles": [
+            "BOD",
+            "ADMIN",
+            "ADMIN_SALE",
+            "BD",
+            "PM"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "createAcceptanceMinute",
+          "httpMethod": "POST",
+          "fullPath": "/finance-documents/acceptance-minutes",
+          "roles": [
+            "BOD",
+            "ADMIN",
+            "ADMIN_SALE",
+            "BD",
+            "PM"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "createVatInvoice",
+          "httpMethod": "POST",
+          "fullPath": "/finance-documents/vat-invoices",
+          "roles": [
+            "BOD",
+            "ADMIN",
+            "ADMIN_SALE",
+            "BD",
+            "PM"
+          ],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "JobController",
+      "prefix": "/jobs",
+      "endpointCount": 5,
+      "endpoints": [
+        {
+          "methodName": "getAll",
+          "httpMethod": "GET",
+          "fullPath": "/jobs/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getOne",
+          "httpMethod": "GET",
+          "fullPath": "/jobs/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "create",
+          "httpMethod": "POST",
+          "fullPath": "/jobs/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "update",
+          "httpMethod": "PATCH",
+          "fullPath": "/jobs/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "delete",
+          "httpMethod": "DELETE",
+          "fullPath": "/jobs/:id",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "JobCriteriaController",
+      "prefix": "/job-criteria",
+      "endpointCount": 4,
+      "endpoints": [
+        {
+          "methodName": "getByJob",
+          "httpMethod": "GET",
+          "fullPath": "/job-criteria/job/:jobId",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "create",
+          "httpMethod": "POST",
+          "fullPath": "/job-criteria/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "delete",
+          "httpMethod": "DELETE",
+          "fullPath": "/job-criteria/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "sync",
+          "httpMethod": "PUT",
+          "fullPath": "/job-criteria/job/:jobId",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "NotificationController",
+      "prefix": "/notifications",
+      "endpointCount": 3,
+      "endpoints": [
+        {
+          "methodName": "getMyNotifications",
+          "httpMethod": "GET",
+          "fullPath": "/notifications/me",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "streamNotifications",
+          "httpMethod": "GET",
+          "fullPath": "/notifications/stream",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "markAsRead",
+          "httpMethod": "PUT",
+          "fullPath": "/notifications/:id/read",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "OpportunityController",
+      "prefix": "/opportunities",
+      "endpointCount": 10,
+      "endpoints": [
+        {
+          "methodName": "getAll",
+          "httpMethod": "GET",
+          "fullPath": "/opportunities/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getOne",
+          "httpMethod": "GET",
+          "fullPath": "/opportunities/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "create",
+          "httpMethod": "POST",
+          "fullPath": "/opportunities/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "update",
+          "httpMethod": "PATCH",
+          "fullPath": "/opportunities/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "saveDraft",
+          "httpMethod": "PATCH",
+          "fullPath": "/opportunities/:id/draft",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "resubmit",
+          "httpMethod": "PATCH",
+          "fullPath": "/opportunities/:id/resubmit",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "addCustomer",
+          "httpMethod": "PATCH",
+          "fullPath": "/opportunities/:id/addcustomer",
+          "roles": [
+            "BOD",
+            "ADMIN",
+            "BD"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "approve",
+          "httpMethod": "PATCH",
+          "fullPath": "/opportunities/:id/approve",
+          "roles": [
+            "BOD",
+            "ADMIN"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "reject",
+          "httpMethod": "PATCH",
+          "fullPath": "/opportunities/:id/reject",
+          "roles": [
+            "BOD",
+            "ADMIN"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "delete",
+          "httpMethod": "DELETE",
+          "fullPath": "/opportunities/:id",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "OpportunityServiceController",
+      "prefix": "/opportunity-services",
+      "endpointCount": 5,
+      "endpoints": [
+        {
+          "methodName": "getAllByOpportunity",
+          "httpMethod": "GET",
+          "fullPath": "/opportunity-services/opportunity/:opportunityId",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getOne",
+          "httpMethod": "GET",
+          "fullPath": "/opportunity-services/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "create",
+          "httpMethod": "POST",
+          "fullPath": "/opportunity-services/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "update",
+          "httpMethod": "PATCH",
+          "fullPath": "/opportunity-services/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "delete",
+          "httpMethod": "DELETE",
+          "fullPath": "/opportunity-services/:id",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "PaymentDashboardController",
+      "prefix": "/payment-dashboard",
+      "endpointCount": 1,
+      "endpoints": [
+        {
+          "methodName": "getDashboard",
+          "httpMethod": "GET",
+          "fullPath": "/payment-dashboard/",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "PaymentMilestoneController",
+      "prefix": "/payment-milestones",
+      "endpointCount": 6,
+      "endpoints": [
+        {
+          "methodName": "getAll",
+          "httpMethod": "GET",
+          "fullPath": "/payment-milestones/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getByContract",
+          "httpMethod": "GET",
+          "fullPath": "/payment-milestones/contract/:contractId",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "create",
+          "httpMethod": "POST",
+          "fullPath": "/payment-milestones/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "update",
+          "httpMethod": "PUT",
+          "fullPath": "/payment-milestones/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "delete",
+          "httpMethod": "DELETE",
+          "fullPath": "/payment-milestones/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "bulkSave",
+          "httpMethod": "PUT",
+          "fullPath": "/payment-milestones/contract/:contractId/bulk",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "PaymentRequestController",
+      "prefix": "/payment-requests",
+      "endpointCount": 15,
+      "endpoints": [
+        {
+          "methodName": "getAll",
+          "httpMethod": "GET",
+          "fullPath": "/payment-requests/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getTotalDebt",
+          "httpMethod": "GET",
+          "fullPath": "/payment-requests/total-debt",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getTaskSpent",
+          "httpMethod": "GET",
+          "fullPath": "/payment-requests/task/:taskId/spent",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getOne",
+          "httpMethod": "GET",
+          "fullPath": "/payment-requests/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "create",
+          "httpMethod": "POST",
+          "fullPath": "/payment-requests/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "update",
+          "httpMethod": "PATCH",
+          "fullPath": "/payment-requests/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "supplement",
+          "httpMethod": "PATCH",
+          "fullPath": "/payment-requests/:id/supplement",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "submit",
+          "httpMethod": "POST",
+          "fullPath": "/payment-requests/:id/submit",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "delete",
+          "httpMethod": "DELETE",
+          "fullPath": "/payment-requests/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "addInvoicePdf",
+          "httpMethod": "POST",
+          "fullPath": "/payment-requests/:id/invoice-pdfs",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "review",
+          "httpMethod": "POST",
+          "fullPath": "/payment-requests/:id/review",
+          "roles": [
+            "ADMIN_SALE",
+            "BOD",
+            "ADMIN"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "bodDecision",
+          "httpMethod": "POST",
+          "fullPath": "/payment-requests/:id/bod-decision",
+          "roles": [
+            "BOD",
+            "ADMIN"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "pay",
+          "httpMethod": "POST",
+          "fullPath": "/payment-requests/:id/pay",
+          "roles": [
+            "BOD",
+            "ADMIN",
+            "ADMIN_SALE"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "uploadPaymentProof",
+          "httpMethod": "POST",
+          "fullPath": "/payment-requests/:id/payment-proofs",
+          "roles": [
+            "BOD",
+            "ADMIN",
+            "ADMIN_SALE"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "cancel",
+          "httpMethod": "POST",
+          "fullPath": "/payment-requests/:id/cancel",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "ProfileController",
+      "prefix": "/me",
+      "endpointCount": 3,
+      "endpoints": [
+        {
+          "methodName": "getProfile",
+          "httpMethod": "GET",
+          "fullPath": "/me/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "updateProfile",
+          "httpMethod": "PATCH",
+          "fullPath": "/me/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "changePassword",
+          "httpMethod": "POST",
+          "fullPath": "/me/change-password",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "ProjectController",
+      "prefix": "/projects",
+      "endpointCount": 21,
+      "endpoints": [
+        {
+          "methodName": "getAll",
+          "httpMethod": "GET",
+          "fullPath": "/projects/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getMyProjects",
+          "httpMethod": "GET",
+          "fullPath": "/projects/my-projects",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getByContract",
+          "httpMethod": "GET",
+          "fullPath": "/projects/contract/:contractId",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "assign",
+          "httpMethod": "POST",
+          "fullPath": "/projects/assign",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "approvePause",
+          "httpMethod": "POST",
+          "fullPath": "/projects/pause-requests/:requestId/approve",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "rejectPause",
+          "httpMethod": "POST",
+          "fullPath": "/projects/pause-requests/:requestId/reject",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "approveClose",
+          "httpMethod": "POST",
+          "fullPath": "/projects/close-requests/:requestId/approve",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "rejectClose",
+          "httpMethod": "POST",
+          "fullPath": "/projects/close-requests/:requestId/reject",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "confirm",
+          "httpMethod": "POST",
+          "fullPath": "/projects/:id/confirm",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "update",
+          "httpMethod": "PUT",
+          "fullPath": "/projects/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "updateStatus",
+          "httpMethod": "PATCH",
+          "fullPath": "/projects/:id/status",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "updateWorkingFiles",
+          "httpMethod": "PATCH",
+          "fullPath": "/projects/:id/working-files",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "requestPause",
+          "httpMethod": "POST",
+          "fullPath": "/projects/:id/pause",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "pauseDirect",
+          "httpMethod": "POST",
+          "fullPath": "/projects/:id/pause/direct",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "resume",
+          "httpMethod": "POST",
+          "fullPath": "/projects/:id/resume",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getPauseHistory",
+          "httpMethod": "GET",
+          "fullPath": "/projects/:id/pause-history",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getHoldSummary",
+          "httpMethod": "GET",
+          "fullPath": "/projects/:id/hold-summary",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "requestClose",
+          "httpMethod": "POST",
+          "fullPath": "/projects/:id/close",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "closeDirect",
+          "httpMethod": "POST",
+          "fullPath": "/projects/:id/close/direct",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "requestStaffing",
+          "httpMethod": "POST",
+          "fullPath": "/projects/:id/request-staffing",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getOne",
+          "httpMethod": "GET",
+          "fullPath": "/projects/:id",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "ProjectProductDescriptionController",
+      "prefix": "/projects/:id/product-descriptions",
+      "endpointCount": 6,
+      "endpoints": [
+        {
+          "methodName": "getByProject",
+          "httpMethod": "GET",
+          "fullPath": "/projects/:id/product-descriptions/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "create",
+          "httpMethod": "POST",
+          "fullPath": "/projects/:id/product-descriptions/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "update",
+          "httpMethod": "PUT",
+          "fullPath": "/projects/:id/product-descriptions/:submissionId",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "submit",
+          "httpMethod": "POST",
+          "fullPath": "/projects/:id/product-descriptions/:submissionId/submit",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "approve",
+          "httpMethod": "POST",
+          "fullPath": "/projects/:id/product-descriptions/:submissionId/approve",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "reject",
+          "httpMethod": "POST",
+          "fullPath": "/projects/:id/product-descriptions/:submissionId/reject",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "ProjectTeamController",
+      "prefix": "/teams",
+      "endpointCount": 11,
+      "endpoints": [
+        {
+          "methodName": "getAll",
+          "httpMethod": "GET",
+          "fullPath": "/teams/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "create",
+          "httpMethod": "POST",
+          "fullPath": "/teams/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getMembers",
+          "httpMethod": "GET",
+          "fullPath": "/teams/:id/members",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "addMember",
+          "httpMethod": "POST",
+          "fullPath": "/teams/:id/members",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "updateMemberRoles",
+          "httpMethod": "PUT",
+          "fullPath": "/teams/:id/members/:userId/roles",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "changeLead",
+          "httpMethod": "PUT",
+          "fullPath": "/teams/:id/lead",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "updateMember",
+          "httpMethod": "PATCH",
+          "fullPath": "/teams/members/:memberId",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "removeMember",
+          "httpMethod": "DELETE",
+          "fullPath": "/teams/members/:memberId",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getOne",
+          "httpMethod": "GET",
+          "fullPath": "/teams/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "update",
+          "httpMethod": "PUT",
+          "fullPath": "/teams/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "delete",
+          "httpMethod": "DELETE",
+          "fullPath": "/teams/:id",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "QcController",
+      "prefix": "/qc",
+      "endpointCount": 1,
+      "endpoints": [
+        {
+          "methodName": "getProductInfo",
+          "httpMethod": "GET",
+          "fullPath": "/qc/product-info/:projectId",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "QuotationController",
+      "prefix": "/quotations",
+      "endpointCount": 9,
+      "endpoints": [
+        {
+          "methodName": "getAll",
+          "httpMethod": "GET",
+          "fullPath": "/quotations/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getOne",
+          "httpMethod": "GET",
+          "fullPath": "/quotations/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getByOpportunity",
+          "httpMethod": "GET",
+          "fullPath": "/quotations/opportunity/:opportunityId",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "create",
+          "httpMethod": "POST",
+          "fullPath": "/quotations/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "createAddendum",
+          "httpMethod": "POST",
+          "fullPath": "/quotations/addendum",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "update",
+          "httpMethod": "PUT",
+          "fullPath": "/quotations/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "approve",
+          "httpMethod": "POST",
+          "fullPath": "/quotations/:id/approve",
+          "roles": [
+            "BOD",
+            "ADMIN"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "reject",
+          "httpMethod": "POST",
+          "fullPath": "/quotations/:id/reject",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "delete",
+          "httpMethod": "DELETE",
+          "fullPath": "/quotations/:id",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "ReferralPartnerController",
+      "prefix": "/referral-partners",
+      "endpointCount": 5,
+      "endpoints": [
+        {
+          "methodName": "getAll",
+          "httpMethod": "GET",
+          "fullPath": "/referral-partners/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getOne",
+          "httpMethod": "GET",
+          "fullPath": "/referral-partners/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "create",
+          "httpMethod": "POST",
+          "fullPath": "/referral-partners/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "update",
+          "httpMethod": "PUT",
+          "fullPath": "/referral-partners/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "delete",
+          "httpMethod": "DELETE",
+          "fullPath": "/referral-partners/:id",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "ServiceController",
+      "prefix": "/services",
+      "endpointCount": 8,
+      "endpoints": [
+        {
+          "methodName": "getAll",
+          "httpMethod": "GET",
+          "fullPath": "/services/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getOne",
+          "httpMethod": "GET",
+          "fullPath": "/services/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "create",
+          "httpMethod": "POST",
+          "fullPath": "/services/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "update",
+          "httpMethod": "PATCH",
+          "fullPath": "/services/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "bulkDelete",
+          "httpMethod": "DELETE",
+          "fullPath": "/services/bulk",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "delete",
+          "httpMethod": "DELETE",
+          "fullPath": "/services/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "addJob",
+          "httpMethod": "POST",
+          "fullPath": "/services/:id/jobs/:jobId",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "removeJob",
+          "httpMethod": "DELETE",
+          "fullPath": "/services/:id/jobs/:jobId",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "ServicePackageController",
+      "prefix": "/service-packages",
+      "endpointCount": 5,
+      "endpoints": [
+        {
+          "methodName": "getAll",
+          "httpMethod": "GET",
+          "fullPath": "/service-packages/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getOne",
+          "httpMethod": "GET",
+          "fullPath": "/service-packages/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "create",
+          "httpMethod": "POST",
+          "fullPath": "/service-packages/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "update",
+          "httpMethod": "PUT",
+          "fullPath": "/service-packages/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "delete",
+          "httpMethod": "DELETE",
+          "fullPath": "/service-packages/:id",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "SettingController",
+      "prefix": "/settings",
+      "endpointCount": 4,
+      "endpoints": [
+        {
+          "methodName": "getQc",
+          "httpMethod": "GET",
+          "fullPath": "/settings/qc",
+          "roles": [
+            "ADMIN",
+            "ADMIN"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "updateQc",
+          "httpMethod": "PUT",
+          "fullPath": "/settings/qc",
+          "roles": [
+            "ADMIN",
+            "ADMIN"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "getWorkloadNorms",
+          "httpMethod": "GET",
+          "fullPath": "/settings/workload-norms",
+          "roles": [
+            "ADMIN",
+            "ADMIN"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "updateWorkloadNorms",
+          "httpMethod": "PUT",
+          "fullPath": "/settings/workload-norms",
+          "roles": [
+            "ADMIN",
+            "ADMIN"
+          ],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "SpellingCheckController",
+      "prefix": "/spelling-check",
+      "endpointCount": 4,
+      "endpoints": [
+        {
+          "methodName": "listSheetsFromUrl",
+          "httpMethod": "POST",
+          "fullPath": "/spelling-check/sheets-from-url",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "startFromUrl",
+          "httpMethod": "POST",
+          "fullPath": "/spelling-check/start-from-url",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getStatus",
+          "httpMethod": "GET",
+          "fullPath": "/spelling-check/:jobId",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "delete",
+          "httpMethod": "DELETE",
+          "fullPath": "/spelling-check/:jobId",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "SpellingWhitelistController",
+      "prefix": "/projects/:projectId/spelling-whitelist",
+      "endpointCount": 3,
+      "endpoints": [
+        {
+          "methodName": "list",
+          "httpMethod": "GET",
+          "fullPath": "/projects/:projectId/spelling-whitelist/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "add",
+          "httpMethod": "POST",
+          "fullPath": "/projects/:projectId/spelling-whitelist/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "remove",
+          "httpMethod": "DELETE",
+          "fullPath": "/projects/:projectId/spelling-whitelist/:whitelistId",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "TaskController",
+      "prefix": "/tasks",
+      "endpointCount": 19,
+      "endpoints": [
+        {
+          "methodName": "create",
+          "httpMethod": "POST",
+          "fullPath": "/tasks/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "createInternal",
+          "httpMethod": "POST",
+          "fullPath": "/tasks/internal",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "bulkAssign",
+          "httpMethod": "PUT",
+          "fullPath": "/tasks/bulk-assign",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "bulkUnassign",
+          "httpMethod": "PATCH",
+          "fullPath": "/tasks/bulk-unassign",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "bulkStart",
+          "httpMethod": "PATCH",
+          "fullPath": "/tasks/bulk-start",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "updateNickname",
+          "httpMethod": "PATCH",
+          "fullPath": "/tasks/:id/nickname",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "start",
+          "httpMethod": "PATCH",
+          "fullPath": "/tasks/:id/start",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "update",
+          "httpMethod": "PUT",
+          "fullPath": "/tasks/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "assign",
+          "httpMethod": "PUT",
+          "fullPath": "/tasks/:id/assign",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "submitResult",
+          "httpMethod": "PATCH",
+          "fullPath": "/tasks/:id/submit-result",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "submitResultForReview",
+          "httpMethod": "PATCH",
+          "fullPath": "/tasks/:id/submit-result-review",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "delete",
+          "httpMethod": "DELETE",
+          "fullPath": "/tasks/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "reassign",
+          "httpMethod": "PATCH",
+          "fullPath": "/tasks/:id/reassign",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "assessExtraTask",
+          "httpMethod": "POST",
+          "fullPath": "/tasks/:id/pricing",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "requestSupport",
+          "httpMethod": "POST",
+          "fullPath": "/tasks/:id/request-support",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "rework",
+          "httpMethod": "PATCH",
+          "fullPath": "/tasks/:id/rework",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "approveByCustomer",
+          "httpMethod": "PATCH",
+          "fullPath": "/tasks/:id/customer-approve",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "customerDoesNotPurchase",
+          "httpMethod": "PATCH",
+          "fullPath": "/tasks/:id/customer-not-purchase",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "sendReminder",
+          "httpMethod": "POST",
+          "fullPath": "/tasks/:id/remind",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "TaskQueryController",
+      "prefix": "/tasks",
+      "endpointCount": 4,
+      "endpoints": [
+        {
+          "methodName": "getAll",
+          "httpMethod": "GET",
+          "fullPath": "/tasks/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getDailyWorkloadByAssignee",
+          "httpMethod": "GET",
+          "fullPath": "/tasks/assignee/:userId/daily-workload",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getByProject",
+          "httpMethod": "GET",
+          "fullPath": "/tasks/project/:projectId",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getOne",
+          "httpMethod": "GET",
+          "fullPath": "/tasks/:id",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "TaskResultCheckController",
+      "prefix": "/task-result-checks",
+      "endpointCount": 4,
+      "endpoints": [
+        {
+          "methodName": "get",
+          "httpMethod": "GET",
+          "fullPath": "/task-result-checks/task/:taskId",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "toggle",
+          "httpMethod": "PATCH",
+          "fullPath": "/task-result-checks/task/:taskId/toggle",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "toggleBulk",
+          "httpMethod": "PATCH",
+          "fullPath": "/task-result-checks/task/:taskId/toggle-bulk",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "finalize",
+          "httpMethod": "POST",
+          "fullPath": "/task-result-checks/task/:taskId/finalize",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "TaskReviewController",
+      "prefix": "/task-reviews",
+      "endpointCount": 4,
+      "endpoints": [
+        {
+          "methodName": "getTaskReviews",
+          "httpMethod": "GET",
+          "fullPath": "/task-reviews/task/:taskId",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "toggleCriteria",
+          "httpMethod": "PUT",
+          "fullPath": "/task-reviews/:id/toggle",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "finalize",
+          "httpMethod": "POST",
+          "fullPath": "/task-reviews/task/:taskId/finalize",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "reject",
+          "httpMethod": "POST",
+          "fullPath": "/task-reviews/task/:taskId/reject",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "TaskSubtaskController",
+      "prefix": "/tasks",
+      "endpointCount": 6,
+      "endpoints": [
+        {
+          "methodName": "requestStaffing",
+          "httpMethod": "POST",
+          "fullPath": "/tasks/:id/request-staffing",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "respondStaffingRequest",
+          "httpMethod": "PATCH",
+          "fullPath": "/tasks/:id/respond-staffing",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "createSubtask",
+          "httpMethod": "POST",
+          "fullPath": "/tasks/:id/subtasks",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "updateSubtask",
+          "httpMethod": "PATCH",
+          "fullPath": "/tasks/:id/subtask",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "submitSubtaskPlan",
+          "httpMethod": "POST",
+          "fullPath": "/tasks/:id/subtask-plan/submit",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "respondSubtaskPlan",
+          "httpMethod": "PATCH",
+          "fullPath": "/tasks/:id/subtask-plan/respond",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "UserController",
+      "prefix": "/users",
+      "endpointCount": 8,
+      "endpoints": [
+        {
+          "methodName": "findAll",
+          "httpMethod": "GET",
+          "fullPath": "/users/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "findOne",
+          "httpMethod": "GET",
+          "fullPath": "/users/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "create",
+          "httpMethod": "POST",
+          "fullPath": "/users/",
+          "roles": [
+            "ADMIN",
+            "BOD"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "updatePut",
+          "httpMethod": "PUT",
+          "fullPath": "/users/:id",
+          "roles": [
+            "ADMIN",
+            "BOD"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "update",
+          "httpMethod": "PATCH",
+          "fullPath": "/users/:id",
+          "roles": [
+            "ADMIN",
+            "BOD"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "updateRole",
+          "httpMethod": "PATCH",
+          "fullPath": "/users/:id/role",
+          "roles": [
+            "ADMIN",
+            "BOD"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "updateLaborContracts",
+          "httpMethod": "PATCH",
+          "fullPath": "/users/:id/labor-contracts",
+          "roles": [
+            "ADMIN",
+            "BOD",
+            "ADMIN_SALE"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "remove",
+          "httpMethod": "DELETE",
+          "fullPath": "/users/:id",
+          "roles": [
+            "ADMIN",
+            "BOD"
+          ],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "VendorController",
+      "prefix": "/vendors",
+      "endpointCount": 8,
+      "endpoints": [
+        {
+          "methodName": "getAll",
+          "httpMethod": "GET",
+          "fullPath": "/vendors/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getByJob",
+          "httpMethod": "GET",
+          "fullPath": "/vendors/by-job/:jobId",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getOne",
+          "httpMethod": "GET",
+          "fullPath": "/vendors/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "create",
+          "httpMethod": "POST",
+          "fullPath": "/vendors/",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "update",
+          "httpMethod": "PATCH",
+          "fullPath": "/vendors/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "delete",
+          "httpMethod": "DELETE",
+          "fullPath": "/vendors/:id",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "addJob",
+          "httpMethod": "POST",
+          "fullPath": "/vendors/:id/jobs/:jobId",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "removeJob",
+          "httpMethod": "DELETE",
+          "fullPath": "/vendors/:id/jobs/:jobId",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "VideoGenerationController",
+      "prefix": "/video-generations",
+      "endpointCount": 7,
+      "endpoints": [
+        {
+          "methodName": "getTaskBudget",
+          "httpMethod": "GET",
+          "fullPath": "/video-generations/tasks/:taskId/budget",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "createVideo",
+          "httpMethod": "POST",
+          "fullPath": "/video-generations/create",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getVideoHistory",
+          "httpMethod": "GET",
+          "fullPath": "/video-generations/history",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getVideoStatus",
+          "httpMethod": "GET",
+          "fullPath": "/video-generations/:id/status",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "createMotionControl",
+          "httpMethod": "POST",
+          "fullPath": "/video-generations/create-motion-control",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getMotionHistory",
+          "httpMethod": "GET",
+          "fullPath": "/video-generations/motion-control/history",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getMotionStatus",
+          "httpMethod": "GET",
+          "fullPath": "/video-generations/motion-control/:id/status",
+          "roles": [],
+          "isPublic": false
+        }
+      ]
+    },
+    {
+      "name": "VinicoinController",
+      "prefix": "/vinicoin",
+      "endpointCount": 4,
+      "endpoints": [
+        {
+          "methodName": "getMyBalance",
+          "httpMethod": "GET",
+          "fullPath": "/vinicoin/balance",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getMyHistory",
+          "httpMethod": "GET",
+          "fullPath": "/vinicoin/history",
+          "roles": [],
+          "isPublic": false
+        },
+        {
+          "methodName": "getAccountHistory",
+          "httpMethod": "GET",
+          "fullPath": "/vinicoin/accounts/:accountId/history",
+          "roles": [
+            "BOD",
+            "ADMIN",
+            "BOD",
+            "ADMIN"
+          ],
+          "isPublic": false
+        },
+        {
+          "methodName": "adjustVinicoin",
+          "httpMethod": "POST",
+          "fullPath": "/vinicoin/adjust",
+          "roles": [
+            "BOD",
+            "ADMIN",
+            "BOD",
+            "ADMIN"
+          ],
+          "isPublic": false
+        }
+      ]
+    }
+  ]
+}
