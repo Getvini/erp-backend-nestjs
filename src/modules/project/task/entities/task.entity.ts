@@ -191,6 +191,16 @@ export class Tasks extends BaseEntity {
   @Column({ default: true })
   isRewardable: boolean;
 
+  @Column({ type: "json", nullable: true })
+  deadlineChangeHistory: {
+      oldDeadline: Date | string | null,
+      newDeadline: Date | string,
+      reason: string,
+      changedAt: Date | string,
+      changedById?: string | null,
+      changedByName?: string | null
+  }[] | null;
+
   @Column({ type: "varchar", length: 26, nullable: true })
   mappedServiceId: string;
   @ManyToOne(() => Services, { nullable: true })
