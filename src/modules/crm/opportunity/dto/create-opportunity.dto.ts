@@ -8,6 +8,10 @@ import {
 import { CustomerType } from "@modules/crm/opportunity/enums/opportunity-status.enum";
 
 export class CreateOpportunityDto {
+  @IsOptional()
+  @IsString()
+  opportunityCode?: string;
+
   @IsString({ message: "Tên cơ hội không được để trống" })
   name: string;
 

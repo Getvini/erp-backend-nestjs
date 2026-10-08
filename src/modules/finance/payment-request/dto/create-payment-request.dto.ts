@@ -5,6 +5,7 @@ import {
   IsNumber,
   IsEnum,
   IsArray,
+  IsDateString,
 } from "class-validator";
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 import { PaymentRequestType } from "../entities/payment-request.entity";
@@ -24,6 +25,8 @@ export class CreatePaymentRequestDto {
   amount: number;
 
   @ApiProperty()
+  @IsNotEmpty()
+  @IsDateString()
   dueDate: any;
 
   @ApiPropertyOptional()

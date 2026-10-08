@@ -4,6 +4,7 @@ import {
   IsNumber,
   IsOptional,
   IsArray,
+  IsDateString,
 } from "class-validator";
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 
@@ -32,6 +33,8 @@ export class CreateDebtPaymentDto {
   amount: number;
 
   @ApiProperty()
+  @IsNotEmpty()
+  @IsDateString()
   paymentDate: Date;
 
   @ApiPropertyOptional()

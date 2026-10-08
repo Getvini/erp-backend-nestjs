@@ -4,6 +4,7 @@ import {
   IsOptional,
   IsArray,
   IsNumber,
+  IsObject,
 } from "class-validator";
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 
@@ -38,6 +39,8 @@ export class AddAddendumItemsDto {
 
 export class UploadSignedAddendumDto {
   @ApiProperty()
+  @IsNotEmpty()
+  @IsObject()
   file: {
     url: string;
     [key: string]: any;
