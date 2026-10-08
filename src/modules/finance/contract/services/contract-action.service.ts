@@ -24,7 +24,7 @@ import { Services } from "@modules/crm/service/entities/service.entity";
 import { ContractQueryService } from "./contract-query.service";
 
 function calcTotals(selling: number, vatRate = 8) {
-  const vat = Math.round(selling * (vatRate / 100));
+  const vat = selling * (vatRate / 100);
   return {
     sellingPrice: selling,
     vatRate,
