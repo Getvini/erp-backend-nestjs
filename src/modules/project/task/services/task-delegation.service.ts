@@ -99,7 +99,16 @@ export class TaskDelegationService {
       assignee = await this.userRepository.findOneBy({ id: data.assigneeId });
     }
 
+    const existingSubtasksCount = await this.taskRepository.count({
+      where: { parentTaskId: parentTask.id },
+    });
+    const sequence = (existingSubtasksCount + 1).toString().padStart(2, "0");
+    const subtaskCode = parentTask.code
+      ? `${parentTask.code}-S${sequence}`
+      : null;
+
     const subtask = this.taskRepository.create({
+      code: subtaskCode || undefined,
       name: data.name,
       parentTaskId: parentTask.id,
       parentTask,
@@ -120,8 +129,9 @@ export class TaskDelegationService {
     });
 
     const saved = await this.taskRepository.save(subtask);
-    parentTask.subtaskPlanStatus = SubtaskPlanStatus.DRAFT;
-    await this.taskRepository.save(parentTask);
+    await this.taskRepository.update(parentTask.id, {
+      subtaskPlanStatus: SubtaskPlanStatus.DRAFT,
+    });
 
     return saved;
   }

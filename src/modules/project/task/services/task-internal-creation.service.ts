@@ -8,6 +8,8 @@ import { TaskActor } from "@modules/project/task/helpers/task-security.helper";
 import { NotificationService } from "@modules/communication/services/notification.service";
 import { CreateInternalTaskDto } from "@modules/project/task/dto/task.dto";
 
+import { StringHelper } from "@core/helpers/string.helper";
+
 @Injectable()
 export class TaskInternalCreationService {
   constructor(
@@ -17,16 +19,6 @@ export class TaskInternalCreationService {
     private readonly userRepository: Repository<Users>,
     private readonly notificationService: NotificationService,
   ) {}
-
-  private getInitials(name?: string) {
-    if (!name) return "NA";
-    return name
-      .trim()
-      .split(/\s+/)
-      .map((part) => part[0])
-      .join("")
-      .toUpperCase();
-  }
 
   async createInternalTask(
     data: CreateInternalTaskDto,
@@ -44,7 +36,7 @@ export class TaskInternalCreationService {
     if (!supervisor)
       throw new NotFoundException("Không tìm thấy người giám sát");
 
-    const initials = this.getInitials(assignee.fullName);
+    const initials = StringHelper.getInitials(assignee.fullName);
     const now = new Date();
     const year = now.getFullYear().toString().slice(-2);
     const month = (now.getMonth() + 1).toString().padStart(2, "0");

@@ -1,4 +1,8 @@
-import { Injectable } from "@nestjs/common";
+import {
+  Injectable,
+  NotFoundException,
+  ForbiddenException,
+} from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository, ILike, In } from "typeorm";
 import { Contract } from "@modules/finance/entities/contract.entity";
@@ -37,7 +41,7 @@ export class ContractQueryService {
     ) {
       return { project: { team: { members: { user: { id: userId } } } } };
     }
-    throw Object.assign(new Error("FORBIDDEN_ACCESS"), { statusCode: 403 });
+    throw new ForbiddenException("FORBIDDEN_ACCESS");
   }
 
   async getAll(query: ContractQueryDto, user: any) {
@@ -134,9 +138,7 @@ export class ContractQueryService {
           where = { id, ...rbac };
         }
       } catch {
-        throw Object.assign(new Error("Bạn không có quyền xem hợp đồng này"), {
-          statusCode: 403,
-        });
+        throw new ForbiddenException("Bạn không có quyền xem hợp đồng này");
       }
     }
 
@@ -153,10 +155,9 @@ export class ContractQueryService {
         "project",
       ],
     });
-    if (!contract)
-      throw Object.assign(new Error("Không tìm thấy hợp đồng"), {
-        statusCode: 404,
-      });
+    if (!contract) {
+      throw new NotFoundException("Không tìm thấy hợp đồng");
+    }
     return contract;
   }
 }

@@ -1,6 +1,6 @@
 import { Injectable, BadRequestException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { Repository } from "typeorm";
+import { Like, Repository } from "typeorm";
 import { Opportunities } from "@modules/crm/opportunity/entities/opportunity.entity";
 import { OpportunityPackages } from "@modules/crm/opportunity/entities/opportunity-package.entity";
 import { OpportunityServices } from "@modules/crm/opportunity/entities/opportunity-service.entity";
@@ -34,10 +34,19 @@ export class OpportunityLifecycleService {
   ) {}
 
   private async generateCode(): Promise<string> {
-    const dateStr = new Date().toISOString().slice(0, 10).replace(/-/g, "");
-    const count = await this.oppRepo.count();
-    const seq = String(count + 1).padStart(4, "0");
-    return `OPP-${dateStr}-${seq}`;
+      const now = new Date();
+        const year = now.getFullYear().toString().slice(-2);
+        const month = (now.getMonth() + 1).toString().padStart(2, '0');
+        const prefix = `CH-${year}-${month}`;
+
+        const count = await this.oppRepo.count({
+            where: {
+                opportunityCode: Like(`${prefix}%`)
+            }
+        });
+
+        const sequence = (count + 1).toString().padStart(3, '0');
+        return `${prefix}-${sequence}`;
   }
 
   async create(dto: CreateOpportunityDto, user?: any): Promise<Opportunities> {

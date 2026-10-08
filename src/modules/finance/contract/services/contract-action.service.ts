@@ -63,13 +63,18 @@ export class ContractActionService {
 
   private async generateCode(): Promise<string> {
     const now = new Date();
-    const y = now.getFullYear().toString().slice(-2);
-    const m = (now.getMonth() + 1).toString().padStart(2, "0");
-    const prefix = `SMGK-${y}-${m}`;
+    const year = now.getFullYear().toString().slice(-2);
+    const month = (now.getMonth() + 1).toString().padStart(2, '0');
+    const prefix = `SMGK-${year}-${month}`;
+
     const count = await this.contractRepo.count({
-      where: { contractCode: Like(`${prefix}%`) },
+        where: {
+            contractCode: Like(`${prefix}%`)
+        }
     });
-    return `${prefix}-${(count + 1).toString().padStart(3, "0")}`;
+
+    const sequence = (count + 1).toString().padStart(3, '0');
+    return `${prefix}-${sequence}`;
   }
 
   async create(dto: CreateContractDto, user: any) {
@@ -85,6 +90,13 @@ export class ContractActionService {
 
     if (!data.contractCode) {
       data["contractCode"] = await this.generateCode();
+    } else {
+      const existing = await this.contractRepo.findOne({
+        where: { contractCode: data.contractCode },
+      });
+      if (existing) {
+        throw new BadRequestException("Mã hợp đồng đã tồn tại");
+      }
     }
 
     let customer: Customers | null = null;

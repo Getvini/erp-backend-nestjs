@@ -73,6 +73,7 @@ export class TaskResultService {
       }
     }
 
+    delete (task as any).iterations;
     return this.taskRepository.save(task);
   }
 
