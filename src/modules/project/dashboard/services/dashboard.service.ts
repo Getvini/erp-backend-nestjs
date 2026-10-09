@@ -26,28 +26,37 @@ export class DashboardService {
     private readonly workloadSummaryService: WorkloadSummaryService,
   ) {}
 
-  private getDateRange(month?: number, year?: number) {
-    if (!year && !month) return null;
-    if (year && month) {
+  private getDateRange(
+    month?: number,
+    year?: number,
+    startMonth?: number,
+    endMonth?: number,
+  ) {
+    const effectiveStart = startMonth || month;
+    const effectiveEnd = endMonth || month;
+    if (!year && !effectiveStart) return null;
+    if (year && effectiveStart && effectiveEnd) {
       return {
-        start: new Date(year, month - 1, 1),
-        end: new Date(year, month, 0, 23, 59, 59, 999),
+        start: new Date(year, effectiveStart - 1, 1),
+        end: new Date(year, effectiveEnd, 0, 23, 59, 59, 999),
       };
     }
     const currentYear = year || new Date().getFullYear();
-    const currentMonth = month ? month - 1 : 0;
-    const endMonth = month ? month : 11;
+    const currentMonth = effectiveStart ? effectiveStart - 1 : 0;
+    const currentEndMonth = effectiveEnd ? effectiveEnd : 11;
     return {
       start: new Date(currentYear, currentMonth, 1),
-      end: new Date(currentYear, endMonth, month ? 0 : 31, 23, 59, 59, 999),
+      end: new Date(currentYear, currentEndMonth, effectiveEnd ? 0 : 31, 23, 59, 59, 999),
     };
   }
 
   private getDateFilter(
     month?: number,
     year?: number,
+    startMonth?: number,
+    endMonth?: number,
   ): FindOperator<any> | null {
-    const range = this.getDateRange(month, year);
+    const range = this.getDateRange(month, year, startMonth, endMonth);
     return range ? Between(range.start, range.end) : null;
   }
 
@@ -58,10 +67,12 @@ export class DashboardService {
     year?: number,
     projectId?: string,
     mode?: "personal" | "management",
+    startMonth?: number,
+    endMonth?: number,
   ) {
     const data: any = {};
-    const dateRange = this.getDateRange(month, year);
-    const dateFilter = this.getDateFilter(month, year);
+    const dateRange = this.getDateRange(month, year, startMonth, endMonth);
+    const dateFilter = this.getDateFilter(month, year, startMonth, endMonth);
     const scope = await this.scopeService.resolve(
       actor,
       requestedUserId,
