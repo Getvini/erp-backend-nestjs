@@ -120,17 +120,19 @@ export class AuthController {
     };
   }
 
+  @Public()
   @Post("logout")
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: "Đăng xuất khỏi hệ thống" })
   @ApiResponse({ status: 200, description: "Đăng xuất thành công" })
   async logout(
-    @CurrentUser("id") accountId: string,
+    @Body() refreshTokenDto: RefreshTokenDto,
     @Req() req: Request,
     @Res({ passthrough: true }) res: Response,
   ) {
-    const rawRefreshToken = req.cookies?.refreshToken;
+    const rawRefreshToken =
+      refreshTokenDto?.refreshToken || req.cookies?.refreshToken;
     this.clearAuthCookies(res, req);
-    return this.authService.logout(accountId, rawRefreshToken);
+    return this.authService.logout(rawRefreshToken);
   }
 }

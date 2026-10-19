@@ -19,14 +19,17 @@ export class AllExceptionsFilter implements ExceptionFilter {
 
     let status = HttpStatus.INTERNAL_SERVER_ERROR;
     let message: string | object = "Lỗi hệ thống nội bộ";
+    let errorCode: string | undefined = undefined;
 
     if (exception instanceof HttpException) {
       status = exception.getStatus();
       const res = exception.getResponse();
-      message =
-        typeof res === "object" && "message" in res
-          ? (res as any).message
-          : res;
+      if (typeof res === "object" && res !== null) {
+        message = (res as any).message || res;
+        errorCode = (res as any).code;
+      } else {
+        message = res;
+      }
     } else if ((exception as any)?.code === "23505") {
       status = HttpStatus.CONFLICT;
       message = "Dữ liệu đã tồn tại trong hệ thống (Duplicate constraint)";
@@ -47,10 +50,11 @@ export class AllExceptionsFilter implements ExceptionFilter {
       exception instanceof Error ? exception.stack : undefined,
     );
 
-    // Tương thích 100% với FE (FE đọc toast.error(err?.data?.message))
+    // Tương thích 100% với FE (FE đọc toast.error(err?.data?.message) và check code === "SESSION_EXPIRED")
     response.status(status).json({
       success: false,
       statusCode: status,
+      ...(errorCode ? { code: errorCode } : {}),
       message: formattedMessage,
       timestamp: new Date().toISOString(),
       path: request.url,
