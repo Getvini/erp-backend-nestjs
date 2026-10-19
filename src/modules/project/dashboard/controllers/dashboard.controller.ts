@@ -38,6 +38,8 @@ export class DashboardController {
       query.year,
       query.projectId,
       query.mode,
+      query.startMonth,
+      query.endMonth,
     );
   }
 }

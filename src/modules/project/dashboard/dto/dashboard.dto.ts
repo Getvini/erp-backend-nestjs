@@ -14,6 +14,18 @@ export class DashboardQueryDto {
   @IsNumber()
   month?: number;
 
+  @ApiPropertyOptional({ description: "Tháng bắt đầu lọc (1-12)" })
+  @IsOptional()
+  @Type(() => Number)
+  @IsNumber()
+  startMonth?: number;
+
+  @ApiPropertyOptional({ description: "Tháng kết thúc lọc (1-12)" })
+  @IsOptional()
+  @Type(() => Number)
+  @IsNumber()
+  endMonth?: number;
+
   @ApiPropertyOptional({ description: "Năm lọc dữ liệu" })
   @IsOptional()
   @Type(() => Number)
